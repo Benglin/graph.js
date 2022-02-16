@@ -9,7 +9,7 @@
     "scripts": {
         "test": "test",
         "watch": "rimraf ./dist && parcel watch",
-        "build": "rimraf ./dist && parcel build"
+        "build": "rimraf ./dist && parcel build --no-source-maps"
     },
     "repository": {
         "type": "git",
