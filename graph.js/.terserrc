@@ -1,0 +1,19 @@
+{
+    parse: {},
+    compress: {
+        drop_console: true,
+    },
+    mangle: {
+        properties: {},
+    },
+    format: {},
+    sourceMap: {},
+    ecma: 2017,
+    keep_classnames: false,
+    keep_fnames: false,
+    ie8: false,
+    module: true,
+    nameCache: null,
+    safari10: false,
+    toplevel: false,
+}
