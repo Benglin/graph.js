@@ -25,7 +25,17 @@ export class GraphLayer extends GraphObject {
         parentElement.appendChild(this._canvas);
     }
 
+    public handleContainerResized(width: number, height: number): void {
+        this._canvas.width = width;
+        this._canvas.height = height;
+    }
+
     public invalidate(): void {
+        const w = this._canvas.clientWidth - 20;
+        const h = this._canvas.clientHeight - 20;
+        this._context.fillStyle = "green";
+        this._context.fillRect(10, 10, w, h);
+
         const objects = Object.values(this._graphObjects);
         objects.forEach((go) => {
             const view = this._graph.getObjectView(go.id);

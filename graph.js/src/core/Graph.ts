@@ -19,6 +19,13 @@ export class Graph {
     constructor(parentId: string) {
         this._parentElement = document.getElementById(parentId) as HTMLElement;
         this.createLayer(LayerName.Default);
+
+        const thisObject = this;
+        window.addEventListener("resize", (ev: UIEvent) => {
+            const e = thisObject._parentElement;
+            thisObject.handleContainerResized(e.clientWidth, e.clientHeight);
+            thisObject.invalidate();
+        });
     }
 
     public addNodes(nodes: GraphNode[]): void {
@@ -57,6 +64,13 @@ export class Graph {
 
     private createNodeView(node: GraphNode): void {
         this._views[node.id] = this._nodeView;
+    }
+
+    private handleContainerResized(width: number, height: number): void {
+        Object.values(this._layers).forEach((go) => {
+            const layer = go as GraphLayer;
+            layer.handleContainerResized(width, height);
+        });
     }
 }
 
