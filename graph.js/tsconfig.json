@@ -4,6 +4,7 @@
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
+        "sourceMap": true,
         "forceConsistentCasingInFileNames": true
     },
     "$schema": "https://json.schemastore.org/tsconfig",
