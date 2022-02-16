@@ -2,10 +2,10 @@
     "name": "graph.js",
     "version": "0.0.1",
     "description": "Graph visual library for the browsers",
+    "type": "module",
     "source": "src/index.ts",
-    "main": "dist/main.js",
-    "module": "dist/module.js",
-    "types": "dist/types.d.ts",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "test": "test",
         "watch": "parcel watch",
