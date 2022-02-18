@@ -1,4 +1,5 @@
 import { Graph } from "./Graph";
+import { GraphEdge } from "./GraphEdge";
 import { GraphNode } from "./GraphNode";
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
 
@@ -12,7 +13,8 @@ export class GraphLayer extends GraphObject {
     private readonly _canvas: HTMLCanvasElement;
     private readonly _context: CanvasRenderingContext2D;
 
-    private readonly _graphObjects: GraphObjectIdMap = {};
+    private readonly _graphNodes: GraphObjectIdMap = {};
+    private readonly _graphEdges: GraphObjectIdMap = {};
 
     constructor(graph: Graph, layerName: LayerName) {
         super(`layer-${layerName}`);
@@ -36,18 +38,27 @@ export class GraphLayer extends GraphObject {
         this._context.fillStyle = "green";
         this._context.fillRect(10, 10, w, h);
 
-        const objects = Object.values(this._graphObjects);
-        objects.forEach((go) => {
-            const view = this._graph.getObjectView(go.id);
-            view?.render(go as GraphNode, this._context);
+        const nodes = Object.values(this._graphNodes);
+        nodes.forEach((gn) => {
+            const node = gn as GraphNode;
+            const view = this._graph.getNodeView(node.nodeType);
+            view?.render(node, this._context);
         });
     }
 
-    public addObjects(graphObjects: GraphObject[]): void {
-        graphObjects.forEach((go) => (this._graphObjects[go.id] = go));
+    public addNodes(graphNodes: GraphNode[]): void {
+        graphNodes.forEach((gn) => (this._graphNodes[gn.id] = gn));
     }
 
-    public removeObjects(objectIds: string[]): void {
-        objectIds.forEach((id) => delete this._graphObjects[id]);
+    public removeNodes(nodeIds: string[]): void {
+        nodeIds.forEach((id) => delete this._graphNodes[id]);
+    }
+
+    public addEdges(graphEdges: GraphEdge[]): void {
+        graphEdges.forEach((ge) => (this._graphEdges[ge.id] = ge));
+    }
+
+    public removeEdges(edgeIds: string[]): void {
+        edgeIds.forEach((id) => delete this._graphEdges[id]);
     }
 }

@@ -1,4 +1,4 @@
-import { GraphNode } from "./GraphNode";
+import { GraphNode, NodeType } from "./GraphNode";
 import { GraphEdge } from "./GraphEdge";
 import { GraphLayer, LayerName } from "./GraphLayer";
 import { GraphObjectIdMap } from "./GraphObject";
@@ -11,10 +11,7 @@ export class Graph {
     private readonly _nodes: GraphObjectIdMap = {};
     private readonly _edges: GraphObjectIdMap = {};
     private readonly _layers: GraphObjectIdMap = {};
-    private readonly _views: ViewObjectIdMap = {};
-
-    // TODO: Cache this view.
-    private _nodeView = new SimpleNode();
+    private readonly _nodeTypeViewMap: ViewObjectIdMap = {};
 
     constructor(parentId: string) {
         this._parentElement = document.getElementById(parentId) as HTMLElement;
@@ -33,18 +30,18 @@ export class Graph {
         nodes.forEach((n) => this.createNodeView(n));
 
         const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
-        nodes.forEach((n) => defaultLayer.addObjects([n]));
+        nodes.forEach((n) => defaultLayer.addNodes([n]));
     }
 
     public addEdges(edges: GraphEdge[]): void {
         edges.forEach((e) => (this._edges[e.id] = e));
 
         const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
-        edges.forEach((e) => defaultLayer.addObjects([e]));
+        edges.forEach((e) => defaultLayer.addEdges([e]));
     }
 
-    public getObjectView(objectId: string): NodeView | undefined {
-        return this._views[objectId];
+    public getNodeView(nodeType: NodeType | string): NodeView | undefined {
+        return this._nodeTypeViewMap[nodeType];
     }
 
     public invalidate(): void {
@@ -63,7 +60,10 @@ export class Graph {
     }
 
     private createNodeView(node: GraphNode): void {
-        this._views[node.id] = this._nodeView;
+        if (!this._nodeTypeViewMap[node.nodeType]) {
+            const nodeView = new SimpleNode();
+            this._nodeTypeViewMap[node.nodeType] = nodeView;
+        }
     }
 
     private handleContainerResized(width: number, height: number): void {
