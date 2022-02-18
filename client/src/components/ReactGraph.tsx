@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { createGraph, Graph } from "graph.js";
+import { createGraph, Graph, GraphNode } from "graph.js";
 
 export interface ReactGraphProps {}
 
@@ -9,6 +9,7 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
     useEffect(() => {
         if (!graphRef.current) {
             graphRef.current = createGraph("graph-container");
+            graphRef.current.addNodes([new GraphNode()]);
             graphRef.current.invalidate();
         }
     }, []);
