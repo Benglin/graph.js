@@ -3,8 +3,8 @@ export class Size {
     private _height: number;
 
     constructor(width: number, height: number) {
-        this._width = width;
-        this._height = height;
+        this._width = width | 0;
+        this._height = height | 0;
     }
 
     public get width(): number {
