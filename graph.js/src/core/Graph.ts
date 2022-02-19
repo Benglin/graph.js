@@ -6,20 +6,20 @@ import { NodeView, ViewObjectIdMap } from "../view/ViewObject";
 import { SimpleNode } from "../view/SimpleNode";
 
 export class Graph {
-    private readonly _parentElement: HTMLElement;
+    private readonly _container: HTMLElement;
 
     private readonly _nodes: GraphObjectIdMap = {};
     private readonly _edges: GraphObjectIdMap = {};
     private readonly _layers: GraphObjectIdMap = {};
     private readonly _nodeTypeViewMap: ViewObjectIdMap = {};
 
-    constructor(parentId: string) {
-        this._parentElement = document.getElementById(parentId) as HTMLElement;
+    constructor(containerId: string) {
+        this._container = document.getElementById(containerId) as HTMLElement;
         this.createLayer(LayerName.Default);
 
         const thisObject = this;
         window.addEventListener("resize", (ev: UIEvent) => {
-            const e = thisObject._parentElement;
+            const e = thisObject._container;
             thisObject.handleContainerResized(e.clientWidth, e.clientHeight);
             thisObject.invalidate();
         });
@@ -49,8 +49,8 @@ export class Graph {
         layers.forEach((l) => l.invalidate());
     }
 
-    public get parentElement(): HTMLElement {
-        return this._parentElement;
+    public get container(): HTMLElement {
+        return this._container;
     }
 
     private createLayer(layerName: LayerName): GraphLayer {
