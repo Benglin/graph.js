@@ -3,9 +3,7 @@
     compress: {
         drop_console: true,
     },
-    mangle: {
-        properties: {},
-    },
+    mangle: {},
     format: {},
     sourceMap: {},
     ecma: 2017,
