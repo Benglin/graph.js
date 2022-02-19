@@ -2,7 +2,7 @@ import { GroupSelection } from "../core/Graph";
 import { GraphNode } from "../core/GraphNode";
 
 export interface NodeView {
-    render(node: GraphNode, group: GroupSelection): void;
+    render(node: GraphNode, layerGroup: GroupSelection): void;
 }
 
 export abstract class ViewObject implements NodeView {
@@ -17,7 +17,7 @@ export abstract class ViewObject implements NodeView {
         return this._id;
     }
 
-    public abstract render(node: GraphNode, group: GroupSelection): void;
+    public abstract render(node: GraphNode, layerGroup: GroupSelection): void;
 }
 
 export interface ViewObjectIdMap {
