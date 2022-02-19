@@ -50,17 +50,43 @@ export class SimpleNode extends ViewObject {
             return;
         }
 
+        const heights = {
+            title: 32.0,
+            "sub-title": 24.0,
+            "category-heading": 32.0,
+            "typed-item": 24.0,
+        };
+
+        const colors = {
+            title: "#3c3c3c",
+            "sub-title": "#eeeeee",
+            "category-heading": "#cccccc",
+            "typed-item": "#ffffff",
+        };
+
+        const itemHeights = this._items.map((item) => heights[item.type]);
+
+        const itemOffsets: number[] = [0];
+        for (let index = 1; index < itemHeights.length; index++) {
+            const prevHeight = itemHeights[index - 1];
+            const prevOffset = itemOffsets[index - 1];
+            itemOffsets.push(prevOffset + prevHeight + 1);
+        }
+
         this._nodeGroup
+            .selectAll("rect")
             .data(this._items)
-            .join(SimpleNode._enter)
+            .join((e) => e.append("rect"))
+            .attr("width", 200)
+            .attr("height", (d, i) => itemHeights[i])
             .attr("x", 10)
-            .attr("y", (d, i) => `${10 + i * 16.0}`)
-            .style("fill", "orange");
+            .attr("y", (d, i) => `${10 + itemOffsets[i]}`)
+            .style("fill", (d) => colors[d.type]);
     }
 
     private _ensureGroupCreated(layerGroup: GroupSelection): void {
         if (!this._nodeGroup) {
-            this._nodeGroup = layerGroup.append("g");
+            this._nodeGroup = layerGroup.append("g").attr("id", `${this.id}`);
         }
     }
 
