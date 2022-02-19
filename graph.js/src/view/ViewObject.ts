@@ -1,7 +1,7 @@
 import { GraphNode } from "../core/GraphNode";
 
 export interface NodeView {
-    render(node: GraphNode, context: CanvasRenderingContext2D): void;
+    render(node: GraphNode): void;
 }
 
 export abstract class ViewObject implements NodeView {
@@ -16,7 +16,7 @@ export abstract class ViewObject implements NodeView {
         return this._id;
     }
 
-    public abstract render(node: GraphNode, context: CanvasRenderingContext2D): void;
+    public abstract render(node: GraphNode): void;
 }
 
 export interface ViewObjectIdMap {

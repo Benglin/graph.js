@@ -10,8 +10,6 @@ export enum LayerName {
 
 export class GraphLayer extends GraphObject {
     private readonly _graph: Graph;
-    private readonly _canvas: HTMLCanvasElement;
-    private readonly _context: CanvasRenderingContext2D;
 
     private readonly _graphNodes: GraphObjectIdMap = {};
     private readonly _graphEdges: GraphObjectIdMap = {};
@@ -20,31 +18,14 @@ export class GraphLayer extends GraphObject {
         super(`layer-${layerName}`);
 
         this._graph = graph;
-        this._canvas = document.createElement("canvas");
-        this._context = this._canvas.getContext("2d") as CanvasRenderingContext2D;
-
-        const parentElement = graph.parentElement;
-        parentElement.appendChild(this._canvas);
     }
 
     public handleContainerResized(width: number, height: number): void {
-        this._canvas.width = width;
-        this._canvas.height = height;
+        width;
+        height;
     }
 
-    public invalidate(): void {
-        const w = this._canvas.clientWidth - 20;
-        const h = this._canvas.clientHeight - 20;
-        this._context.fillStyle = "green";
-        this._context.fillRect(10, 10, w, h);
-
-        const nodes = Object.values(this._graphNodes);
-        nodes.forEach((gn) => {
-            const node = gn as GraphNode;
-            const view = this._graph.getNodeView(node.nodeType);
-            view?.render(node, this._context);
-        });
-    }
+    public invalidate(): void {}
 
     public addNodes(graphNodes: GraphNode[]): void {
         graphNodes.forEach((gn) => (this._graphNodes[gn.id] = gn));
