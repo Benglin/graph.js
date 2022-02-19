@@ -1,8 +1,9 @@
-import { Graph } from "./Graph";
+import { select } from "d3-selection";
+
+import { Graph, GroupSelection } from "./Graph";
 import { GraphEdge } from "./GraphEdge";
 import { GraphNode } from "./GraphNode";
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
-import { select, Selection } from "d3-selection";
 
 export enum LayerName {
     Default = "Default",
@@ -15,9 +16,9 @@ export class GraphLayer extends GraphObject {
     private readonly _graphEdges: GraphObjectIdMap = {};
 
     // D3.js related data members
-    private _svgGroup: Selection<SVGGElement, unknown, HTMLElement, any> | undefined;
-    private _nodeGroup: Selection<SVGGElement, unknown, HTMLElement, any> | undefined;
-    private _edgeGroup: Selection<SVGGElement, unknown, HTMLElement, any> | undefined;
+    private _svgGroup: GroupSelection | undefined;
+    private _nodeGroup: GroupSelection | undefined;
+    private _edgeGroup: GroupSelection | undefined;
 
     constructor(graph: Graph, layerName: LayerName) {
         super(`layer-${layerName}`);
@@ -30,10 +31,18 @@ export class GraphLayer extends GraphObject {
         height;
     }
 
-    public invalidate(): void {}
+    public invalidate(): void {
+        const nodes = Object.values(this._graphNodes) as GraphNode[];
+        if (nodes.length > 0) {
+            this._ensureNodeGroupCreated();
+            nodes.forEach((node) => {
+                const view = this._graph.getNodeView(node.nodeType);
+                view?.render(node, this._nodeGroup as GroupSelection);
+            });
+        }
+    }
 
     public addNodes(graphNodes: GraphNode[]): void {
-        this._ensureNodeGroupCreated();
         graphNodes.forEach((gn) => (this._graphNodes[gn.id] = gn));
     }
 
@@ -42,7 +51,6 @@ export class GraphLayer extends GraphObject {
     }
 
     public addEdges(graphEdges: GraphEdge[]): void {
-        this._ensureEdgeGroupCreated();
         graphEdges.forEach((ge) => (this._graphEdges[ge.id] = ge));
     }
 

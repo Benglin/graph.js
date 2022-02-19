@@ -1,9 +1,13 @@
+import { Selection } from "d3-selection";
+
 import { GraphNode, NodeType } from "./GraphNode";
 import { GraphEdge } from "./GraphEdge";
 import { GraphLayer, LayerName } from "./GraphLayer";
 import { GraphObjectIdMap } from "./GraphObject";
 import { NodeView, ViewObjectIdMap } from "../view/ViewObject";
 import { SimpleNode } from "../view/SimpleNode";
+
+export type GroupSelection = Selection<SVGGElement, unknown, HTMLElement, any>;
 
 export class Graph {
     private readonly _container: HTMLElement;
