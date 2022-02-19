@@ -8,13 +8,17 @@
     "types": "dist/index.d.ts",
     "targets": {
         "main": {
-            "optimize": true
+            "optimize": true,
+            "sourceMap": false,
+            "includeNodeModules": [
+                "d3-selection"
+            ]
         }
     },
     "scripts": {
         "test": "test",
         "watch": "rimraf ./dist && parcel watch",
-        "build": "rimraf ./dist && parcel build --no-source-maps"
+        "build": "rimraf ./dist && parcel build"
     },
     "repository": {
         "type": "git",
