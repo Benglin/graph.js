@@ -1,6 +1,6 @@
 import { select } from "d3-selection";
 
-import { Graph, GroupSelection } from "./Graph";
+import { Graph, GroupSelection, SvgSelection } from "./Graph";
 import { GraphEdge } from "./GraphEdge";
 import { GraphNode } from "./GraphNode";
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
@@ -16,7 +16,8 @@ export class GraphLayer extends GraphObject {
     private readonly _graphEdges: GraphObjectIdMap = {};
 
     // D3.js related data members
-    private _svgGroup: GroupSelection | undefined;
+    private _layerSvg: SvgSelection | undefined;
+    private _layerGroup: GroupSelection | undefined;
     private _nodeGroup: GroupSelection | undefined;
     private _edgeGroup: GroupSelection | undefined;
 
@@ -59,29 +60,34 @@ export class GraphLayer extends GraphObject {
     }
 
     private _ensureSvgCreated(): void {
-        if (!this._svgGroup) {
+        if (!this._layerGroup) {
             const container = this._graph.container;
             const width = container.clientWidth;
             const height = container.clientHeight;
 
-            this._svgGroup = select(`#${container.id}`).append("svg").append("g");
-            this._svgGroup.attr("width", width).attr("height", height);
+            this._layerSvg = select(`#${container.id}`)
+                .append("svg")
+                .attr("id", `${this.id}`)
+                .attr("width", width)
+                .attr("height", height);
+
+            this._layerGroup = this._layerSvg.append("g").attr("name", "layer-transform");
         }
     }
 
     private _ensureNodeGroupCreated(): void {
         this._ensureSvgCreated();
 
-        if (this._svgGroup && !this._nodeGroup) {
-            this._nodeGroup = this._svgGroup.append("g");
+        if (this._layerGroup && !this._nodeGroup) {
+            this._nodeGroup = this._layerGroup.append("g").attr("name", "nodes");
         }
     }
 
     private _ensureEdgeGroupCreated(): void {
         this._ensureSvgCreated();
 
-        if (this._svgGroup && !this._edgeGroup) {
-            this._edgeGroup = this._svgGroup.append("g");
+        if (this._layerGroup && !this._edgeGroup) {
+            this._edgeGroup = this._layerGroup.append("g");
         }
     }
 }

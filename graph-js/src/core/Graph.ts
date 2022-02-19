@@ -7,6 +7,7 @@ import { GraphObjectIdMap } from "./GraphObject";
 import { NodeView, ViewObjectIdMap } from "../view/ViewObject";
 import { SimpleNode } from "../view/SimpleNode";
 
+export type SvgSelection = Selection<SVGSVGElement, unknown, HTMLElement, any>;
 export type GroupSelection = Selection<SVGGElement, unknown, HTMLElement, any>;
 
 export class Graph {
