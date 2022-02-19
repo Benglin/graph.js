@@ -1,5 +1,5 @@
 {
-    "name": "graph.js",
+    "name": "graph-js",
     "version": "0.0.1",
     "description": "Graph visual library for the browsers",
     "type": "module",

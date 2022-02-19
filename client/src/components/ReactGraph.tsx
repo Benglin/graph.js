@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { createGraph, Graph, GraphNode } from "graph.js";
+import { createGraph, Graph, GraphNode } from "graph-js";
 
 export interface ReactGraphProps {}
 
