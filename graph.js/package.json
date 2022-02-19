@@ -6,6 +6,11 @@
     "source": "src/index.ts",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "targets": {
+        "main": {
+            "optimize": true
+        }
+    },
     "scripts": {
         "test": "test",
         "watch": "rimraf ./dist && parcel watch",
