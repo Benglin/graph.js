@@ -1,0 +1,25 @@
+.simple-node {
+    width: 260px;
+    stroke: rgba(128, 128, 128, 0.2);
+    stroke-width: 1px;
+}
+
+.simple-node .title {
+    width: inherit;
+    fill: #3c3c3c;
+}
+
+.simple-node .sub-title {
+    width: inherit;
+    fill: #eeeeee;
+}
+
+.simple-node .category-heading {
+    width: inherit;
+    fill: #cccccc;
+}
+
+.simple-node .typed-item {
+    width: inherit;
+    fill: #ffffff;
+}
