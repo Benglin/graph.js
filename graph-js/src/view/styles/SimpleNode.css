@@ -4,22 +4,36 @@
     stroke-width: 1px;
 }
 
-.simple-node .title {
+.simple-node g {
     width: inherit;
+}
+
+.simple-node rect {
+    width: inherit;
+}
+
+.simple-node text {
+    font-size: 11px;
+    fill: black;
+    alignment-baseline: middle; /* This works, how to suppress warning? */
+}
+
+.simple-node .title {
     fill: #3c3c3c;
 }
 
+.title text {
+    fill: white;
+}
+
 .simple-node .sub-title {
-    width: inherit;
     fill: #eeeeee;
 }
 
 .simple-node .category-heading {
-    width: inherit;
     fill: #cccccc;
 }
 
 .simple-node .typed-item {
-    width: inherit;
     fill: #ffffff;
 }

@@ -1,23 +1,13 @@
-import { BaseType, EnterElement, Selection } from "d3-selection";
-
-import { GroupSelection } from "../core/Graph";
 import { GraphNode } from "../core/GraphNode";
 import { ViewObject } from "./ViewObject";
+import { NodeItem, SimpleNodeRows } from "./SimpleNodeRow";
+import { GroupSelection } from "../core/TypeDefinitions";
 
 import "./styles/SimpleNode.css";
 
-// TODO: Remove this temporary definition.
-interface NodeItem {
-    type: "title" | "sub-title" | "category-heading" | "typed-item";
-    primary: string;
-    secondary: string;
-}
-
-export type EnterSelection = Selection<EnterElement, NodeItem, HTMLElement, any>;
-export type NodeElementType = BaseType | SVGRectElement;
-
 export class SimpleNode extends ViewObject {
     private readonly _items: NodeItem[] = [];
+    private readonly _rows: SimpleNodeRows;
     private _nodeGroup: GroupSelection | undefined;
 
     constructor() {
@@ -44,6 +34,7 @@ export class SimpleNode extends ViewObject {
         ];
 
         items.forEach((i) => this._items.push(i));
+        this._rows = new SimpleNodeRows(items);
     }
 
     render(node: GraphNode, layerGroup: GroupSelection): void {
@@ -53,28 +44,7 @@ export class SimpleNode extends ViewObject {
             return;
         }
 
-        const heights = {
-            title: 32.0,
-            "sub-title": 24.0,
-            "category-heading": 32.0,
-            "typed-item": 24.0,
-        };
-
-        const itemHeights = this._items.map((item) => heights[item.type]);
-
-        const itemOffsets: number[] = [];
-        itemHeights.reduce((accumHeight, currHeight, index) => {
-            itemOffsets[index] = accumHeight;
-            return accumHeight + currHeight;
-        }, 0);
-
-        this._nodeGroup
-            .selectAll("rect")
-            .data(this._items)
-            .join((e) => e.append("rect"))
-            .attr("height", (d, i) => itemHeights[i])
-            .attr("y", (d, i) => itemOffsets[i])
-            .each(SimpleNode._augmentElement);
+        this._rows.render(this._nodeGroup as GroupSelection);
     }
 
     private _ensureGroupCreated(layerGroup: GroupSelection): void {
@@ -84,23 +54,6 @@ export class SimpleNode extends ViewObject {
                 .attr("id", `${this.id}`)
                 .attr("transform", "translate(10, 10)")
                 .classed("simple-node", true);
-        }
-    }
-
-    // 'this' refers to the Element that this function is called for.
-    private static _augmentElement(
-        this: NodeElementType,
-        datum: NodeItem,
-        index: number,
-        groups: NodeElementType[] | ArrayLike<NodeElementType>
-    ): void {
-        const element = this as Element;
-        element.classList.add(datum.type);
-
-        // Position the current element based on height of the previous one.
-        if (index === 2) {
-            const e = groups[index - 1] as Element;
-            console.log(`Previous height: ${e.clientHeight}`);
         }
     }
 }
