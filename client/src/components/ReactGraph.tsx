@@ -3,13 +3,17 @@ import { createGraph, Graph, GraphNode } from "graph-js";
 
 export interface ReactGraphProps {}
 
+interface SchemaNode {
+    name: string;
+}
+
 export function ReactGraph(props: ReactGraphProps): JSX.Element {
     const graphRef = useRef<Graph>();
 
     useEffect(() => {
         if (!graphRef.current) {
             graphRef.current = createGraph("graph-container");
-            graphRef.current.addNodes([new GraphNode()]);
+            graphRef.current.addNodes([new GraphNode<SchemaNode>({ name: "test" })]);
             graphRef.current.invalidate();
         }
     }, []);

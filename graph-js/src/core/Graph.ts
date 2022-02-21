@@ -2,8 +2,9 @@ import { GraphNode, NodeType } from "./GraphNode";
 import { GraphEdge } from "./GraphEdge";
 import { GraphLayer, LayerName } from "./GraphLayer";
 import { GraphObjectIdMap } from "./GraphObject";
-import { NodeView, ViewObjectIdMap } from "../view/ViewObject";
-import { SimpleNode } from "../view/SimpleNode";
+import { INodeVisual, ViewObjectIdMap } from "./NodeVisual";
+import { SimpleVisual } from "../view/SimpleNode";
+import { IVisualContext, NodeVisualContextMap, VisualContext } from "./VisualContext";
 
 export class Graph {
     private readonly _container: HTMLElement;
@@ -12,6 +13,7 @@ export class Graph {
     private readonly _edges: GraphObjectIdMap = {};
     private readonly _layers: GraphObjectIdMap = {};
     private readonly _nodeTypeViewMap: ViewObjectIdMap = {};
+    private readonly _nodeVisualContexts: NodeVisualContextMap = {};
 
     constructor(containerId: string) {
         this._container = document.getElementById(containerId) as HTMLElement;
@@ -25,9 +27,9 @@ export class Graph {
         });
     }
 
-    public addNodes(nodes: GraphNode[]): void {
+    public addNodes<DataType>(nodes: GraphNode<DataType>[]): void {
         nodes.forEach((n) => (this._nodes[n.id] = n));
-        nodes.forEach((n) => this.createNodeView(n));
+        nodes.forEach((n) => this.createNodeView<DataType>(n));
 
         const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
         nodes.forEach((n) => defaultLayer.addNodes([n]));
@@ -40,8 +42,17 @@ export class Graph {
         edges.forEach((e) => defaultLayer.addEdges([e]));
     }
 
-    public getNodeView(nodeType: NodeType | string): NodeView | undefined {
+    public getNodeView(nodeType: NodeType | string): INodeVisual | undefined {
         return this._nodeTypeViewMap[nodeType];
+    }
+
+    public getVisualContext(nodeId: string): IVisualContext {
+        if (!this._nodeVisualContexts[nodeId]) {
+            const node = this._nodes[nodeId] as GraphNode<unknown>;
+            this._nodeVisualContexts[nodeId] = new VisualContext(node);
+        }
+
+        return this._nodeVisualContexts[nodeId];
     }
 
     public invalidate(): void {
@@ -59,9 +70,9 @@ export class Graph {
         return layer;
     }
 
-    private createNodeView(node: GraphNode): void {
+    private createNodeView<DataType>(node: GraphNode<DataType>): void {
         if (!this._nodeTypeViewMap[node.nodeType]) {
-            const nodeView = new SimpleNode();
+            const nodeView = new SimpleVisual();
             this._nodeTypeViewMap[node.nodeType] = nodeView;
         }
     }

@@ -34,17 +34,20 @@ export class GraphLayer extends GraphObject {
     }
 
     public invalidate(): void {
-        const nodes = Object.values(this._graphNodes) as GraphNode[];
+        const nodes = Object.values(this._graphNodes) as GraphNode<unknown>[];
         if (nodes.length > 0) {
             this._ensureNodeGroupCreated();
             nodes.forEach((node) => {
                 const view = this._graph.getNodeView(node.nodeType);
-                view?.render(node, this._nodeGroup as GroupSelection);
+                if (view) {
+                    const context = this._graph.getVisualContext(node.id);
+                    view.render(context, this._nodeGroup as GroupSelection);
+                }
             });
         }
     }
 
-    public addNodes(graphNodes: GraphNode[]): void {
+    public addNodes<DataType>(graphNodes: GraphNode<DataType>[]): void {
         graphNodes.forEach((gn) => (this._graphNodes[gn.id] = gn));
     }
 

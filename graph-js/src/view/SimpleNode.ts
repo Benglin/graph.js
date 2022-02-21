@@ -1,15 +1,18 @@
-import { GraphNode } from "../core/GraphNode";
-import { ViewObject } from "./ViewObject";
+import { NodeVisual } from "../core/NodeVisual";
 import { NodeItem, SimpleNodeRows } from "./SimpleNodeRow";
 import { GroupSelection } from "../core/TypeDefinitions";
+import { IVisualContext, VisualContext } from "../core/VisualContext";
 import { DragHandler } from "../utils/DragHandler";
 
 import "./styles/SimpleNode.css";
 
-export class SimpleNode extends ViewObject {
+interface SimpleVisualContext {
+    nodeGroup: GroupSelection;
+}
+
+export class SimpleVisual extends NodeVisual {
     private readonly _items: NodeItem[] = [];
     private readonly _rows: SimpleNodeRows;
-    private _nodeGroup: GroupSelection | undefined;
 
     constructor() {
         super("simple-node");
@@ -38,26 +41,26 @@ export class SimpleNode extends ViewObject {
         this._rows = new SimpleNodeRows(items);
     }
 
-    render(node: GraphNode, layerGroup: GroupSelection): void {
-        this._ensureGroupCreated(layerGroup);
-
-        if (!this._nodeGroup) {
-            return;
+    render(context: IVisualContext, layerGroup: GroupSelection): void {
+        const ctx = context as VisualContext<NodeItem[], SimpleVisualContext>;
+        if (!ctx.context) {
+            const id = ctx.node.id;
+            ctx.context = { nodeGroup: SimpleVisual._createGroup(id, layerGroup) };
         }
 
-        this._rows.render(this._nodeGroup as GroupSelection);
+        const nodeGroup = ctx.context.nodeGroup;
+        this._rows.render(nodeGroup as GroupSelection);
     }
 
-    private _ensureGroupCreated(layerGroup: GroupSelection): void {
-        if (!this._nodeGroup) {
-            this._nodeGroup = layerGroup
-                .append("g")
-                .attr("id", `${this.id}`)
-                .attr("transform", "translate(10, 10)")
-                .classed("simple-node", true);
+    private static _createGroup(id: string, layerGroup: GroupSelection): GroupSelection {
+        const nodeGroup = layerGroup
+            .append("g")
+            .attr("id", `${id}`)
+            .attr("transform", "translate(10, 10)")
+            .classed("simple-node", true);
 
-            // Register drag event handler
-            new DragHandler<SVGGElement>(this._nodeGroup);
-        }
+        // Register drag event handler
+        new DragHandler<SVGGElement>(nodeGroup);
+        return nodeGroup;
     }
 }

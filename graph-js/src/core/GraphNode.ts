@@ -11,15 +11,17 @@ export interface GraphNodeOptions {
     nodeType: NodeType | string | undefined;
 }
 
-export class GraphNode extends GraphObject {
+export class GraphNode<DataType> extends GraphObject {
     private readonly _nodeType: string;
     private readonly _rect: Rect;
+    private readonly _data: DataType;
 
-    constructor(options?: GraphNodeOptions) {
+    constructor(data: DataType, options?: GraphNodeOptions) {
         super("node");
 
         this._nodeType = options?.nodeType ?? NodeType.Basic;
         this._rect = new Rect(new Vector(10, 10), new Size(320, 96));
+        this._data = data;
     }
 
     public get nodeType(): string {
@@ -28,5 +30,9 @@ export class GraphNode extends GraphObject {
 
     public get rect(): Rect {
         return this._rect;
+    }
+
+    public get data(): DataType {
+        return this._data;
     }
 }
