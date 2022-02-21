@@ -1,3 +1,111 @@
+/*
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-black-italic.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-black.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-bold-italic.woff") format("woff");
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-bold.woff") format("woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-extra-bold-italic.woff") format("woff");
+    font-style: italic;
+
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-extra-bold.woff") format("woff");
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-extra-light-italic.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-extra-light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-italic.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-light-italic.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-medium-italic.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-medium.woff") format("woff");
+}
+*/
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-regular.woff") format("woff");
+    font-weight: normal;
+}
+
+/*
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-semi-bold-italic.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-semi-bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-thin-italic.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Artifakt";
+    src: url("../assets/fonts/artifakt-element-thin.woff") format("woff");
+}
+*/
 .overlay-back {
     position: absolute;
     z-index: 10;
