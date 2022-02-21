@@ -17,8 +17,8 @@
     },
     "scripts": {
         "test": "test",
-        "watch": "rimraf ./dist && parcel watch",
-        "build": "rimraf ./dist && parcel build"
+        "watch": "parcel watch",
+        "build": "parcel build"
     },
     "repository": {
         "type": "git",
@@ -38,6 +38,7 @@
         "@parcel/transformer-typescript-tsc": "^2.3.1",
         "@parcel/transformer-typescript-types": "^2.3.1",
         "@types/d3": "^7.1.0",
+        "@types/d3-drag": "^3.0.1",
         "@types/d3-selection": "^3.0.2",
         "parcel": "^2.3.1",
         "rimraf": "^3.0.2",
@@ -45,6 +46,7 @@
     },
     "dependencies": {
         "d3": "^7.3.0",
+        "d3-drag": "^3.0.0",
         "d3-selection": "^3.0.0"
     }
 }

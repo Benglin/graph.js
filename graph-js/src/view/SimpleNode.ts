@@ -2,6 +2,7 @@ import { GraphNode } from "../core/GraphNode";
 import { ViewObject } from "./ViewObject";
 import { NodeItem, SimpleNodeRows } from "./SimpleNodeRow";
 import { GroupSelection } from "../core/TypeDefinitions";
+import { DragHandler } from "../utils/DragHandler";
 
 import "./styles/SimpleNode.css";
 
@@ -54,6 +55,9 @@ export class SimpleNode extends ViewObject {
                 .attr("id", `${this.id}`)
                 .attr("transform", "translate(10, 10)")
                 .classed("simple-node", true);
+
+            // Register drag event handler
+            new DragHandler<SVGGElement>(this._nodeGroup);
         }
     }
 }
