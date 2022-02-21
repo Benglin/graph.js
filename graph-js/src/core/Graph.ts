@@ -4,9 +4,11 @@ import { GraphLayer, LayerName } from "./GraphLayer";
 import { GraphObjectIdMap } from "./GraphObject";
 import { INodeVisual, ViewObjectIdMap } from "./NodeVisual";
 import { IVisualContext, NodeVisualContextMap, VisualContext } from "./VisualContext";
+import { IGraphObjectFactory } from "./GraphObjectFactory";
 
 export class Graph {
     private readonly _container: HTMLElement;
+    private readonly _factory: IGraphObjectFactory;
 
     private readonly _nodes: GraphObjectIdMap = {};
     private readonly _edges: GraphObjectIdMap = {};
@@ -14,7 +16,8 @@ export class Graph {
     private readonly _nodeTypeViewMap: ViewObjectIdMap = {};
     private readonly _nodeVisualContexts: NodeVisualContextMap = {};
 
-    constructor(containerId: string) {
+    constructor(containerId: string, factory: IGraphObjectFactory) {
+        this._factory = factory;
         this._container = document.getElementById(containerId) as HTMLElement;
         this.createLayer(LayerName.Default);
 
@@ -70,9 +73,10 @@ export class Graph {
     }
 
     private createNodeView<DataType>(node: GraphNode<DataType>): void {
-        if (!this._nodeTypeViewMap[node.nodeType]) {
-            // const nodeView = new SimpleVisual();
-            // this._nodeTypeViewMap[node.nodeType] = nodeView;
+        const nodeType = node.nodeType;
+        if (!this._nodeTypeViewMap[nodeType]) {
+            const visual = this._factory.createNodeVisual(nodeType);
+            this._nodeTypeViewMap[nodeType] = visual;
         }
     }
 
@@ -84,6 +88,6 @@ export class Graph {
     }
 }
 
-export function createGraph(parentId: string): Graph {
-    return new Graph(parentId);
+export function createGraph(containerId: string, factory: IGraphObjectFactory): Graph {
+    return new Graph(containerId, factory);
 }
