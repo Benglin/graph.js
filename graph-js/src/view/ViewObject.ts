@@ -1,5 +1,5 @@
-import { GroupSelection } from "../core/Graph";
 import { GraphNode } from "../core/GraphNode";
+import { GroupSelection } from "../core/TypeDefinitions";
 
 export interface NodeView {
     render(node: GraphNode, layerGroup: GroupSelection): void;

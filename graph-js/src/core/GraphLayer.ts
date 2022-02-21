@@ -1,9 +1,10 @@
 import { select } from "d3-selection";
 
-import { Graph, GroupSelection, SvgSelection } from "./Graph";
+import { Graph } from "./Graph";
 import { GraphEdge } from "./GraphEdge";
 import { GraphNode } from "./GraphNode";
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
+import { SvgSelection, GroupSelection } from "./TypeDefinitions";
 
 export enum LayerName {
     Default = "Default",
