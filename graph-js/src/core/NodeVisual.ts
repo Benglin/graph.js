@@ -2,6 +2,7 @@ import { IVisualContext } from "./VisualContext";
 import { GroupSelection } from "./TypeDefinitions";
 
 export interface INodeVisual {
+    readonly id: string;
     render(context: IVisualContext, layerGroup: GroupSelection): void;
 }
 
@@ -21,5 +22,5 @@ export abstract class NodeVisual implements INodeVisual {
 }
 
 export interface ViewObjectIdMap {
-    [nodeId: string]: NodeVisual;
+    [nodeId: string]: INodeVisual;
 }

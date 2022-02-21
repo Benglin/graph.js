@@ -3,7 +3,6 @@ import { GraphEdge } from "./GraphEdge";
 import { GraphLayer, LayerName } from "./GraphLayer";
 import { GraphObjectIdMap } from "./GraphObject";
 import { INodeVisual, ViewObjectIdMap } from "./NodeVisual";
-import { SimpleVisual } from "../view/SimpleNode";
 import { IVisualContext, NodeVisualContextMap, VisualContext } from "./VisualContext";
 
 export class Graph {
@@ -72,8 +71,8 @@ export class Graph {
 
     private createNodeView<DataType>(node: GraphNode<DataType>): void {
         if (!this._nodeTypeViewMap[node.nodeType]) {
-            const nodeView = new SimpleVisual();
-            this._nodeTypeViewMap[node.nodeType] = nodeView;
+            // const nodeView = new SimpleVisual();
+            // this._nodeTypeViewMap[node.nodeType] = nodeView;
         }
     }
 

@@ -1,13 +1,6 @@
 import { EnterElement, Selection } from "d3-selection";
-import { GroupSelection } from "../core/TypeDefinitions";
-
-// TODO: Remove this temporary definition.
-export interface NodeItem {
-    type: "title" | "sub-title" | "category-heading" | "typed-item";
-    primary: string;
-    secondary: string;
-}
-
+import { GroupSelection } from "graph-js/src/core/TypeDefinitions";
+import { NodeItem } from "../nodes/SchemaNode";
 
 interface NodeItemRow {
     item: NodeItem;
@@ -22,7 +15,7 @@ const heights = {
     "typed-item": 24.0,
 };
 
-export class SimpleNodeRows {
+export class SchemaNodeRows {
     private readonly _rows: NodeItemRow[] = [];
 
     constructor(items: NodeItem[]) {
@@ -43,9 +36,9 @@ export class SimpleNodeRows {
         nodeGroup
             .selectAll<SVGGElement, NodeItemRow>("g")
             .data(this._rows)
-            .join<SVGGElement>(SimpleNodeRows._generateRow)
+            .join<SVGGElement>(SchemaNodeRows._generateRow)
             .attr("transform", (d, i) => `translate(0, ${d.offset})`)
-            .each(SimpleNodeRows._augmentElement);
+            .each(SchemaNodeRows._augmentElement);
     }
 
     private static _generateRow(e: Selection<EnterElement, NodeItemRow, SVGGElement, any>) {
