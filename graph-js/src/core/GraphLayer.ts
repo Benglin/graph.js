@@ -29,8 +29,7 @@ export class GraphLayer extends GraphObject {
     }
 
     public handleContainerResized(width: number, height: number): void {
-        width;
-        height;
+        this._layerSvg?.attr("width", width).attr("height", height);
     }
 
     public invalidate(): void {
