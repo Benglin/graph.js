@@ -10,27 +10,54 @@ export interface SchemaData {
     nodeItems: NodeItem[];
 }
 
+const possibleNames = [
+    "releaseDate",
+    "approvedBy",
+    "approvers",
+    "owner",
+    "urn",
+    "descriptor",
+    "revision",
+    "lifecycle",
+    "isLocked",
+    "isWorking",
+    "urn",
+    "affectedBy",
+];
+
+function shuffle(list: string[]): void {
+    for (let index = 0; index < list.length; index++) {
+        const next = (Math.random() * list.length) | 0;
+        const temp = list[next];
+        list[next] = list[index];
+        list[index] = temp;
+    }
+}
+
 export class SchemaNode extends GraphNode<SchemaData> {
     constructor() {
+        const categorizedItems: { [key: string]: string[] } = {};
+        const categories = ["item", "release", "modelInfo", "eco"];
+
+        categories.forEach((category) => {
+            const count = (Math.random() * 6.0) | 0;
+            if (count > 0) {
+                shuffle(possibleNames);
+                categorizedItems[category] = [];
+                categorizedItems[category].push(...possibleNames.slice(0, count));
+            }
+        });
+
         const items: NodeItem[] = [
             { type: "title", primary: "release", secondary: "2.0.1" },
             { type: "typed-item", primary: "releaseFlcItemUrn", secondary: "String" },
-            { type: "category-heading", primary: "release", secondary: "2.0.0" },
-            { type: "typed-item", primary: "releaseDate", secondary: "String" },
-            { type: "typed-item", primary: "approvedBy", secondary: "String" },
-            { type: "typed-item", primary: "approvers", secondary: "String" },
-            { type: "typed-item", primary: "owner", secondary: "String" },
-            { type: "category-heading", primary: "modelInfo", secondary: "1.0.0" },
-            { type: "typed-item", primary: "urn", secondary: "String" },
-            { type: "typed-item", primary: "descriptor", secondary: "String" },
-            { type: "typed-item", primary: "revision", secondary: "String" },
-            { type: "typed-item", primary: "lifecycle", secondary: "String" },
-            { type: "typed-item", primary: "isLocked", secondary: "Bool" },
-            { type: "typed-item", primary: "isWorking", secondary: "Bool" },
-            { type: "category-heading", primary: "eco", secondary: "1.0.0" },
-            { type: "typed-item", primary: "urn", secondary: "String" },
-            { type: "typed-item", primary: "affectedBy", secondary: "String" },
         ];
+
+        const cats = Object.entries(categorizedItems);
+        cats.forEach(([catName, itemNames]) => {
+            items.push({ type: "category-heading", primary: catName, secondary: "" });
+            itemNames.forEach((i) => items.push({ type: "typed-item", primary: i, secondary: "" }));
+        });
 
         const schemaData: SchemaData = { nodeItems: [] };
         items.forEach((i) => schemaData.nodeItems.push(i));
