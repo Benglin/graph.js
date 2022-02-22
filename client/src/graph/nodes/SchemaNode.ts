@@ -1,4 +1,4 @@
-import { GraphNode } from "graph-js";
+import { GraphNode, Vector } from "graph-js";
 
 export interface NodeItem {
     type: "title" | "sub-title" | "category-heading" | "typed-item";
@@ -35,7 +35,7 @@ function shuffle(list: string[]): void {
 }
 
 export class SchemaNode extends GraphNode<SchemaData> {
-    constructor() {
+    constructor(x: number, y: number) {
         const categorizedItems: { [key: string]: string[] } = {};
         const categories = ["item", "release", "modelInfo", "eco"];
 
@@ -61,6 +61,6 @@ export class SchemaNode extends GraphNode<SchemaData> {
 
         const schemaData: SchemaData = { nodeItems: [] };
         items.forEach((i) => schemaData.nodeItems.push(i));
-        super(schemaData);
+        super(schemaData, { nodeType: "Basic", position: new Vector(x, y) });
     }
 }

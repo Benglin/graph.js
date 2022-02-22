@@ -8,10 +8,24 @@ export interface ReactGraphProps {}
 export function ReactGraph(props: ReactGraphProps): JSX.Element {
     const graphRef = useRef<Graph>();
 
+    function generateNodes(): SchemaNode[] {
+        const nodeCount = 50;
+        const columns = 10;
+
+        const nodes: SchemaNode[] = [];
+        for (let index = 0; index < nodeCount; index++) {
+            const x = (index % columns) * 300 + 10;
+            const y = ((index / columns) | 0) * 400 + 10;
+            nodes.push(new SchemaNode(x, y));
+        }
+
+        return nodes;
+    }
+
     useEffect(() => {
         if (!graphRef.current) {
             graphRef.current = createGraph("graph-container", new GraphObjectFactory());
-            graphRef.current.addNodes([new SchemaNode()]);
+            graphRef.current.addNodes(generateNodes());
             graphRef.current.invalidate();
         }
     }, []);
