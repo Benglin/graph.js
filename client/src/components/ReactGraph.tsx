@@ -14,7 +14,7 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
 
         const nodes: SchemaNode[] = [];
         for (let index = 0; index < nodeCount; index++) {
-            const x = (index % columns) * 300 + 10;
+            const x = (index % columns) * 160 + 10;
             const y = ((index / columns) | 0) * 400 + 10;
             nodes.push(new SchemaNode(x, y));
         }
