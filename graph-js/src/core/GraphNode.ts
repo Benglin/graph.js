@@ -9,6 +9,8 @@ export enum NodeType {
 
 export interface GraphNodeOptions {
     nodeType: NodeType | string | undefined;
+    position?: Vector;
+    dimension?: Size;
 }
 
 export class GraphNode<DataType> extends GraphObject {
@@ -17,10 +19,15 @@ export class GraphNode<DataType> extends GraphObject {
     private readonly _data: DataType;
 
     constructor(data: DataType, options?: GraphNodeOptions) {
+        console.log(`Node type is: ${data}`);
         super("node");
 
         this._nodeType = options?.nodeType ?? NodeType.Basic;
-        this._rect = new Rect(new Vector(10, 10), new Size(320, 96));
+
+        const pos = options?.position ?? new Vector(10, 10);
+        const dim = options?.dimension ?? new Size(320, 96);
+
+        this._rect = new Rect(pos, dim);
         this._data = data;
     }
 
