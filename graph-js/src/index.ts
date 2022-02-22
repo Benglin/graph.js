@@ -8,4 +8,8 @@ export * from "./core/NodeVisual";
 export * from "./core/TypeDefinitions";
 export * from "./core/VisualContext";
 
+export * from "./data/Rect";
+export * from "./data/Size";
+export * from "./data/Vector";
+
 export * from "./utils/DragHandler";

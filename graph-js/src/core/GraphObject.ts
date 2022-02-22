@@ -3,7 +3,7 @@ export class GraphObject {
 
     constructor(idPrefix: string) {
         const id = Math.random().toString().substring(2);
-        this._id = `${idPrefix}-id`;
+        this._id = `${idPrefix}-${id}`;
     }
 
     public get id(): string {
