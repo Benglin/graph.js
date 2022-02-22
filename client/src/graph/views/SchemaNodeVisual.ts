@@ -1,4 +1,4 @@
-import { GroupSelection, IVisualContext, VisualContext, NodeVisual, DragHandler } from "graph-js";
+import { GroupSelection, IVisualContext, VisualContext, NodeVisual, DragHandler, GraphNode } from "graph-js";
 import { SchemaData } from "../nodes/SchemaNode";
 import { SchemaNodeRows } from "./SchemaNodeRows";
 
@@ -17,10 +17,9 @@ export class SchemaVisual extends NodeVisual {
     render(context: IVisualContext, layerGroup: GroupSelection): void {
         const ctx = context as VisualContext<SchemaData, SchemaVisualContext>;
         if (!ctx.context) {
-            const id = ctx.node.id;
             ctx.context = {
                 rows: new SchemaNodeRows(ctx.node.data.nodeItems),
-                nodeGroup: SchemaVisual._createGroup(id, layerGroup),
+                nodeGroup: SchemaVisual._createGroup(ctx.node, layerGroup),
             };
         }
 
@@ -28,11 +27,12 @@ export class SchemaVisual extends NodeVisual {
         ctx.context.rows.render(nodeGroup as GroupSelection);
     }
 
-    private static _createGroup(id: string, layerGroup: GroupSelection): GroupSelection {
+    private static _createGroup(node: GraphNode<SchemaData>, layerGroup: GroupSelection): GroupSelection {
+        const pos = node.rect.position;
         const nodeGroup = layerGroup
             .append("g")
-            .attr("id", `${id}`)
-            .attr("transform", "translate(10, 10)")
+            .attr("id", `${node.id}`)
+            .attr("transform", `translate(${pos.x}, ${pos.y})`)
             .classed("simple-node", true);
 
         // Register drag event handler
