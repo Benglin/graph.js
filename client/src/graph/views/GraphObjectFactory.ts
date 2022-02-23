@@ -1,8 +1,8 @@
 import { IGraphObjectFactory, INodeVisual } from "graph-js";
-import { SchemaVisual } from "./SchemaNodeVisual";
+import { SchemaNodeVisual } from "./SchemaNodeVisual";
 
 export class GraphObjectFactory implements IGraphObjectFactory {
     createNodeVisual(nodeType: string): INodeVisual {
-        return new SchemaVisual();
+        return new SchemaNodeVisual();
     }
 }

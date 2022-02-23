@@ -11,7 +11,7 @@ interface SchemaVisualContext {
 
 type VisualContextType = VisualContext<SchemaData, SchemaVisualContext>;
 
-export class SchemaVisual extends NodeVisual {
+export class SchemaNodeVisual extends NodeVisual {
     constructor() {
         super("schema-visual");
     }
@@ -27,7 +27,7 @@ export class SchemaVisual extends NodeVisual {
     public render(visctx: VisualContextType, layerGroup: GroupSelection): void {
         const context = visctx.context as SchemaVisualContext;
         if (!context.nodeGroup) {
-            context.nodeGroup = SchemaVisual._createGroup(visctx.node, layerGroup);
+            context.nodeGroup = SchemaNodeVisual._createGroup(visctx.node, layerGroup);
         }
 
         const nodeGroup = context.nodeGroup;
