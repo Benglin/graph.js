@@ -9,13 +9,13 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
     const graphRef = useRef<Graph>();
 
     function generateNodes(): SchemaNode[] {
-        const nodeCount = 50;
+        const nodeCount = 20;
         const columns = 10;
 
         const nodes: SchemaNode[] = [];
         for (let index = 0; index < nodeCount; index++) {
-            const x = (index % columns) * 160 + 10;
-            const y = ((index / columns) | 0) * 400 + 10;
+            const x = (index % columns) * 200 + 20;
+            const y = ((index / columns) | 0) * 500 + 20;
             nodes.push(new SchemaNode(x, y));
         }
 

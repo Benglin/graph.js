@@ -1,4 +1,5 @@
-import { GroupSelection, VisualContext, NodeVisual, DragHandler, GraphNode, Size } from "graph-js";
+import { Selection, EnterElement } from "d3-selection";
+import { GroupSelection, VisualContext, NodeVisual, DragHandler, GraphNode, Size, NodePort } from "graph-js";
 import { SchemaData } from "../nodes/SchemaNode";
 import { SchemaNodeRows } from "./SchemaNodeRows";
 
@@ -42,8 +43,23 @@ export class SchemaNodeVisual extends NodeVisual {
             .attr("transform", `translate(${pos.x}, ${pos.y})`)
             .classed("simple-node", true);
 
+        nodeGroup
+            .selectChildren<SVGCircleElement, NodePort>("circle")
+            .data<NodePort>(node.ports, (d) => d.id)
+            .join(SchemaNodeVisual._createPorts);
+
         // Register drag event handler
         new DragHandler<SVGGElement>(nodeGroup);
         return nodeGroup;
+    }
+
+    private static _createPorts(
+        elem: Selection<EnterElement, NodePort, SVGGElement, unknown>
+    ): Selection<SVGCircleElement, NodePort, SVGGElement, unknown> {
+        return elem
+            .append("circle")
+            .attr("r", "3.5")
+            .attr("cx", (d) => d.position?.x || "0.0")
+            .attr("cy", (d) => d.position?.y || "0.0");
     }
 }

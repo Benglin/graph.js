@@ -12,9 +12,15 @@
     width: inherit;
 }
 
+.simple-node > circle {
+    fill: white;
+    stroke: rgba(128, 128, 128, 0.5);
+    stroke-width: 1px;
+}
+
 .simple-node text {
     font-size: 11px;
-    font-family: Artifakt, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     fill: black;
     alignment-baseline: middle; /* This works, how to suppress warning? */
 }
