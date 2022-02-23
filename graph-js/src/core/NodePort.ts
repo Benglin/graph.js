@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { Vector } from "../data/Vector";
 
-enum PortAttachment {
+export enum PortAttachment {
     None = 0,
     North = 1,
     East = 2,
