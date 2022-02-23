@@ -45,6 +45,10 @@ export abstract class GraphNode<DataType> extends GraphObject {
         return this._data;
     }
 
+    public get ports(): NodePort[] {
+        return Object.values(this._ports);
+    }
+
     public getPort(portId: string): NodePort | undefined {
         return this._ports[portId];
     }
