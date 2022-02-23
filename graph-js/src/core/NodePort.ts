@@ -9,7 +9,7 @@ enum PortAttachment {
     Free = 5,
 }
 
-interface NodePort {
+export interface NodePort {
     id: string;
     attachment: PortAttachment;
     offset: number | string;

@@ -1,5 +1,5 @@
-import { GraphObject } from "./GraphObject";
 import { NodePort } from "./NodePort";
+import { GraphObject } from "./GraphObject";
 
 export class GraphEdge extends GraphObject {
     private readonly _startPort: NodePort;
