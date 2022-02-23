@@ -1,30 +1,37 @@
-import { GroupSelection, IVisualContext, VisualContext, NodeVisual, DragHandler, GraphNode } from "graph-js";
+import { GroupSelection, VisualContext, NodeVisual, DragHandler, GraphNode, Size } from "graph-js";
 import { SchemaData } from "../nodes/SchemaNode";
 import { SchemaNodeRows } from "./SchemaNodeRows";
 
 import "./styles/SimpleNode.css";
 
 interface SchemaVisualContext {
-    nodeGroup: GroupSelection;
     rows: SchemaNodeRows;
+    nodeGroup?: GroupSelection;
 }
+
+type VisualContextType = VisualContext<SchemaData, SchemaVisualContext>;
 
 export class SchemaVisual extends NodeVisual {
     constructor() {
         super("schema-visual");
     }
 
-    render(context: IVisualContext, layerGroup: GroupSelection): void {
-        const ctx = context as VisualContext<SchemaData, SchemaVisualContext>;
-        if (!ctx.context) {
-            ctx.context = {
-                rows: new SchemaNodeRows(ctx.node.data.nodeItems),
-                nodeGroup: SchemaVisual._createGroup(ctx.node, layerGroup),
-            };
+    public createVisualContext(visctx: VisualContextType): void {
+        visctx.context = { rows: new SchemaNodeRows(visctx.node.data.nodeItems) };
+    }
+
+    public calcNodeSize(visctx: VisualContextType): Size {
+        return visctx.context?.rows.calcNodeSize() ?? { width: 0, height: 0 };
+    }
+
+    public render(visctx: VisualContextType, layerGroup: GroupSelection): void {
+        const context = visctx.context as SchemaVisualContext;
+        if (!context.nodeGroup) {
+            context.nodeGroup = SchemaVisual._createGroup(visctx.node, layerGroup);
         }
 
-        const nodeGroup = ctx.context.nodeGroup;
-        ctx.context.rows.render(nodeGroup as GroupSelection);
+        const nodeGroup = context.nodeGroup;
+        context.rows.render(nodeGroup as GroupSelection);
     }
 
     private static _createGroup(node: GraphNode<SchemaData>, layerGroup: GroupSelection): GroupSelection {

@@ -1,4 +1,5 @@
 import { EnterElement, Selection } from "d3-selection";
+import { Size } from "graph-js";
 import { GroupSelection } from "graph-js/src/core/TypeDefinitions";
 import { NodeItem } from "../nodes/SchemaNode";
 
@@ -30,6 +31,12 @@ export class SchemaNodeRows {
             this._rows.push(row);
             offset += row.height;
         });
+    }
+
+    public calcNodeSize(): Size {
+        const width = 150; // Matches 'simple-node' style
+        const height = this._rows.reduce((prev, curr) => prev + curr.height, 0);
+        return { width, height };
     }
 
     public render(nodeGroup: GroupSelection): void {

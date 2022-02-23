@@ -1,10 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
 import { IVisualContext } from "./VisualContext";
 import { GroupSelection } from "./TypeDefinitions";
+import { Size } from "../data/Size";
 
 export interface INodeVisual {
     readonly id: string;
-    render(context: IVisualContext, layerGroup: GroupSelection): void;
+    createVisualContext(visctx: IVisualContext): void;
+    calcNodeSize(visctx: IVisualContext): Size;
+    render(visctx: IVisualContext, layerGroup: GroupSelection): void;
 }
 
 export abstract class NodeVisual implements INodeVisual {
@@ -18,7 +21,9 @@ export abstract class NodeVisual implements INodeVisual {
         return this._id;
     }
 
-    public abstract render(context: IVisualContext, layerGroup: GroupSelection): void;
+    public abstract createVisualContext(visctx: IVisualContext): void;
+    public abstract calcNodeSize(visctx: IVisualContext): Size;
+    public abstract render(visctx: IVisualContext, layerGroup: GroupSelection): void;
 }
 
 export interface ViewObjectIdMap {

@@ -39,8 +39,14 @@ export class GraphLayer extends GraphObject {
             nodes.forEach((node) => {
                 const view = this._graph.getNodeView(node.nodeType);
                 if (view) {
-                    const context = this._graph.getVisualContext(node.id);
-                    view.render(context, this._nodeGroup as GroupSelection);
+                    const visctx = this._graph.getVisualContext(node.id);
+                    if (!visctx.created) {
+                        view.createVisualContext(visctx);
+                    }
+
+                    const nodeSize = view.calcNodeSize(visctx);
+                    // positionNodePorts(ports, nodeSize);
+                    view.render(visctx, this._nodeGroup as GroupSelection);
                 }
             });
         }
