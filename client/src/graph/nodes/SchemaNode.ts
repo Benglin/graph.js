@@ -1,4 +1,4 @@
-import { GraphNode, Vector } from "graph-js";
+import { GraphNode, NodePort, PortAttachment, Vector } from "graph-js";
 
 export interface NodeItem {
     type: "title" | "sub-title" | "category-heading" | "typed-item";
@@ -62,5 +62,12 @@ export class SchemaNode extends GraphNode<SchemaData> {
         const schemaData: SchemaData = { nodeItems: [] };
         items.forEach((i) => schemaData.nodeItems.push(i));
         super(schemaData, { nodeType: "Basic", position: new Vector(x, y) });
+    }
+
+    protected getNodePorts(): NodePort[] {
+        return [
+            { id: "", attachment: PortAttachment.West },
+            { id: "", attachment: PortAttachment.East },
+        ];
     }
 }
