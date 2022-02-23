@@ -42,7 +42,7 @@ export class SchemaNodeRows {
     public render(nodeGroup: GroupSelection): void {
         nodeGroup
             .selectAll<SVGGElement, NodeItemRow>("g")
-            .data(this._rows)
+            .data<NodeItemRow>(this._rows, (d) => `${d.item.type}-${d.item.primary}`)
             .join<SVGGElement>(SchemaNodeRows._generateRow)
             .attr("transform", (d, i) => `translate(0, ${d.offset})`)
             .each(SchemaNodeRows._augmentElement);
