@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { Size } from "../data/Size";
 import { Vector } from "../data/Vector";
 
@@ -49,17 +48,12 @@ function alignPorts(ports: NodePort[], attachment: PortAttachment): void {
     }
 
     foundPorts.forEach((port, index) => {
-        port.offset = `${index / (foundPorts.length + 1)}%`;
+        port.offset = `${(index + 1) / (foundPorts.length + 1)}%`;
         port.normal = normal;
     });
 }
 
 export function initializePorts(ports: NodePort[]): void {
-    // Assign 'id' to ports without one.
-    ports.forEach((port) => {
-        port.id = port.id ?? `port-${uuidv4()}`;
-    });
-
     // Distribute ports along each side of the node.
     alignPorts(ports, PortAttachment.North);
     alignPorts(ports, PortAttachment.East);
@@ -73,7 +67,7 @@ export function positionNodePorts(ports: NodePort[], nodeSize: Size): void {
         .forEach((port) => {
             let x = 0;
             let y = 0;
-            const percentage = parseFloat(port.offset as string) / 100.0;
+            const percentage = parseFloat(port.offset as string);
 
             if (port.attachment === PortAttachment.North) {
                 x = percentage * nodeSize.width;
