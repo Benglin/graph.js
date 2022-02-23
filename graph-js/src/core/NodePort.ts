@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { Size } from "../data/Size";
 import { Vector } from "../data/Vector";
 
 export enum PortAttachment {
@@ -64,4 +65,28 @@ export function initializePorts(ports: NodePort[]): void {
     alignPorts(ports, PortAttachment.East);
     alignPorts(ports, PortAttachment.South);
     alignPorts(ports, PortAttachment.West);
+}
+
+export function positionNodePorts(ports: NodePort[], nodeSize: Size): void {
+    ports
+        .filter((port) => "string" === typeof port.offset)
+        .forEach((port) => {
+            let x = 0;
+            let y = 0;
+            const percentage = parseFloat(port.offset as string) / 100.0;
+
+            if (port.attachment === PortAttachment.North) {
+                x = percentage * nodeSize.width;
+            } else if (port.attachment === PortAttachment.South) {
+                x = percentage * nodeSize.width;
+                y = nodeSize.height;
+            } else if (port.attachment === PortAttachment.East) {
+                x = nodeSize.width;
+                y = percentage * nodeSize.height;
+            } else if (port.attachment === PortAttachment.West) {
+                y = percentage * nodeSize.height;
+            }
+
+            port.position = new Vector(x, y);
+        });
 }

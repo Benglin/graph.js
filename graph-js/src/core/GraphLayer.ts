@@ -4,6 +4,7 @@ import { Graph } from "./Graph";
 import { GraphEdge } from "./GraphEdge";
 import { GraphNode } from "./GraphNode";
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
+import { positionNodePorts } from "./NodePort";
 import { SvgSelection, GroupSelection } from "./TypeDefinitions";
 
 export enum LayerName {
@@ -45,7 +46,7 @@ export class GraphLayer extends GraphObject {
                     }
 
                     const nodeSize = view.calcNodeSize(visctx);
-                    // positionNodePorts(ports, nodeSize);
+                    positionNodePorts(node.ports, nodeSize);
                     view.render(visctx, this._nodeGroup as GroupSelection);
                 }
             });
