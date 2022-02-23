@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { Vector } from "../data/Vector";
 
 enum PortAttachment {
@@ -55,7 +56,7 @@ function alignPorts(ports: NodePort[], attachment: PortAttachment): void {
 export function initializePorts(ports: NodePort[]): void {
     // Assign 'id' to ports without one.
     ports.forEach((port) => {
-        port.id = port.id ?? `port-${Math.random().toString().substring(2)}`;
+        port.id = port.id ?? `port-${uuidv4()}`;
     });
 
     // Distribute ports along each side of the node.

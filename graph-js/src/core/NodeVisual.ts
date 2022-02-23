@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { IVisualContext } from "./VisualContext";
 import { GroupSelection } from "./TypeDefinitions";
 
@@ -10,8 +11,7 @@ export abstract class NodeVisual implements INodeVisual {
     private readonly _id: string;
 
     constructor(idPrefix: string) {
-        const id = Math.random().toString().substring(2);
-        this._id = `${idPrefix}-id`;
+        this._id = `${idPrefix}-${uuidv4()}`;
     }
 
     public get id(): string {

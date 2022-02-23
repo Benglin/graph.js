@@ -1,9 +1,10 @@
+import { v4 as uuidv4 } from "uuid";
+
 export class GraphObject {
     private readonly _id: string;
 
     constructor(idPrefix: string) {
-        const id = Math.random().toString().substring(2);
-        this._id = `${idPrefix}-${id}`;
+        this._id = `${idPrefix}-${uuidv4()}`;
     }
 
     public get id(): string {
