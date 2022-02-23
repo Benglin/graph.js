@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { GraphNode, NodePort, PortAttachment, Vector } from "graph-js";
 
 export interface NodeItem {
@@ -50,7 +51,7 @@ export class SchemaNode extends GraphNode<SchemaData> {
 
         const items: NodeItem[] = [
             { type: "title", primary: "release", secondary: "2.0.1" },
-            { type: "typed-item", primary: "releaseFlcItemUrn", secondary: "String" },
+            { type: "sub-title", primary: "releaseFlcItemUrn", secondary: "String" },
         ];
 
         const cats = Object.entries(categorizedItems);
@@ -66,8 +67,9 @@ export class SchemaNode extends GraphNode<SchemaData> {
 
     protected getNodePorts(): NodePort[] {
         return [
-            { id: "", attachment: PortAttachment.West },
-            { id: "", attachment: PortAttachment.East },
+            { id: `port-${uuidv4()}`, attachment: PortAttachment.West },
+            { id: `port-${uuidv4()}`, attachment: PortAttachment.West },
+            { id: `port-${uuidv4()}`, attachment: PortAttachment.East },
         ];
     }
 }
