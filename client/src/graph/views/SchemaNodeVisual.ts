@@ -5,12 +5,12 @@ import { SchemaNodeRows } from "./SchemaNodeRows";
 
 import "./styles/SimpleNode.css";
 
-interface SchemaVisualContext {
+interface SchemaNodeVisualContext {
     rows: SchemaNodeRows;
     nodeGroup?: GroupSelection;
 }
 
-type VisualContextType = VisualContext<SchemaVisualContext>;
+type VisualContextType = VisualContext<SchemaNodeVisualContext>;
 
 export class SchemaNodeVisual extends GraphObjectVisual {
     constructor() {
@@ -27,7 +27,7 @@ export class SchemaNodeVisual extends GraphObjectVisual {
     }
 
     public render(visctx: VisualContextType, layerGroup: GroupSelection): void {
-        const context = visctx.context as SchemaVisualContext;
+        const context = visctx.context as SchemaNodeVisualContext;
         if (!context.nodeGroup) {
             const node = visctx.graphObject as GraphNode<SchemaNodeData>;
             context.nodeGroup = SchemaNodeVisual._createGroup(node, layerGroup);
