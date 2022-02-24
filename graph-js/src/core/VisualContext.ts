@@ -1,23 +1,23 @@
-import { GraphNode } from "./GraphNode";
+import { GraphObject } from "./GraphObject";
 
 export interface IVisualContext {
     readonly created: boolean;
 }
 
-export class VisualContext<DataType, ContextType> implements IVisualContext {
-    private readonly _node: GraphNode<DataType>;
+export class VisualContext<ContextType> implements IVisualContext {
+    private readonly _graphObject: GraphObject;
     private _context: ContextType | undefined;
 
-    constructor(node: GraphNode<DataType>) {
-        this._node = node;
+    constructor(graphObject: GraphObject) {
+        this._graphObject = graphObject;
     }
 
     public get created(): boolean {
         return !!this._context;
     }
 
-    public get node(): GraphNode<DataType> {
-        return this._node;
+    public get graphObject(): GraphObject {
+        return this._graphObject;
     }
 
     public get context(): ContextType | undefined {
@@ -29,6 +29,6 @@ export class VisualContext<DataType, ContextType> implements IVisualContext {
     }
 }
 
-export interface NodeVisualContextMap {
-    [nodeId: string]: IVisualContext;
+export interface VisualContextMap {
+    [objectId: string]: IVisualContext;
 }

@@ -10,7 +10,7 @@ interface SchemaVisualContext {
     nodeGroup?: GroupSelection;
 }
 
-type VisualContextType = VisualContext<SchemaData, SchemaVisualContext>;
+type VisualContextType = VisualContext<SchemaVisualContext>;
 
 export class SchemaNodeVisual extends NodeVisual {
     constructor() {
@@ -18,7 +18,8 @@ export class SchemaNodeVisual extends NodeVisual {
     }
 
     public createVisualContext(visctx: VisualContextType): void {
-        visctx.context = { rows: new SchemaNodeRows(visctx.node.data.nodeItems) };
+        const node = visctx.graphObject as GraphNode<SchemaData>;
+        visctx.context = { rows: new SchemaNodeRows(node.data.nodeItems) };
     }
 
     public calcNodeSize(visctx: VisualContextType): Size {
@@ -28,7 +29,8 @@ export class SchemaNodeVisual extends NodeVisual {
     public render(visctx: VisualContextType, layerGroup: GroupSelection): void {
         const context = visctx.context as SchemaVisualContext;
         if (!context.nodeGroup) {
-            context.nodeGroup = SchemaNodeVisual._createGroup(visctx.node, layerGroup);
+            const node = visctx.graphObject as GraphNode<SchemaData>;
+            context.nodeGroup = SchemaNodeVisual._createGroup(node, layerGroup);
         }
 
         const nodeGroup = context.nodeGroup;

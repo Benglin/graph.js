@@ -40,7 +40,7 @@ export class GraphLayer extends GraphObject {
             nodes.forEach((node) => {
                 const view = this._graph.getNodeView(node.nodeType);
                 if (view) {
-                    const visctx = this._graph.getVisualContext(node.id);
+                    const visctx = this._graph.getVisualContext(node);
                     if (!visctx.created) {
                         view.createVisualContext(visctx);
                     }
@@ -50,6 +50,12 @@ export class GraphLayer extends GraphObject {
                     view.render(visctx, this._nodeGroup as GroupSelection);
                 }
             });
+        }
+
+        const edges = Object.values(this._graphEdges) as GraphEdge[];
+        if (edges.length > 0) {
+            this._ensureEdgeGroupCreated();
+            edges.forEach((edge) => {});
         }
     }
 

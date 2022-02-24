@@ -1,11 +1,11 @@
+import { GraphObject } from "./GraphObject";
 import { GraphNode, NodeType } from "./GraphNode";
-import { GraphEdge } from "./GraphEdge";
+import { GraphEdge, EdgeDescriptor } from "./GraphEdge";
 import { GraphLayer, LayerName } from "./GraphLayer";
 import { GraphObjectIdMap } from "./GraphObject";
 import { INodeVisual, ViewObjectIdMap } from "./NodeVisual";
-import { IVisualContext, NodeVisualContextMap, VisualContext } from "./VisualContext";
+import { IVisualContext, VisualContextMap, VisualContext } from "./VisualContext";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
-import { EdgeDescriptor } from "..";
 
 export class Graph {
     private readonly _container: HTMLElement;
@@ -15,7 +15,7 @@ export class Graph {
     private readonly _edges: GraphObjectIdMap = {};
     private readonly _layers: GraphObjectIdMap = {};
     private readonly _nodeTypeViewMap: ViewObjectIdMap = {};
-    private readonly _nodeVisualContexts: NodeVisualContextMap = {};
+    private readonly _nodeVisualContexts: VisualContextMap = {};
 
     constructor(containerId: string, factory: IGraphObjectFactory) {
         this._factory = factory;
@@ -52,13 +52,13 @@ export class Graph {
         return this._nodeTypeViewMap[nodeType];
     }
 
-    public getVisualContext(nodeId: string): IVisualContext {
-        if (!this._nodeVisualContexts[nodeId]) {
-            const node = this._nodes[nodeId] as GraphNode<unknown>;
-            this._nodeVisualContexts[nodeId] = new VisualContext(node);
+    public getVisualContext(graphObject: GraphObject): IVisualContext {
+        const objectId = graphObject.id;
+        if (!this._nodeVisualContexts[objectId]) {
+            this._nodeVisualContexts[objectId] = new VisualContext(graphObject);
         }
 
-        return this._nodeVisualContexts[nodeId];
+        return this._nodeVisualContexts[objectId];
     }
 
     public invalidate(): void {
