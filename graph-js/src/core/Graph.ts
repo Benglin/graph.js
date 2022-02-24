@@ -50,6 +50,14 @@ export class Graph {
         return newEdges.map((edge) => edge.id);
     }
 
+    public getNode(nodeId: string): GraphNode<unknown> | undefined {
+        return this._nodes[nodeId] as GraphNode<unknown>;
+    }
+
+    public getEdge(ddgeId: string): GraphEdge | undefined {
+        return this._edges[ddgeId] as GraphEdge;
+    }
+
     public getObjectVisual(objectType: string): IGraphObjectVisual | undefined {
         return this._objectVisualMap[objectType];
     }
@@ -57,7 +65,7 @@ export class Graph {
     public getVisualContext(graphObject: GraphObject): IVisualContext {
         const objectId = graphObject.id;
         if (!this._visualContexts[objectId]) {
-            this._visualContexts[objectId] = new VisualContext(graphObject);
+            this._visualContexts[objectId] = new VisualContext(this, graphObject);
         }
 
         return this._visualContexts[objectId];
