@@ -15,7 +15,7 @@ export abstract class GraphNode<DataType> extends GraphObject {
     private readonly _ports: NodePorts = {};
 
     constructor(data: DataType, objectType: string, options?: GraphNodeOptions) {
-        super("node", objectType);
+        super(objectType);
 
         const pos = options?.position ?? new Vector(10, 10);
         const dim = options?.dimension ?? new Size(320, 96);

@@ -4,8 +4,8 @@ export class GraphObject {
     private readonly _id: string;
     private readonly _objectType: string;
 
-    constructor(idPrefix: string, objectType: string) {
-        this._id = `${idPrefix}-${uuidv4()}`;
+    constructor(objectType: string) {
+        this._id = `${objectType}-${uuidv4()}`;
         this._objectType = objectType;
     }
 

@@ -13,7 +13,7 @@ export class GraphEdge extends GraphObject {
     private readonly _descriptor: EdgeDescriptor;
 
     constructor(descriptor: EdgeDescriptor) {
-        super(`edge`, descriptor.edgeType ?? "edge");
+        super(descriptor.edgeType ?? "edge");
         this._descriptor = descriptor;
     }
 

@@ -7,11 +7,6 @@ import { GraphObject, GraphObjectIdMap } from "./GraphObject";
 import { positionNodePorts } from "./NodePort";
 import { SvgSelection, GroupSelection } from "./TypeDefinitions";
 
-export enum LayerName {
-    Default = "Default",
-    Interactive = "Interactive",
-}
-
 export class GraphLayer extends GraphObject {
     private readonly _graph: Graph;
     private readonly _graphNodes: GraphObjectIdMap = {};
@@ -23,8 +18,8 @@ export class GraphLayer extends GraphObject {
     private _nodeGroup: GroupSelection | undefined;
     private _edgeGroup: GroupSelection | undefined;
 
-    constructor(graph: Graph, layerName: LayerName) {
-        super(`layer-${layerName}`, "layer");
+    constructor(graph: Graph) {
+        super("layer");
         this._graph = graph;
     }
 

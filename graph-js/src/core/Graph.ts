@@ -1,7 +1,7 @@
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
 import { GraphNode } from "./GraphNode";
 import { GraphEdge, EdgeDescriptor } from "./GraphEdge";
-import { GraphLayer, LayerName } from "./GraphLayer";
+import { GraphLayer } from "./GraphLayer";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
 import { IGraphObjectVisual, ObjectVisualMap } from "./GraphObjectVisual";
 import { IVisualContext, VisualContextMap, VisualContext } from "./VisualContext";
@@ -16,10 +16,12 @@ export class Graph {
     private readonly _objectVisualMap: ObjectVisualMap = {};
     private readonly _visualContexts: VisualContextMap = {};
 
+    private readonly _defaultLayerId: string;
+
     constructor(containerId: string, factory: IGraphObjectFactory) {
         this._factory = factory;
         this._container = document.getElementById(containerId) as HTMLElement;
-        this.createLayer(LayerName.Default);
+        this._defaultLayerId = this.createLayer().id;
 
         const thisObject = this;
         window.addEventListener("resize", (ev: UIEvent) => {
@@ -33,7 +35,7 @@ export class Graph {
         nodes.forEach((n) => (this._nodes[n.id] = n));
         nodes.forEach((n) => this.createObjectVisual(n));
 
-        const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
+        const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
         nodes.forEach((n) => defaultLayer.addNodes([n]));
     }
 
@@ -42,7 +44,7 @@ export class Graph {
         newEdges.forEach((e) => (this._edges[e.id] = e));
         newEdges.forEach((e) => this.createObjectVisual(e));
 
-        const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
+        const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
         newEdges.forEach((e) => defaultLayer.addEdges([e]));
 
         return newEdges.map((edge) => edge.id);
@@ -70,9 +72,9 @@ export class Graph {
         return this._container;
     }
 
-    private createLayer(layerName: LayerName): GraphLayer {
-        const layer = new GraphLayer(this, layerName);
-        this._layers[layerName] = layer;
+    private createLayer(): GraphLayer {
+        const layer = new GraphLayer(this);
+        this._layers[layer.id] = layer;
         return layer;
     }
 
