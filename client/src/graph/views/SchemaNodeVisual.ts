@@ -1,5 +1,5 @@
-import { Selection, EnterElement } from "d3-selection";
-import { GroupSelection, VisualContext, GraphObjectVisual, DragHandler, GraphNode, Size, NodePort } from "graph-js";
+import { Selection, EnterElement, select } from "d3-selection";
+import { GroupSelection, VisualContext, GraphObjectVisual, GraphNode, Size, NodePort } from "graph-js";
 import { SchemaNodeData } from "../nodes/SchemaNode";
 import { SchemaNodeRows } from "./SchemaNodeRows";
 
@@ -7,7 +7,6 @@ import "./styles/SimpleNode.css";
 
 interface SchemaNodeVisualContext {
     rows: SchemaNodeRows;
-    nodeGroup?: GroupSelection;
 }
 
 type VisualContextType = VisualContext<SchemaNodeVisualContext>;
@@ -28,13 +27,13 @@ export class SchemaNodeVisual extends GraphObjectVisual {
 
     public render(visctx: VisualContextType, layerGroup: GroupSelection): void {
         const context = visctx.context as SchemaNodeVisualContext;
-        if (!context.nodeGroup) {
+        if (!visctx.element) {
             const node = visctx.graphObject as GraphNode<SchemaNodeData>;
-            context.nodeGroup = SchemaNodeVisual._createGroup(node, layerGroup);
+            const nodeGroup = SchemaNodeVisual._createGroup(node, layerGroup);
+            visctx.element = nodeGroup.node() as Element; // The underlying HTMLElement
         }
 
-        const nodeGroup = context.nodeGroup;
-        context.rows.render(nodeGroup as GroupSelection);
+        context.rows.render(select(visctx.element));
     }
 
     private static _createGroup(node: GraphNode<SchemaNodeData>, layerGroup: GroupSelection): GroupSelection {
@@ -50,8 +49,6 @@ export class SchemaNodeVisual extends GraphObjectVisual {
             .data<NodePort>(node.ports, (d) => d.id)
             .join(SchemaNodeVisual._createPorts);
 
-        // Register drag event handler
-        new DragHandler<SVGGElement>(nodeGroup);
         return nodeGroup;
     }
 

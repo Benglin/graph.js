@@ -1,6 +1,5 @@
 import { EnterElement, Selection } from "d3-selection";
 import { Size } from "graph-js";
-import { GroupSelection } from "graph-js/src/core/TypeDefinitions";
 import { NodeItem } from "../nodes/SchemaNode";
 
 interface NodeItemRow {
@@ -39,7 +38,7 @@ export class SchemaNodeRows {
         return { width, height };
     }
 
-    public render(nodeGroup: GroupSelection): void {
+    public render(nodeGroup: Selection<Element, unknown, null, undefined>): void {
         nodeGroup
             .selectAll<SVGGElement, NodeItemRow>("g")
             .data<NodeItemRow>(this._rows, (d) => `${d.item.type}-${d.item.primary}`)
@@ -48,7 +47,7 @@ export class SchemaNodeRows {
             .each(SchemaNodeRows._augmentElement);
     }
 
-    private static _generateRow(e: Selection<EnterElement, NodeItemRow, SVGGElement, any>) {
+    private static _generateRow(e: Selection<EnterElement, NodeItemRow, Element, any>) {
         const rowGroup = e.append("g");
 
         rowGroup.append("rect").attr("height", (d, i) => d.height);
