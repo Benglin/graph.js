@@ -40,8 +40,8 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
         const startPort = startNode.getPort(edge.startPortId) as NodePort;
         const endPort = endNode.getPort(edge.endPortId) as NodePort;
 
-        const startPoint = startPort.position as Vector;
-        const endPoint = endPort.position as Vector;
+        const startPoint = startNode.toGraphCoords(startPort.position as Vector);
+        const endPoint = endNode.toGraphCoords(endPort.position as Vector);
 
         if (context.edgeElement === undefined) {
             context.edgeElement = layerGroup.append("line").attr("id", edge.id).attr("stroke", "black");
