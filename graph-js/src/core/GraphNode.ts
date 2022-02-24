@@ -51,6 +51,12 @@ export abstract class GraphNode<DataType> extends GraphObject {
         this._rect.size.height = height;
     }
 
+    public toGraphCoords(position: Vector): Vector {
+        const x = position.x + this._rect.position.x;
+        const y = position.y + this._rect.position.y;
+        return new Vector(x, y);
+    }
+
     protected abstract getNodePorts(): NodePort[];
 
     private initialize(): void {
