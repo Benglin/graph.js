@@ -41,6 +41,16 @@ export abstract class GraphNode<DataType> extends GraphObject {
         return this._ports[portId];
     }
 
+    public setPosition(x: number, y: number): void {
+        this._rect.position.x = x;
+        this._rect.position.y = y;
+    }
+
+    public setDimension(width: number, height: number): void {
+        this._rect.size.width = width;
+        this._rect.size.height = height;
+    }
+
     protected abstract getNodePorts(): NodePort[];
 
     private initialize(): void {
