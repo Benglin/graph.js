@@ -5,6 +5,7 @@ import { GraphObject } from "./GraphObject";
 
 export interface IVisualContext {
     readonly created: boolean;
+    readonly graphObject: GraphObject;
 
     getNode(nodeId: string): GraphNode<unknown> | undefined;
     getEdge(edgeId: string): GraphEdge | undefined;
@@ -13,6 +14,8 @@ export interface IVisualContext {
 export class VisualContext<ContextType> implements IVisualContext {
     private readonly _graph: Graph;
     private readonly _graphObject: GraphObject;
+
+    private _element: Element | undefined;
     private _context: ContextType | undefined;
 
     constructor(graph: Graph, graphObject: GraphObject) {
@@ -34,6 +37,14 @@ export class VisualContext<ContextType> implements IVisualContext {
 
     public get graphObject(): GraphObject {
         return this._graphObject;
+    }
+
+    public get element(): Element | undefined {
+        return this._element;
+    }
+
+    public set element(value: Element | undefined) {
+        this._element = value;
     }
 
     public get context(): ContextType | undefined {
