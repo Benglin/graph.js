@@ -5,6 +5,7 @@ import { GraphObjectIdMap } from "./GraphObject";
 import { INodeVisual, ViewObjectIdMap } from "./NodeVisual";
 import { IVisualContext, NodeVisualContextMap, VisualContext } from "./VisualContext";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
+import { EdgeDescriptor } from "..";
 
 export class Graph {
     private readonly _container: HTMLElement;
@@ -37,11 +38,14 @@ export class Graph {
         nodes.forEach((n) => defaultLayer.addNodes([n]));
     }
 
-    public addEdges(edges: GraphEdge[]): void {
-        edges.forEach((e) => (this._edges[e.id] = e));
+    public addEdges(descriptors: EdgeDescriptor[]): string[] {
+        const newEdges = descriptors.map((d) => new GraphEdge(d));
+        newEdges.forEach((e) => (this._edges[e.id] = e));
 
         const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
-        edges.forEach((e) => defaultLayer.addEdges([e]));
+        newEdges.forEach((e) => defaultLayer.addEdges([e]));
+
+        return newEdges.map((edge) => edge.id);
     }
 
     public getNodeView(nodeType: NodeType | string): INodeVisual | undefined {

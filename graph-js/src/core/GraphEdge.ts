@@ -1,21 +1,38 @@
 import { NodePort } from "./NodePort";
 import { GraphObject } from "./GraphObject";
 
+export interface EdgeDescriptor {
+    startNodeId: string;
+    startPortId: string;
+    endNodeId: string;
+    endPortId: string;
+}
+
 export class GraphEdge extends GraphObject {
-    private readonly _startPort: NodePort;
-    private readonly _endPort: NodePort;
+    private readonly _descriptor: EdgeDescriptor;
 
-    constructor(startPort: NodePort, endPort: NodePort) {
+    constructor(descriptor: EdgeDescriptor) {
         super(`edge`);
-        this._startPort = startPort;
-        this._endPort = endPort;
+        this._descriptor = descriptor;
     }
 
-    public get startPort(): NodePort {
-        return this._startPort;
+    public get startNodeId(): string {
+        return this.descriptor.startNodeId;
     }
 
-    public get endPort(): NodePort {
-        return this._endPort;
+    public get startPortId(): string {
+        return this.descriptor.startPortId;
+    }
+
+    public get endNodeId(): string {
+        return this.descriptor.endNodeId;
+    }
+
+    public get endPortId(): string {
+        return this.descriptor.endPortId;
+    }
+
+    public get descriptor(): EdgeDescriptor {
+        return this._descriptor;
     }
 }
