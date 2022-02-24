@@ -1,4 +1,3 @@
-import { NodePort } from "./NodePort";
 import { GraphObject } from "./GraphObject";
 
 export interface EdgeDescriptor {

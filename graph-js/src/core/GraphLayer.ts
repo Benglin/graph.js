@@ -49,7 +49,17 @@ export class GraphLayer extends GraphObject {
         const edges = Object.values(this._graphEdges) as GraphEdge[];
         if (edges.length > 0) {
             this._ensureEdgeGroupCreated();
-            edges.forEach((edge) => {});
+            edges.forEach((edge) => {
+                const view = this._graph.getObjectVisual(edge.objectType);
+                if (view) {
+                    const visctx = this._graph.getVisualContext(edge);
+                    if (!visctx.created) {
+                        view.createVisualContext(visctx);
+                    }
+
+                    view.render(visctx, this._edgeGroup as GroupSelection);
+                }
+            });
         }
     }
 
@@ -97,7 +107,7 @@ export class GraphLayer extends GraphObject {
         this._ensureSvgCreated();
 
         if (this._layerGroup && !this._edgeGroup) {
-            this._edgeGroup = this._layerGroup.append("g");
+            this._edgeGroup = this._layerGroup.append("g").attr("name", "edges");
         }
     }
 }

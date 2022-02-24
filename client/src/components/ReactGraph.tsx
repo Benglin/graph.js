@@ -62,7 +62,7 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
         const nodes: SchemaNode[] = [];
 
         Object.entries(sampleNodes).forEach(([title, data], index) => {
-            const x = (index % columns) * 200 + 20;
+            const x = (index % columns) * 300 + 20;
             const y = ((index / columns) | 0) * 500 + 20;
 
             const schemaData = new SchemaNodeData(title);
@@ -83,6 +83,7 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
             const endNode = sampleNodes[edge.endNodeName];
 
             descriptors.push({
+                edgeType: "simple-edge",
                 startNodeId: startNode.nodeId,
                 startPortId: startNode.ports[edge.startPortIndex].id,
                 endNodeId: endNode.nodeId,
