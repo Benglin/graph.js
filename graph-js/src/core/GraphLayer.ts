@@ -6,6 +6,8 @@ import { GraphNode } from "./GraphNode";
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
 import { positionNodePorts } from "./NodePort";
 import { SvgSelection, GroupSelection } from "./TypeDefinitions";
+import { VisualContext } from "./VisualContext";
+import { DragEvent, DragHandler } from "../utils/DragHandler";
 
 export class GraphLayer extends GraphObject {
     private readonly _graph: Graph;
@@ -35,13 +37,23 @@ export class GraphLayer extends GraphObject {
                 const view = this._graph.getObjectVisual(node.objectType);
                 if (view) {
                     const visctx = this._graph.getVisualContext(node);
-                    if (!visctx.created) {
-                        view.createVisualContext(visctx);
+                    const context = visctx as VisualContext<unknown>;
+                    if (!context.created) {
+                        view.createVisualContext(context);
                     }
 
-                    const nodeSize = view.calculateSize(visctx);
+                    const nodeSize = view.calculateSize(context);
                     positionNodePorts(node.ports, nodeSize);
-                    view.render(visctx, this._nodeGroup as GroupSelection);
+
+                    const oldElement = context.element;
+                    view.render(context, this._nodeGroup as GroupSelection);
+
+                    // If, as part of the node rendering, a new Element was created,
+                    // then this new Element needs to have a drag handler attached to it.
+                    if (oldElement != context.element && !!context.element) {
+                        const dragHandler = new DragHandler(this, node.id);
+                        dragHandler.createDragHandler(select(context.element));
+                    }
                 }
             });
         }
@@ -78,6 +90,8 @@ export class GraphLayer extends GraphObject {
     public removeEdges(edgeIds: string[]): void {
         edgeIds.forEach((id) => delete this._graphEdges[id]);
     }
+
+    public handleDragEvent(dragEvent: DragEvent): void {}
 
     private _ensureSvgCreated(): void {
         if (!this._layerGroup) {
