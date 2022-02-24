@@ -91,7 +91,10 @@ export class GraphLayer extends GraphObject {
         edgeIds.forEach((id) => delete this._graphEdges[id]);
     }
 
-    public handleDragEvent(dragEvent: DragEvent): void {}
+    public handleDragEvent(dragEvent: DragEvent): void {
+        const node = this._graph.getNode(dragEvent.nodeId) as GraphNode<unknown>;
+        node.setPosition(dragEvent.x, dragEvent.y);
+    }
 
     private _ensureSvgCreated(): void {
         if (!this._layerGroup) {
