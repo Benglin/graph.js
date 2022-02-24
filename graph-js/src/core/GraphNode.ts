@@ -4,26 +4,18 @@ import { Vector } from "../data/Vector";
 import { GraphObject } from "./GraphObject";
 import { NodePort, NodePorts, initializePorts } from "./NodePort";
 
-export enum NodeType {
-    Basic = "Basic",
-}
-
 export interface GraphNodeOptions {
-    nodeType: NodeType | string | undefined;
     position?: Vector;
     dimension?: Size;
 }
 
 export abstract class GraphNode<DataType> extends GraphObject {
-    private readonly _nodeType: string;
     private readonly _rect: Rect;
     private readonly _data: DataType;
     private readonly _ports: NodePorts = {};
 
-    constructor(data: DataType, options?: GraphNodeOptions) {
-        super("node");
-
-        this._nodeType = options?.nodeType ?? NodeType.Basic;
+    constructor(data: DataType, objectType: string, options?: GraphNodeOptions) {
+        super("node", objectType);
 
         const pos = options?.position ?? new Vector(10, 10);
         const dim = options?.dimension ?? new Size(320, 96);
@@ -31,10 +23,6 @@ export abstract class GraphNode<DataType> extends GraphObject {
         this._rect = new Rect(pos, dim);
         this._data = data;
         this.initialize();
-    }
-
-    public get nodeType(): string {
-        return this._nodeType;
     }
 
     public get rect(): Rect {

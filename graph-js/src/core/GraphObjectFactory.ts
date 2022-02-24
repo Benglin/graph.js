@@ -1,5 +1,5 @@
-import { INodeVisual } from "./NodeVisual";
+import { IGraphObjectVisual } from "./GraphObjectVisual";
 
 export interface IGraphObjectFactory {
-    createNodeVisual(nodeType: string): INodeVisual;
+    createObjectVisual(objectType: string): IGraphObjectVisual;
 }

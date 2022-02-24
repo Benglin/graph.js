@@ -6,13 +6,14 @@ export interface EdgeDescriptor {
     startPortId: string;
     endNodeId: string;
     endPortId: string;
+    edgeType?: string;
 }
 
 export class GraphEdge extends GraphObject {
     private readonly _descriptor: EdgeDescriptor;
 
     constructor(descriptor: EdgeDescriptor) {
-        super(`edge`);
+        super(`edge`, descriptor.edgeType ?? "edge");
         this._descriptor = descriptor;
     }
 

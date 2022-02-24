@@ -62,7 +62,7 @@ export class SchemaNode extends GraphNode<SchemaData> {
 
         const schemaData: SchemaData = { nodeItems: [] };
         items.forEach((i) => schemaData.nodeItems.push(i));
-        super(schemaData, { nodeType: "Basic", position: new Vector(x, y) });
+        super(schemaData, "simple-node", { position: new Vector(x, y) });
     }
 
     protected getNodePorts(): NodePort[] {

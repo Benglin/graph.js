@@ -1,5 +1,5 @@
 import { Selection, EnterElement } from "d3-selection";
-import { GroupSelection, VisualContext, NodeVisual, DragHandler, GraphNode, Size, NodePort } from "graph-js";
+import { GroupSelection, VisualContext, GraphObjectVisual, DragHandler, GraphNode, Size, NodePort } from "graph-js";
 import { SchemaData } from "../nodes/SchemaNode";
 import { SchemaNodeRows } from "./SchemaNodeRows";
 
@@ -12,9 +12,9 @@ interface SchemaVisualContext {
 
 type VisualContextType = VisualContext<SchemaVisualContext>;
 
-export class SchemaNodeVisual extends NodeVisual {
+export class SchemaNodeVisual extends GraphObjectVisual {
     constructor() {
-        super("schema-visual");
+        super("schema-node");
     }
 
     public createVisualContext(visctx: VisualContextType): void {
@@ -22,7 +22,7 @@ export class SchemaNodeVisual extends NodeVisual {
         visctx.context = { rows: new SchemaNodeRows(node.data.nodeItems) };
     }
 
-    public calcNodeSize(visctx: VisualContextType): Size {
+    public calculateSize(visctx: VisualContextType): Size {
         return visctx.context?.rows.calcNodeSize() ?? { width: 0, height: 0 };
     }
 

@@ -24,8 +24,7 @@ export class GraphLayer extends GraphObject {
     private _edgeGroup: GroupSelection | undefined;
 
     constructor(graph: Graph, layerName: LayerName) {
-        super(`layer-${layerName}`);
-
+        super(`layer-${layerName}`, "layer");
         this._graph = graph;
     }
 
@@ -38,14 +37,14 @@ export class GraphLayer extends GraphObject {
         if (nodes.length > 0) {
             this._ensureNodeGroupCreated();
             nodes.forEach((node) => {
-                const view = this._graph.getNodeView(node.nodeType);
+                const view = this._graph.getObjectVisual(node.objectType);
                 if (view) {
                     const visctx = this._graph.getVisualContext(node);
                     if (!visctx.created) {
                         view.createVisualContext(visctx);
                     }
 
-                    const nodeSize = view.calcNodeSize(visctx);
+                    const nodeSize = view.calculateSize(visctx);
                     positionNodePorts(node.ports, nodeSize);
                     view.render(visctx, this._nodeGroup as GroupSelection);
                 }

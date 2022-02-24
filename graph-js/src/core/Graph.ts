@@ -1,11 +1,10 @@
-import { GraphObject } from "./GraphObject";
-import { GraphNode, NodeType } from "./GraphNode";
+import { GraphObject, GraphObjectIdMap } from "./GraphObject";
+import { GraphNode } from "./GraphNode";
 import { GraphEdge, EdgeDescriptor } from "./GraphEdge";
 import { GraphLayer, LayerName } from "./GraphLayer";
-import { GraphObjectIdMap } from "./GraphObject";
-import { INodeVisual, ViewObjectIdMap } from "./NodeVisual";
-import { IVisualContext, VisualContextMap, VisualContext } from "./VisualContext";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
+import { IGraphObjectVisual, ObjectVisualMap } from "./GraphObjectVisual";
+import { IVisualContext, VisualContextMap, VisualContext } from "./VisualContext";
 
 export class Graph {
     private readonly _container: HTMLElement;
@@ -14,8 +13,8 @@ export class Graph {
     private readonly _nodes: GraphObjectIdMap = {};
     private readonly _edges: GraphObjectIdMap = {};
     private readonly _layers: GraphObjectIdMap = {};
-    private readonly _nodeTypeViewMap: ViewObjectIdMap = {};
-    private readonly _nodeVisualContexts: VisualContextMap = {};
+    private readonly _objectVisualMap: ObjectVisualMap = {};
+    private readonly _visualContexts: VisualContextMap = {};
 
     constructor(containerId: string, factory: IGraphObjectFactory) {
         this._factory = factory;
@@ -32,7 +31,7 @@ export class Graph {
 
     public addNodes<DataType>(nodes: GraphNode<DataType>[]): void {
         nodes.forEach((n) => (this._nodes[n.id] = n));
-        nodes.forEach((n) => this.createNodeView<DataType>(n));
+        nodes.forEach((n) => this.createObjectVisual(n));
 
         const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
         nodes.forEach((n) => defaultLayer.addNodes([n]));
@@ -41,6 +40,7 @@ export class Graph {
     public addEdges(descriptors: EdgeDescriptor[]): string[] {
         const newEdges = descriptors.map((d) => new GraphEdge(d));
         newEdges.forEach((e) => (this._edges[e.id] = e));
+        newEdges.forEach((e) => this.createObjectVisual(e));
 
         const defaultLayer = this._layers[LayerName.Default] as GraphLayer;
         newEdges.forEach((e) => defaultLayer.addEdges([e]));
@@ -48,17 +48,17 @@ export class Graph {
         return newEdges.map((edge) => edge.id);
     }
 
-    public getNodeView(nodeType: NodeType | string): INodeVisual | undefined {
-        return this._nodeTypeViewMap[nodeType];
+    public getObjectVisual(objectType: string): IGraphObjectVisual | undefined {
+        return this._objectVisualMap[objectType];
     }
 
     public getVisualContext(graphObject: GraphObject): IVisualContext {
         const objectId = graphObject.id;
-        if (!this._nodeVisualContexts[objectId]) {
-            this._nodeVisualContexts[objectId] = new VisualContext(graphObject);
+        if (!this._visualContexts[objectId]) {
+            this._visualContexts[objectId] = new VisualContext(graphObject);
         }
 
-        return this._nodeVisualContexts[objectId];
+        return this._visualContexts[objectId];
     }
 
     public invalidate(): void {
@@ -76,11 +76,11 @@ export class Graph {
         return layer;
     }
 
-    private createNodeView<DataType>(node: GraphNode<DataType>): void {
-        const nodeType = node.nodeType;
-        if (!this._nodeTypeViewMap[nodeType]) {
-            const visual = this._factory.createNodeVisual(nodeType);
-            this._nodeTypeViewMap[nodeType] = visual;
+    private createObjectVisual(graphObject: GraphObject): void {
+        const objectType = graphObject.objectType;
+        if (!this._objectVisualMap[objectType]) {
+            const visual = this._factory.createObjectVisual(objectType);
+            this._objectVisualMap[objectType] = visual;
         }
     }
 
