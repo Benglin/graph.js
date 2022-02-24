@@ -14,4 +14,12 @@ export class Size {
     public get height(): number {
         return this._height;
     }
+
+    public set width(value: number) {
+        this._width = value;
+    }
+
+    public set height(value: number) {
+        this._height = value;
+    }
 }
