@@ -120,7 +120,8 @@ export class GraphLayer extends GraphObject {
         this._ensureSvgCreated();
 
         if (this._layerGroup && !this._edgeGroup) {
-            this._edgeGroup = this._layerGroup.append("g").attr("name", "edges");
+            // Lower the 'edge' group in z-order so nodes always shown above edges.
+            this._edgeGroup = this._layerGroup.append("g").attr("name", "edges").lower();
         }
     }
 
