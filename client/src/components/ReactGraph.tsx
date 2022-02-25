@@ -8,6 +8,8 @@ export interface ReactGraphProps {}
 
 interface SampleNodeData {
     nodeId: string;
+    x: number;
+    y: number;
     ports: { id: string; attachment: PortAttachment }[];
 }
 
@@ -21,6 +23,8 @@ interface SampleEdgeData {
 const sampleNodes: { [nodeName: string]: SampleNodeData } = {
     "assets.configuration-1.0.0-alpha": {
         nodeId: "",
+        x: 20,
+        y: 20,
         ports: [
             { id: `port-${uuidv4()}`, attachment: PortAttachment.West },
             { id: `port-${uuidv4()}`, attachment: PortAttachment.West },
@@ -30,6 +34,8 @@ const sampleNodes: { [nodeName: string]: SampleNodeData } = {
     },
     "assets.configurationTable-1.0.0-alpha": {
         nodeId: "",
+        x: 40,
+        y: 100,
         ports: [
             { id: `port-${uuidv4()}`, attachment: PortAttachment.North },
             { id: `port-${uuidv4()}`, attachment: PortAttachment.North },
@@ -58,16 +64,12 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
     const graphRef = useRef<Graph>();
 
     function generateNodes(): SchemaNode[] {
-        const columns = 10;
         const nodes: SchemaNode[] = [];
 
         Object.entries(sampleNodes).forEach(([title, data], index) => {
-            const x = (index % columns) * 300 + 20;
-            const y = ((index / columns) | 0) * 500 + 20;
-
             const schemaData = new SchemaNodeData(title);
             data.ports.forEach((port) => schemaData.addPort(port));
-            const node = new SchemaNode(x, y, schemaData);
+            const node = new SchemaNode(data.x, data.y, schemaData);
             nodes.push(node);
             data.nodeId = node.id;
         });
