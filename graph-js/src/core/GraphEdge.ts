@@ -1,17 +1,18 @@
 import { GraphObject } from "./GraphObject";
 
-export interface EdgeDescriptor {
+export interface EdgeDescriptor<DataType> {
     startNodeId: string;
     startPortId: string;
     endNodeId: string;
     endPortId: string;
     edgeType?: string;
+    edgeData: DataType;
 }
 
-export class GraphEdge extends GraphObject {
-    private readonly _descriptor: EdgeDescriptor;
+export class GraphEdge<EdgeDataType> extends GraphObject {
+    private readonly _descriptor: EdgeDescriptor<EdgeDataType>;
 
-    constructor(descriptor: EdgeDescriptor) {
+    constructor(descriptor: EdgeDescriptor<EdgeDataType>) {
         super(descriptor.edgeType ?? "edge");
         this._descriptor = descriptor;
     }
@@ -32,7 +33,7 @@ export class GraphEdge extends GraphObject {
         return this.descriptor.endPortId;
     }
 
-    public get descriptor(): EdgeDescriptor {
+    public get descriptor(): EdgeDescriptor<EdgeDataType> {
         return this._descriptor;
     }
 }

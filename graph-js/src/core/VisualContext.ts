@@ -8,7 +8,7 @@ export interface IVisualContext {
     readonly graphObject: GraphObject;
 
     getNode(nodeId: string): GraphNode<unknown> | undefined;
-    getEdge(edgeId: string): GraphEdge | undefined;
+    getEdge(edgeId: string): GraphEdge<unknown> | undefined;
 }
 
 export class VisualContext<ContextType> implements IVisualContext {
@@ -27,7 +27,7 @@ export class VisualContext<ContextType> implements IVisualContext {
         return this._graph.getNode(nodeId);
     }
 
-    getEdge(edgeId: string): GraphEdge | undefined {
+    getEdge(edgeId: string): GraphEdge<unknown> | undefined {
         return this._graph.getEdge(edgeId);
     }
 

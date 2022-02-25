@@ -5,7 +5,7 @@ import { GraphLayer } from "../core/GraphLayer";
 export class DragSet {
     private readonly _graphLayer: GraphLayer;
     private readonly _draggedNodes: GraphNode<unknown>[] = [];
-    private readonly _draggedEdges: GraphEdge[] = [];
+    private readonly _draggedEdges: GraphEdge<unknown>[] = [];
 
     constructor(graphLayer: GraphLayer) {
         this._graphLayer = graphLayer;

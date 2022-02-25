@@ -31,7 +31,7 @@ export class Graph {
         });
     }
 
-    public addNodes<DataType>(nodes: GraphNode<DataType>[]): void {
+    public addNodes<NDT>(nodes: GraphNode<NDT>[]): void {
         nodes.forEach((n) => (this._nodes[n.id] = n));
         nodes.forEach((n) => this.createObjectVisual(n));
 
@@ -39,7 +39,7 @@ export class Graph {
         nodes.forEach((n) => defaultLayer.addNodes([n]));
     }
 
-    public addEdges(descriptors: EdgeDescriptor[]): string[] {
+    public addEdges<EDT>(descriptors: EdgeDescriptor<EDT>[]): string[] {
         const newEdges = descriptors.map((d) => new GraphEdge(d));
         newEdges.forEach((e) => (this._edges[e.id] = e));
         newEdges.forEach((e) => this.createObjectVisual(e));
@@ -54,8 +54,8 @@ export class Graph {
         return this._nodes[nodeId] as GraphNode<unknown>;
     }
 
-    public getEdge(ddgeId: string): GraphEdge | undefined {
-        return this._edges[ddgeId] as GraphEdge;
+    public getEdge(ddgeId: string): GraphEdge<unknown> | undefined {
+        return this._edges[ddgeId] as GraphEdge<unknown>;
     }
 
     public getObjectVisual(objectType: string): IGraphObjectVisual | undefined {

@@ -38,16 +38,16 @@ export class GraphLayer extends GraphObject {
         const nodes = Object.values(this._graphNodes) as GraphNode<unknown>[];
         this._invalidateNodes(nodes);
 
-        const edges = Object.values(this._graphEdges) as GraphEdge[];
+        const edges = Object.values(this._graphEdges) as GraphEdge<unknown>[];
         this._invalidateEdges(edges);
     }
 
-    public invalidateSubset(nodes: GraphNode<unknown>[], edges: GraphEdge[]) {
+    public invalidateSubset(nodes: GraphNode<unknown>[], edges: GraphEdge<unknown>[]) {
         this._invalidateNodes(nodes);
         this._invalidateEdges(edges);
     }
 
-    public addNodes<DataType>(graphNodes: GraphNode<DataType>[]): void {
+    public addNodes<NDT>(graphNodes: GraphNode<NDT>[]): void {
         graphNodes.forEach((gn) => (this._graphNodes[gn.id] = gn));
     }
 
@@ -59,12 +59,12 @@ export class GraphLayer extends GraphObject {
         nodeIds.forEach((id) => delete this._graphNodes[id]);
     }
 
-    public addEdges(graphEdges: GraphEdge[]): void {
+    public addEdges<EDT>(graphEdges: GraphEdge<EDT>[]): void {
         graphEdges.forEach((ge) => (this._graphEdges[ge.id] = ge));
     }
 
-    public getEdges(): GraphEdge[] {
-        return Object.values(this._graphEdges) as GraphEdge[];
+    public getEdges(): GraphEdge<unknown>[] {
+        return Object.values(this._graphEdges) as GraphEdge<unknown>[];
     }
 
     public removeEdges(edgeIds: string[]): void {
@@ -156,7 +156,7 @@ export class GraphLayer extends GraphObject {
         });
     }
 
-    private _invalidateEdges(edges: GraphEdge[]): void {
+    private _invalidateEdges(edges: GraphEdge<unknown>[]): void {
         if (edges.length <= 0) {
             return;
         }

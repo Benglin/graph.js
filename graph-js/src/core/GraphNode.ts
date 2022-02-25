@@ -9,12 +9,12 @@ export interface GraphNodeOptions {
     dimension?: Size;
 }
 
-export abstract class GraphNode<DataType> extends GraphObject {
+export abstract class GraphNode<NodeDataType> extends GraphObject {
     private readonly _rect: Rect;
-    private readonly _data: DataType;
+    private readonly _data: NodeDataType;
     private readonly _ports: NodePorts = {};
 
-    constructor(data: DataType, objectType: string, options?: GraphNodeOptions) {
+    constructor(data: NodeDataType, objectType: string, options?: GraphNodeOptions) {
         super(objectType);
 
         const pos = options?.position ?? new Vector(10, 10);
@@ -29,7 +29,7 @@ export abstract class GraphNode<DataType> extends GraphObject {
         return this._rect;
     }
 
-    public get data(): DataType {
+    public get data(): NodeDataType {
         return this._data;
     }
 
