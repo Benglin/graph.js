@@ -1,4 +1,4 @@
-import { Selection } from "d3-selection";
+import { select } from "d3-selection";
 import { SchemaEdgeData, SchemaEdgeType } from "../edges/SchemaEdge";
 
 import {
@@ -12,9 +12,7 @@ import {
     VisualContext,
 } from "graph-js";
 
-interface SchemaEdgeVisualContext {
-    edgeElement?: Selection<SVGLineElement, unknown, HTMLElement, any>;
-}
+interface SchemaEdgeVisualContext {}
 
 type VisualContextType = VisualContext<SchemaEdgeVisualContext>;
 
@@ -33,7 +31,6 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
 
     render(visctx: VisualContextType, layerGroup: GroupSelection): void {
         const edge = visctx.graphObject as GraphEdge<SchemaEdgeData>;
-        const context = visctx.context as SchemaEdgeVisualContext;
 
         const startNode = visctx.getNode(edge.startNodeId) as GraphNode<unknown>;
         const endNode = visctx.getNode(edge.endNodeId) as GraphNode<unknown>;
@@ -44,13 +41,15 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
         const startPoint = startNode.toGraphCoords(startPort.position as Vector);
         const endPoint = endNode.toGraphCoords(endPort.position as Vector);
 
-        if (context.edgeElement === undefined) {
-            context.edgeElement = layerGroup.append("line").attr("id", edge.id).attr("stroke", "black");
+        if (visctx.element === undefined) {
+            const element = layerGroup.append("line").attr("id", edge.id).attr("stroke", "black");
+            visctx.element = element.node() as Element;
+
             const classes = SchemaEdgeVisual._getClassNames(edge.descriptor.edgeData);
-            classes.forEach((className) => context.edgeElement?.classed(className, true));
+            classes.forEach((className) => element.classed(className, true));
         }
 
-        context.edgeElement
+        select(visctx.element)
             .attr("x1", startPoint.x)
             .attr("y1", startPoint.y)
             .attr("x2", endPoint.x)
