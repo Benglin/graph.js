@@ -38,22 +38,29 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
         const startPort = startNode.getPort(edge.startPortId) as NodePort;
         const endPort = endNode.getPort(edge.endPortId) as NodePort;
 
-        const startPoint = startNode.toGraphCoords(startPort.position as Vector);
-        const endPoint = endNode.toGraphCoords(endPort.position as Vector);
+        const sp = startNode.toGraphCoords(startPort.position as Vector);
+        const ep = endNode.toGraphCoords(endPort.position as Vector);
 
         if (visctx.element === undefined) {
-            const element = layerGroup.append("line").attr("id", edge.id).attr("stroke", "black");
-            visctx.element = element.node() as Element;
+            const element = layerGroup
+                .append("path")
+                .attr("id", edge.id)
+                .attr("stroke", "black")
+                .attr("fill", "transparent");
 
+            visctx.element = element.node() as Element;
             const classes = SchemaEdgeVisual._getClassNames(edge.descriptor.edgeData);
             classes.forEach((className) => element.classed(className, true));
         }
 
-        select(visctx.element)
-            .attr("x1", startPoint.x)
-            .attr("y1", startPoint.y)
-            .attr("x2", endPoint.x)
-            .attr("y2", endPoint.y);
+        const delta = Math.abs(sp.y - ep.y);
+        const x0 = sp.x + startPort.normal!.x * delta;
+        const y0 = sp.y + startPort.normal!.y * delta;
+        const x1 = ep.x + endPort.normal!.x * delta;
+        const y1 = ep.y + endPort.normal!.y * delta;
+
+        const p = `M ${sp.x} ${sp.y} C ${x0} ${y0}, ${x1} ${y1}, ${ep.x} ${ep.y}`;
+        select(visctx.element).attr("d", p);
     }
 
     private static _getClassNames(edgeData: SchemaEdgeData): string[] {

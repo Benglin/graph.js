@@ -36,7 +36,7 @@ const sampleNodes: { [nodeName: string]: SampleNodeData } = {
     },
     "assets.configurationTable-1.0.0-alpha": {
         nodeId: "",
-        x: 20,
+        x: 64,
         y: 150,
         ports: [
             { id: `port-${uuidv4()}`, attachment: PortAttachment.North },
