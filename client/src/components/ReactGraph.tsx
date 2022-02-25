@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { createGraph, EdgeDescriptor, Graph, PortAttachment } from "graph-js";
 import { GraphObjectFactory } from "../graph/views/GraphObjectFactory";
 import { SchemaNode, SchemaNodeData } from "../graph/nodes/SchemaNode";
+import { SchemaEdgeData, SchemaEdgeType } from "../graph/edges/SchemaEdge";
 
 export interface ReactGraphProps {}
 
@@ -18,6 +19,7 @@ interface SampleEdgeData {
     startPortIndex: number;
     endNodeName: string;
     endPortIndex: number;
+    edgeData: SchemaEdgeData;
 }
 
 const sampleNodes: { [nodeName: string]: SampleNodeData } = {
@@ -51,12 +53,14 @@ const sampleEdges: SampleEdgeData[] = [
         startPortIndex: 2,
         endNodeName: "assets.configurationTable-1.0.0-alpha",
         endPortIndex: 0,
+        edgeData: { type: SchemaEdgeType.ConfigRef },
     },
     {
         startNodeName: "assets.configuration-1.0.0-alpha",
         startPortIndex: 3,
         endNodeName: "assets.configurationTable-1.0.0-alpha",
         endPortIndex: 1,
+        edgeData: { type: SchemaEdgeType.Contains },
     },
 ];
 
@@ -77,8 +81,8 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
         return nodes;
     }
 
-    function generateEdges(): EdgeDescriptor[] {
-        const descriptors: EdgeDescriptor[] = [];
+    function generateEdges(): EdgeDescriptor<SchemaEdgeData>[] {
+        const descriptors: EdgeDescriptor<SchemaEdgeData>[] = [];
 
         sampleEdges.forEach((edge) => {
             const startNode = sampleNodes[edge.startNodeName];
@@ -90,6 +94,7 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
                 startPortId: startNode.ports[edge.startPortIndex].id,
                 endNodeId: endNode.nodeId,
                 endPortId: endNode.ports[edge.endPortIndex].id,
+                edgeData: edge.edgeData,
             });
         });
 

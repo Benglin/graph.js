@@ -1,4 +1,5 @@
 import { Selection } from "d3-selection";
+import { SchemaEdgeData, SchemaEdgeType } from "../edges/SchemaEdge";
 
 import {
     GraphEdge,
@@ -31,7 +32,7 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
     }
 
     render(visctx: VisualContextType, layerGroup: GroupSelection): void {
-        const edge = visctx.graphObject as GraphEdge;
+        const edge = visctx.graphObject as GraphEdge<SchemaEdgeData>;
         const context = visctx.context as SchemaEdgeVisualContext;
 
         const startNode = visctx.getNode(edge.startNodeId) as GraphNode<unknown>;
@@ -45,6 +46,8 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
 
         if (context.edgeElement === undefined) {
             context.edgeElement = layerGroup.append("line").attr("id", edge.id).attr("stroke", "black");
+            const classes = SchemaEdgeVisual._getClassNames(edge.descriptor.edgeData);
+            classes.forEach((className) => context.edgeElement?.classed(className, true));
         }
 
         context.edgeElement
@@ -52,5 +55,21 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
             .attr("y1", startPoint.y)
             .attr("x2", endPoint.x)
             .attr("y2", endPoint.y);
+    }
+
+    private static _getClassNames(edgeData: SchemaEdgeData): string[] {
+        const classes = ["simple-edge"];
+
+        switch (edgeData.type) {
+            case SchemaEdgeType.Contains:
+                classes.push("contains");
+                break;
+
+            case SchemaEdgeType.ConfigRef:
+                classes.push("config-ref");
+                break;
+        }
+
+        return classes;
     }
 }

@@ -44,3 +44,15 @@
 .simple-node .typed-item {
     fill: #ffffff;
 }
+
+.simple-edge {
+    stroke-width: 1.5px;
+}
+
+.simple-edge.contains {
+    stroke: red;
+}
+
+.simple-edge.config-ref {
+    stroke: green;
+}
