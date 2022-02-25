@@ -8,6 +8,8 @@ import { positionNodePorts } from "./NodePort";
 import { SvgSelection, GroupSelection } from "./TypeDefinitions";
 import { VisualContext } from "./VisualContext";
 import { DragEvent, DragHandler } from "../utils/DragHandler";
+import { DragSet } from "../utils/DragSet";
+import { DragEventName } from "../utils/DragHandler";
 
 export class GraphLayer extends GraphObject {
     private readonly _graph: Graph;
@@ -20,6 +22,9 @@ export class GraphLayer extends GraphObject {
     private _nodeGroup: GroupSelection | undefined;
     private _edgeGroup: GroupSelection | undefined;
 
+    // Runtime data members
+    private _dragSet: DragSet | undefined;
+
     constructor(graph: Graph) {
         super("layer");
         this._graph = graph;
@@ -31,52 +36,23 @@ export class GraphLayer extends GraphObject {
 
     public invalidate(): void {
         const nodes = Object.values(this._graphNodes) as GraphNode<unknown>[];
-        if (nodes.length > 0) {
-            this._ensureNodeGroupCreated();
-            nodes.forEach((node) => {
-                const view = this._graph.getObjectVisual(node.objectType);
-                if (view) {
-                    const visctx = this._graph.getVisualContext(node);
-                    const context = visctx as VisualContext<unknown>;
-                    if (!context.created) {
-                        view.createVisualContext(context);
-                    }
-
-                    const nodeSize = view.calculateSize(context);
-                    positionNodePorts(node.ports, nodeSize);
-
-                    const oldElement = context.element;
-                    view.render(context, this._nodeGroup as GroupSelection);
-
-                    // If, as part of the node rendering, a new Element was created,
-                    // then this new Element needs to have a drag handler attached to it.
-                    if (oldElement != context.element && !!context.element) {
-                        const dragHandler = new DragHandler(this, node.id);
-                        dragHandler.createDragHandler(select(context.element));
-                    }
-                }
-            });
-        }
+        this._invalidateNodes(nodes);
 
         const edges = Object.values(this._graphEdges) as GraphEdge[];
-        if (edges.length > 0) {
-            this._ensureEdgeGroupCreated();
-            edges.forEach((edge) => {
-                const view = this._graph.getObjectVisual(edge.objectType);
-                if (view) {
-                    const visctx = this._graph.getVisualContext(edge);
-                    if (!visctx.created) {
-                        view.createVisualContext(visctx);
-                    }
+        this._invalidateEdges(edges);
+    }
 
-                    view.render(visctx, this._edgeGroup as GroupSelection);
-                }
-            });
-        }
+    public invalidateSubset(nodes: GraphNode<unknown>[], edges: GraphEdge[]) {
+        this._invalidateNodes(nodes);
+        this._invalidateEdges(edges);
     }
 
     public addNodes<DataType>(graphNodes: GraphNode<DataType>[]): void {
         graphNodes.forEach((gn) => (this._graphNodes[gn.id] = gn));
+    }
+
+    public getNode(nodeId: string): GraphNode<unknown> | undefined {
+        return this._graphNodes[nodeId] as GraphNode<unknown>;
     }
 
     public removeNodes(nodeIds: string[]): void {
@@ -85,6 +61,10 @@ export class GraphLayer extends GraphObject {
 
     public addEdges(graphEdges: GraphEdge[]): void {
         graphEdges.forEach((ge) => (this._graphEdges[ge.id] = ge));
+    }
+
+    public getEdges(): GraphEdge[] {
+        return Object.values(this._graphEdges) as GraphEdge[];
     }
 
     public removeEdges(edgeIds: string[]): void {
@@ -126,5 +106,55 @@ export class GraphLayer extends GraphObject {
         if (this._layerGroup && !this._edgeGroup) {
             this._edgeGroup = this._layerGroup.append("g").attr("name", "edges");
         }
+    }
+
+    private _invalidateNodes(nodes: GraphNode<unknown>[]): void {
+        if (nodes.length <= 0) {
+            return;
+        }
+
+        this._ensureNodeGroupCreated();
+        nodes.forEach((node) => {
+            const view = this._graph.getObjectVisual(node.objectType);
+            if (view) {
+                const visctx = this._graph.getVisualContext(node);
+                const context = visctx as VisualContext<unknown>;
+                if (!context.created) {
+                    view.createVisualContext(context);
+                }
+
+                const nodeSize = view.calculateSize(context);
+                positionNodePorts(node.ports, nodeSize);
+
+                const oldElement = context.element;
+                view.render(context, this._nodeGroup as GroupSelection);
+
+                // If, as part of the node rendering, a new Element was created,
+                // then this new Element needs to have a drag handler attached to it.
+                if (oldElement != context.element && !!context.element) {
+                    const dragHandler = new DragHandler(this, node.id);
+                    dragHandler.createDragHandler(select(context.element));
+                }
+            }
+        });
+    }
+
+    private _invalidateEdges(edges: GraphEdge[]): void {
+        if (edges.length <= 0) {
+            return;
+        }
+
+        this._ensureEdgeGroupCreated();
+        edges.forEach((edge) => {
+            const view = this._graph.getObjectVisual(edge.objectType);
+            if (view) {
+                const visctx = this._graph.getVisualContext(edge);
+                if (!visctx.created) {
+                    view.createVisualContext(visctx);
+                }
+
+                view.render(visctx, this._edgeGroup as GroupSelection);
+            }
+        });
     }
 }
