@@ -72,6 +72,22 @@ export class GraphLayer extends GraphObject {
     }
 
     public handleDragEvent(dragEvent: DragEvent): void {
+        switch (dragEvent.name) {
+            case DragEventName.Start:
+                this._dragSet = new DragSet(this);
+                this._dragSet.start([dragEvent.nodeId]);
+                break;
+
+            case DragEventName.Drag:
+                this._dragSet?.drag();
+                break;
+
+            case DragEventName.End:
+                this._dragSet?.end();
+                this._dragSet = undefined;
+                break;
+        }
+
         const node = this._graph.getNode(dragEvent.nodeId) as GraphNode<unknown>;
         node.setPosition(dragEvent.x, dragEvent.y);
     }

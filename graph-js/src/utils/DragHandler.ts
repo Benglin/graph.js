@@ -42,13 +42,13 @@ export class DragHandler<T extends Element> {
                 const x = event.x + thisObject._deltaX;
                 const y = event.y + thisObject._deltaY;
                 select(this).attr("transform", `translate(${x}, ${y})`);
-                thisObject.raiseDragEvent(DragEventName.Start, x, y);
+                thisObject.raiseDragEvent(DragEventName.Drag, x, y);
             })
             .on(DragEventName.End, function (this: Element, event: any) {
                 const x = event.x + thisObject._deltaX;
                 const y = event.y + thisObject._deltaY;
                 select(this).attr("transform", `translate(${x}, ${y})`);
-                thisObject.raiseDragEvent(DragEventName.Start, x, y);
+                thisObject.raiseDragEvent(DragEventName.End, x, y);
             });
 
         dragHandler(selection);
