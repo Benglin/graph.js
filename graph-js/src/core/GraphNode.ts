@@ -22,7 +22,6 @@ export abstract class GraphNode<NodeDataType> extends GraphObject {
 
         this._rect = new Rect(pos, dim);
         this._data = data;
-        this.initialize();
     }
 
     public get rect(): Rect {
@@ -35,6 +34,12 @@ export abstract class GraphNode<NodeDataType> extends GraphObject {
 
     public get ports(): NodePort[] {
         return Object.values(this._ports);
+    }
+
+    public addPorts(nodePorts: NodePort[]): void {
+        // Merge new ports with existing ones before positioning all.
+        nodePorts.forEach((port) => (this._ports[port.id] = port));
+        initializePorts(Object.values(this._ports));
     }
 
     public getPort(portId: string): NodePort | undefined {
@@ -55,13 +60,5 @@ export abstract class GraphNode<NodeDataType> extends GraphObject {
         const x = position.x + this._rect.position.x;
         const y = position.y + this._rect.position.y;
         return new Vector(x, y);
-    }
-
-    protected abstract getNodePorts(): NodePort[];
-
-    private initialize(): void {
-        const incoming = this.getNodePorts();
-        initializePorts(incoming);
-        incoming.forEach((port) => (this._ports[port.id] = port));
     }
 }

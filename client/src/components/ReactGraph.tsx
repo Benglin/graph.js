@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { createGraph, EdgeDescriptor, Graph, PortAttachment } from "graph-js";
+import { createGraph, EdgeDescriptor, Graph, NodePort, PortAttachment } from "graph-js";
 import { GraphObjectFactory } from "../graph/views/GraphObjectFactory";
 import { SchemaNode, SchemaNodeData } from "../graph/nodes/SchemaNode";
 import { SchemaEdgeData, SchemaEdgeType } from "../graph/edges/SchemaEdge";
@@ -11,7 +11,7 @@ interface SampleNodeData {
     nodeId: string;
     x: number;
     y: number;
-    ports: { id: string; attachment: PortAttachment }[];
+    ports: NodePort[];
 }
 
 interface SampleEdgeData {
@@ -70,10 +70,10 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
     function generateNodes(): SchemaNode[] {
         const nodes: SchemaNode[] = [];
 
-        Object.entries(sampleNodes).forEach(([title, data], index) => {
-            const schemaData = new SchemaNodeData(title);
-            data.ports.forEach((port) => schemaData.addPort(port));
-            const node = new SchemaNode(data.x, data.y, schemaData);
+        Object.entries(sampleNodes).forEach(([title, data]) => {
+            const nodeData = new SchemaNodeData(title);
+            const node = new SchemaNode(data.x, data.y, nodeData);
+            node.addPorts(data.ports);
             nodes.push(node);
             data.nodeId = node.id;
         });
