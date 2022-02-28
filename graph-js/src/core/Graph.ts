@@ -5,6 +5,7 @@ import { GraphLayer } from "./GraphLayer";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
 import { IGraphObjectVisual, ObjectVisualMap } from "./GraphObjectVisual";
 import { IVisualContext, VisualContextMap, VisualContext } from "./VisualContext";
+import { GraphSerializer, GraphSpecs } from "../data/GraphSerializer";
 
 export class Graph {
     private readonly _container: HTMLElement;
@@ -29,6 +30,16 @@ export class Graph {
             thisObject.handleContainerResized(e.clientWidth, e.clientHeight);
             thisObject.invalidate();
         });
+    }
+
+    public serializeAsJson(): string {
+        const serializer = new GraphSerializer(this);
+        return serializer.toJson();
+    }
+
+    public deserializeFromJson(graphSpecs: GraphSpecs): void {
+        const serializer = new GraphSerializer(this);
+        serializer.fromJson(graphSpecs);
     }
 
     public addNodes<NDT>(nodes: GraphNode<NDT>[]): void {
@@ -57,6 +68,14 @@ export class Graph {
         return this._edges[ddgeId] as GraphEdge<unknown>;
     }
 
+    public getNodes(): GraphNode<unknown>[] {
+        return Object.values(this._nodes) as GraphNode<unknown>[];
+    }
+
+    public getEdges(): GraphEdge<unknown>[] {
+        return Object.values(this._edges) as GraphEdge<unknown>[];
+    }
+
     public getObjectVisual(objectType: string): IGraphObjectVisual | undefined {
         return this._objectVisualMap[objectType];
     }
@@ -77,6 +96,10 @@ export class Graph {
 
     public get container(): HTMLElement {
         return this._container;
+    }
+
+    public get graphObjectFactory(): IGraphObjectFactory {
+        return this._factory;
     }
 
     private createLayer(): GraphLayer {
