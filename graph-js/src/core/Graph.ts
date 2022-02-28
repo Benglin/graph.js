@@ -1,6 +1,6 @@
 import { GraphObject, GraphObjectIdMap } from "./GraphObject";
 import { GraphNode } from "./GraphNode";
-import { GraphEdge, EdgeDescriptor } from "./GraphEdge";
+import { GraphEdge } from "./GraphEdge";
 import { GraphLayer } from "./GraphLayer";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
 import { IGraphObjectVisual, ObjectVisualMap } from "./GraphObjectVisual";
@@ -39,8 +39,7 @@ export class Graph {
         nodes.forEach((n) => defaultLayer.addNodes([n]));
     }
 
-    public addEdges<EDT>(descriptors: EdgeDescriptor<EDT>[]): string[] {
-        const newEdges = descriptors.map((d) => new GraphEdge(d));
+    public addEdges<EDT>(newEdges: GraphEdge<EDT>[]): string[] {
         newEdges.forEach((e) => (this._edges[e.id] = e));
         newEdges.forEach((e) => this.createObjectVisual(e));
 

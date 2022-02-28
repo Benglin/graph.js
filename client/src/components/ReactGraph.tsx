@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { createGraph, EdgeDescriptor, Graph, NodePort, PortAttachment } from "graph-js";
 import { GraphObjectFactory } from "../graph/views/GraphObjectFactory";
 import { SchemaNode, SchemaNodeData } from "../graph/nodes/SchemaNode";
-import { SchemaEdgeData, SchemaEdgeType } from "../graph/edges/SchemaEdge";
+import { SchemaEdge, SchemaEdgeData, SchemaEdgeType } from "../graph/edges/SchemaEdge";
 
 export interface ReactGraphProps {}
 
@@ -81,24 +81,26 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
         return nodes;
     }
 
-    function generateEdges(): EdgeDescriptor<SchemaEdgeData>[] {
-        const descriptors: EdgeDescriptor<SchemaEdgeData>[] = [];
+    function generateEdges(): SchemaEdge[] {
+        const edges: SchemaEdge[] = [];
 
         sampleEdges.forEach((edge) => {
             const startNode = sampleNodes[edge.startNodeName];
             const endNode = sampleNodes[edge.endNodeName];
 
-            descriptors.push({
-                edgeType: "simple-edge",
+            const descriptor: EdgeDescriptor<SchemaEdgeData> = {
                 startNodeId: startNode.nodeId,
                 startPortId: startNode.ports[edge.startPortIndex].id,
                 endNodeId: endNode.nodeId,
                 endPortId: endNode.ports[edge.endPortIndex].id,
+                edgeType: "simple-edge",
                 edgeData: edge.edgeData,
-            });
+            };
+
+            edges.push(new SchemaEdge(descriptor));
         });
 
-        return descriptors;
+        return edges;
     }
 
     useEffect(() => {
