@@ -4,22 +4,16 @@ import { Vector } from "../data/Vector";
 import { GraphObject } from "./GraphObject";
 import { NodePort, NodePorts, initializePorts } from "./NodePort";
 
-export interface GraphNodeOptions {
-    position?: Vector;
-    dimension?: Size;
-}
-
 export abstract class GraphNode<NodeDataType> extends GraphObject {
     private readonly _rect: Rect;
     private readonly _data: NodeDataType;
     private readonly _ports: NodePorts = {};
 
-    constructor(data: NodeDataType, objectType: string, options?: GraphNodeOptions) {
+    constructor(objectType: string, data: NodeDataType) {
         super(objectType);
 
-        const pos = options?.position ?? new Vector(10, 10);
-        const dim = options?.dimension ?? new Size(320, 96);
-
+        const pos = new Vector(10, 10);
+        const dim = new Size(320, 96);
         this._rect = new Rect(pos, dim);
         this._data = data;
     }

@@ -1,4 +1,4 @@
-import { GraphNode, Vector } from "graph-js";
+import { GraphNode } from "graph-js";
 
 export interface NodeItem {
     type: "title" | "sub-title" | "category-heading" | "typed-item";
@@ -19,7 +19,11 @@ export class SchemaNodeData {
 }
 
 export class SchemaNode extends GraphNode<SchemaNodeData> {
-    constructor(x: number, y: number, data: SchemaNodeData) {
-        super(data, "simple-node", { position: new Vector(x, y) });
+    constructor(data: SchemaNodeData) {
+        super("simple-node", data);
+    }
+
+    public static fromData(data: SchemaNodeData): SchemaNode {
+        return new SchemaNode(data)
     }
 }

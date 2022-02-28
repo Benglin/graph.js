@@ -71,8 +71,8 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
         const nodes: SchemaNode[] = [];
 
         Object.entries(sampleNodes).forEach(([title, data]) => {
-            const nodeData = new SchemaNodeData(title);
-            const node = new SchemaNode(data.x, data.y, nodeData);
+            const node = new SchemaNode(new SchemaNodeData(title));
+            node.setPosition(data.x, data.y);
             node.addPorts(data.ports);
             nodes.push(node);
             data.nodeId = node.id;
