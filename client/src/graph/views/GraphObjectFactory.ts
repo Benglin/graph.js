@@ -2,6 +2,7 @@ import { GraphObject, IGraphObjectFactory, IGraphObjectVisual } from "graph-js";
 import { SchemaNodeVisual } from "./SchemaNodeVisual";
 import { SchemaEdgeVisual } from "./SchemaEdgeVisual";
 import { SchemaNode } from "../nodes/SchemaNode";
+import { SchemaEdge } from "../edges/SchemaEdge";
 
 export class GraphObjectFactory implements IGraphObjectFactory {
     createGraphObject(objectType: string, data: any): GraphObject {
@@ -9,10 +10,10 @@ export class GraphObjectFactory implements IGraphObjectFactory {
             case "simple-node":
                 return SchemaNode.fromData(data);
             case "simple-edge":
-                break;
+                return SchemaEdge.fromData(data);
         }
 
-        throw new Error("Handle this");
+        throw new Error(`Unhandled object type: ${objectType}`);
     }
 
     createObjectVisual(objectType: string): IGraphObjectVisual {

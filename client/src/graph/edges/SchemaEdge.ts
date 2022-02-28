@@ -10,7 +10,16 @@ export interface SchemaEdgeData {
 }
 
 export class SchemaEdge extends GraphEdge<SchemaEdgeData> {
-    public static fromData(data: EdgeDescriptor<SchemaEdgeData>): SchemaEdge {
-        return new SchemaEdge(data);
+    public static fromData(data: any): SchemaEdge {
+        const descriptor: EdgeDescriptor<SchemaEdgeData> = {
+            startNodeId: "",
+            startPortId: "",
+            endNodeId: "",
+            endPortId: "",
+            edgeType: "",
+            edgeData: data
+        };
+
+        return new SchemaEdge(descriptor);
     }
 }

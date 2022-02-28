@@ -23,7 +23,8 @@ export class SchemaNode extends GraphNode<SchemaNodeData> {
         super("simple-node", data);
     }
 
-    public static fromData(data: SchemaNodeData): SchemaNode {
-        return new SchemaNode(data)
+    public static fromData(data: any): SchemaNode {
+        const snd = new SchemaNodeData(data.nodeItems[0].primary);
+        return new SchemaNode(snd);
     }
 }
