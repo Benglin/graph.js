@@ -726,7 +726,7 @@
                 "endPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Contains"
                 }
             }
         },
@@ -754,7 +754,7 @@
                 "endPortId": "port-f038038c-e459-4663-95ca-52ad8cb1bca6",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "RowRef"
                 }
             }
         },
@@ -768,7 +768,7 @@
                 "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "TableRef"
                 }
             }
         },
@@ -782,7 +782,7 @@
                 "endPortId": "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "MemberRef"
                 }
             }
         },
@@ -796,7 +796,7 @@
                 "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "AssemblyRef"
                 }
             }
         },
@@ -810,7 +810,7 @@
                 "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Use"
                 }
             }
         },
@@ -824,7 +824,7 @@
                 "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Describe"
                 }
             }
         },
@@ -838,7 +838,7 @@
                 "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Derive"
                 }
             }
         },
@@ -852,7 +852,7 @@
                 "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Contains"
                 }
             }
         },
@@ -880,7 +880,7 @@
                 "endPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "RowRef"
                 }
             }
         },
@@ -894,7 +894,7 @@
                 "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "TableRef"
                 }
             }
         },
@@ -908,7 +908,7 @@
                 "endPortId": "port-46ce2307-40ad-4258-8f36-6ca5de4cc944",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "MemberRef"
                 }
             }
         },
@@ -922,7 +922,7 @@
                 "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "AssemblyRef"
                 }
             }
         },
@@ -936,7 +936,7 @@
                 "endPortId": "port-6ccccf76-3b43-4d36-8043-2e559807c5f7",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Use"
                 }
             }
         },
@@ -950,7 +950,7 @@
                 "endPortId": "port-101c5712-f83a-4d10-a43b-33b4bae03d95",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Describe"
                 }
             }
         },
@@ -964,7 +964,7 @@
                 "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Derive"
                 }
             }
         },
@@ -978,7 +978,7 @@
                 "endPortId": "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545",
                 "edgeType": "simple-edge",
                 "edgeData": {
-                    "type": "ConfigRef"
+                    "type": "Contains"
                 }
             }
         }

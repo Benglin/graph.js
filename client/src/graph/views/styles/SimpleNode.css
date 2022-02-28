@@ -50,9 +50,37 @@
 }
 
 .simple-edge.contains {
-    stroke: red;
+    stroke: tomato;
 }
 
 .simple-edge.config-ref {
-    stroke: green;
+    stroke: blueviolet;
+}
+
+.simple-edge.row-ref {
+    stroke: chocolate;
+}
+
+.simple-edge.table-ref {
+    stroke: crimson;
+}
+
+.simple-edge.member-ref {
+    stroke: darkgreen;
+}
+
+.simple-edge.assembly-ref {
+    stroke: darkseagreen;
+}
+
+.simple-edge.use {
+    stroke: dodgerblue;
+}
+
+.simple-edge.describe {
+    stroke: fuchsia;
+}
+
+.simple-edge.derive {
+    stroke: orangered;
 }

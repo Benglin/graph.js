@@ -71,9 +71,29 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
             case SchemaEdgeType.Contains:
                 classes.push("contains");
                 break;
-
             case SchemaEdgeType.ConfigRef:
                 classes.push("config-ref");
+                break;
+            case SchemaEdgeType.RowRef:
+                classes.push("row-ref");
+                break;
+            case SchemaEdgeType.TableRef:
+                classes.push("table-ref");
+                break;
+            case SchemaEdgeType.MemberRef:
+                classes.push("member-ref");
+                break;
+            case SchemaEdgeType.AssemblyRef:
+                classes.push("assembly-ref");
+                break;
+            case SchemaEdgeType.Use:
+                classes.push("use");
+                break;
+            case SchemaEdgeType.Describe:
+                classes.push("describe");
+                break;
+            case SchemaEdgeType.Derive:
+                classes.push("derive");
                 break;
         }
 

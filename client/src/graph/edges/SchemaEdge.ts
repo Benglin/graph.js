@@ -3,6 +3,13 @@ import { EdgeDescriptor, GraphEdge } from "graph-js";
 export enum SchemaEdgeType {
     Contains = "Contains",
     ConfigRef = "ConfigRef",
+    RowRef = "RowRef",
+    TableRef = "TableRef",
+    MemberRef = "MemberRef",
+    AssemblyRef = "AssemblyRef",
+    Use = "Use",
+    Describe = "Describe",
+    Derive = "Derive",
 }
 
 export interface SchemaEdgeData {
@@ -17,7 +24,7 @@ export class SchemaEdge extends GraphEdge<SchemaEdgeData> {
             endNodeId: "",
             endPortId: "",
             edgeType: "",
-            edgeData: data
+            edgeData: data,
         };
 
         return new SchemaEdge(descriptor);
