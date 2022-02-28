@@ -33,7 +33,7 @@ export class SchemaNodeRows {
     }
 
     public calcNodeSize(): Size {
-        const width = 250; // Matches 'simple-node' style
+        const width = 200; // Matches 'simple-node' style
         const height = this._rows.reduce((prev, curr) => prev + curr.height, 0);
         return { width, height };
     }

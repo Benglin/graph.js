@@ -53,7 +53,8 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
             classes.forEach((className) => element.classed(className, true));
         }
 
-        const delta = Math.abs(sp.y - ep.y);
+        let delta = Math.abs(sp.y - ep.y);
+        delta = Math.min(50.0, Math.max(10.0, delta));
         const x0 = sp.x + startPort.normal!.x * delta;
         const y0 = sp.y + startPort.normal!.y * delta;
         const x1 = ep.x + endPort.normal!.x * delta;
