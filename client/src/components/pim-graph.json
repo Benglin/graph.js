@@ -4,39 +4,13 @@
             "id": "simple-node-44c6e49d-e181-4303-8b99-7e4acac95818",
             "objectType": "simple-node",
             "ports": {
-                "port-bfa235d9-f750-4459-9de7-b58aece7976b": {
-                    "id": "port-bfa235d9-f750-4459-9de7-b58aece7976b",
-                    "attachment": 4,
-                    "offset": "0.3333333333333333%",
-                    "normal": {
-                        "x": -1,
-                        "y": 0
-                    },
-                    "position": {
-                        "x": 0,
-                        "y": 10
-                    }
-                },
-                "port-23a4fed3-216c-4340-b81e-ca4747602b4b": {
-                    "id": "port-23a4fed3-216c-4340-b81e-ca4747602b4b",
-                    "attachment": 4,
-                    "offset": "0.6666666666666666%",
-                    "normal": {
-                        "x": -1,
-                        "y": 0
-                    },
-                    "position": {
-                        "x": 0,
-                        "y": 21
-                    }
-                },
                 "port-d6592776-48a4-4c59-9f7d-326cc5cd187c": {
                     "id": "port-d6592776-48a4-4c59-9f7d-326cc5cd187c",
-                    "attachment": 3,
-                    "offset": "0.3333333333333333%",
+                    "attachment": 2,
+                    "offset": "0.5%",
                     "normal": {
-                        "x": 0,
-                        "y": 1
+                        "x": 1,
+                        "y": 0
                     },
                     "position": {
                         "x": 83,
@@ -45,11 +19,11 @@
                 },
                 "port-2fe04e2d-68ce-46ba-9319-afdedca14f51": {
                     "id": "port-2fe04e2d-68ce-46ba-9319-afdedca14f51",
-                    "attachment": 3,
-                    "offset": "0.6666666666666666%",
+                    "attachment": 4,
+                    "offset": "0.5%",
                     "normal": {
-                        "x": 0,
-                        "y": 1
+                        "x": -1,
+                        "y": 0
                     },
                     "position": {
                         "x": 166,
@@ -71,8 +45,8 @@
                 "nodeItems": {
                     "0": {
                         "type": "title",
-                        "primary": "assets.configuration-1.0.0-alpha",
-                        "secondary": ""
+                        "primary": "documentation",
+                        "secondary": "asset."
                     }
                 }
             }
@@ -83,11 +57,11 @@
             "ports": {
                 "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f": {
                     "id": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
-                    "attachment": 1,
-                    "offset": "0.3333333333333333%",
+                    "attachment": 2,
+                    "offset": "0.5%",
                     "normal": {
-                        "x": 0,
-                        "y": -1
+                        "x": 1,
+                        "y": 0
                     },
                     "position": {
                         "x": 83,
@@ -96,47 +70,123 @@
                 },
                 "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224": {
                     "id": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
-                    "attachment": 1,
-                    "offset": "0.6666666666666666%",
+                    "attachment": 4,
+                    "offset": "0.5%",
                     "normal": {
-                        "x": 0,
-                        "y": -1
+                        "x": -1,
+                        "y": 0
                     },
                     "position": {
                         "x": 166,
                         "y": 0
                     }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 280,
+                    "y": 20
                 },
-                "port-898eae71-dc84-483f-b8be-2edb3857b7f5": {
-                    "id": "port-898eae71-dc84-483f-b8be-2edb3857b7f5",
-                    "attachment": 3,
-                    "offset": "0.3333333333333333%",
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "drawing",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad": {
+            "id": "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad",
+            "objectType": "simple-node",
+            "ports": {
+                "port-bb19127a-e58e-469f-9f43-80406828f2af": {
+                    "id": "port-bb19127a-e58e-469f-9f43-80406828f2af",
+                    "attachment": 2,
+                    "offset": "0.5%",
                     "normal": {
-                        "x": 0,
-                        "y": 1
+                        "x": 1,
+                        "y": 0
                     },
                     "position": {
                         "x": 83,
-                        "y": 32
+                        "y": 0
                     }
                 },
-                "port-ceeb6e0f-dad7-4440-b8e9-1de4a1db526f": {
-                    "id": "port-ceeb6e0f-dad7-4440-b8e9-1de4a1db526f",
-                    "attachment": 3,
-                    "offset": "0.6666666666666666%",
+                "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1": {
+                    "id": "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1",
+                    "attachment": 4,
+                    "offset": "0.5%",
                     "normal": {
-                        "x": 0,
-                        "y": 1
+                        "x": -1,
+                        "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 32
+                        "x": 83,
+                        "y": 0
                     }
                 }
             },
             "rect": {
                 "position": {
-                    "x": 64,
+                    "x": 540,
+                    "y": 20
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "sheets",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619": {
+            "id": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
+            "objectType": "simple-node",
+            "ports": {
+                "port-ae75f409-578e-4015-a47f-5d6ee56af507": {
+                    "id": "port-ae75f409-578e-4015-a47f-5d6ee56af507",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-f038038c-e459-4663-95ca-52ad8cb1bca6": {
+                    "id": "port-f038038c-e459-4663-95ca-52ad8cb1bca6",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 280,
                     "y": 150
                 },
                 "size": {
@@ -148,8 +198,518 @@
                 "nodeItems": {
                     "0": {
                         "type": "title",
-                        "primary": "assets.configurationTable-1.0.0-alpha",
-                        "secondary": ""
+                        "primary": "release",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113": {
+            "id": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
+            "objectType": "simple-node",
+            "ports": {
+                "port-e900a8c6-0540-4557-b332-8ddaaf737685": {
+                    "id": "port-e900a8c6-0540-4557-b332-8ddaaf737685",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-729116b5-2961-4849-b05b-9ab1680fab7d": {
+                    "id": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 540,
+                    "y": 150
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "lifecycle",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544": {
+            "id": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
+            "objectType": "simple-node",
+            "ports": {
+                "port-62f3abd6-2ab3-400c-a99f-e7f3b227f807": {
+                    "id": "port-62f3abd6-2ab3-400c-a99f-e7f3b227f807",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 32
+                    }
+                },
+                "port-d83bf9b5-dc14-484e-a487-693a5b949cdf": {
+                    "id": "port-d83bf9b5-dc14-484e-a487-693a5b949cdf",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 32
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 20,
+                    "y": 280
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "product",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-a2042e41-53f8-415c-be70-a1371328f84c": {
+            "id": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
+            "objectType": "simple-node",
+            "ports": {
+                "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870": {
+                    "id": "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-242cf134-03ed-47cd-8f12-05157cfccb8e": {
+                    "id": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 280,
+                    "y": 280
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "design",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80": {
+            "id": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
+            "objectType": "simple-node",
+            "ports": {
+                "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545": {
+                    "id": "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-92643f69-2a04-40a9-8c98-5641e73c7aa1": {
+                    "id": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 540,
+                    "y": 280
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "model",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-2be4703c-7d03-4595-a455-01d9f662f672": {
+            "id": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
+            "objectType": "simple-node",
+            "ports": {
+                "port-7c9c5403-fa81-4011-b674-b465f3f95e96": {
+                    "id": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 32
+                    }
+                },
+                "port-97746000-d23d-4beb-a899-8a7df3dc063e": {
+                    "id": "port-97746000-d23d-4beb-a899-8a7df3dc063e",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 32
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 20,
+                    "y": 410
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "configuration",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121": {
+            "id": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
+            "objectType": "simple-node",
+            "ports": {
+                "port-fb8b70e5-b952-4049-ac02-e88dd0711e45": {
+                    "id": "port-fb8b70e5-b952-4049-ac02-e88dd0711e45",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385": {
+                    "id": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 280,
+                    "y": 410
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "configurationTable",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589": {
+            "id": "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589",
+            "objectType": "simple-node",
+            "ports": {
+                "port-46bf3a1d-5cf2-42fc-8370-f8a00e385683": {
+                    "id": "port-46bf3a1d-5cf2-42fc-8370-f8a00e385683",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-6ccccf76-3b43-4d36-8043-2e559807c5f7": {
+                    "id": "port-6ccccf76-3b43-4d36-8043-2e559807c5f7",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 540,
+                    "y": 410
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "tableView",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7": {
+            "id": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
+            "objectType": "simple-node",
+            "ports": {
+                "port-6cf70144-0054-451e-8b18-d475d3f4bc5d": {
+                    "id": "port-6cf70144-0054-451e-8b18-d475d3f4bc5d",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 32
+                    }
+                },
+                "port-46ce2307-40ad-4258-8f36-6ca5de4cc944": {
+                    "id": "port-46ce2307-40ad-4258-8f36-6ca5de4cc944",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 32
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 20,
+                    "y": 540
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "row",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-a2c16d88-4d9e-4a28-a282-291964e26baf": {
+            "id": "simple-node-a2c16d88-4d9e-4a28-a282-291964e26baf",
+            "objectType": "simple-node",
+            "ports": {
+                "port-c2fea150-0cbd-475c-ad9f-f9ddf4a3d9df": {
+                    "id": "port-c2fea150-0cbd-475c-ad9f-f9ddf4a3d9df",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-101c5712-f83a-4d10-a43b-33b4bae03d95": {
+                    "id": "port-101c5712-f83a-4d10-a43b-33b4bae03d95",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 280,
+                    "y": 540
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "base",
+                        "secondary": "asset."
+                    }
+                }
+            }
+        },
+        "simple-node-2ca99593-8f75-4da9-b4fb-61f0187c5c2b": {
+            "id": "simple-node-2ca99593-8f75-4da9-b4fb-61f0187c5c2b",
+            "objectType": "simple-node",
+            "ports": {
+                "port-fea8cfd3-da23-45e4-8809-d6a8f4bd7f5a": {
+                    "id": "port-fea8cfd3-da23-45e4-8809-d6a8f4bd7f5a",
+                    "attachment": 2,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-a35b858d-70e8-4ec0-8c39-e86a8d4ea207": {
+                    "id": "port-a35b858d-70e8-4ec0-8c39-e86a8d4ea207",
+                    "attachment": 4,
+                    "offset": "0.5%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 540,
+                    "y": 540
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "geometry",
+                        "secondary": "asset."
                     }
                 }
             }
