@@ -1,0 +1,188 @@
+{
+    "nodes": {
+        "simple-node-44c6e49d-e181-4303-8b99-7e4acac95818": {
+            "id": "simple-node-44c6e49d-e181-4303-8b99-7e4acac95818",
+            "objectType": "simple-node",
+            "ports": {
+                "port-bfa235d9-f750-4459-9de7-b58aece7976b": {
+                    "id": "port-bfa235d9-f750-4459-9de7-b58aece7976b",
+                    "attachment": 4,
+                    "offset": "0.3333333333333333%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 0,
+                        "y": 10
+                    }
+                },
+                "port-23a4fed3-216c-4340-b81e-ca4747602b4b": {
+                    "id": "port-23a4fed3-216c-4340-b81e-ca4747602b4b",
+                    "attachment": 4,
+                    "offset": "0.6666666666666666%",
+                    "normal": {
+                        "x": -1,
+                        "y": 0
+                    },
+                    "position": {
+                        "x": 0,
+                        "y": 21
+                    }
+                },
+                "port-d6592776-48a4-4c59-9f7d-326cc5cd187c": {
+                    "id": "port-d6592776-48a4-4c59-9f7d-326cc5cd187c",
+                    "attachment": 3,
+                    "offset": "0.3333333333333333%",
+                    "normal": {
+                        "x": 0,
+                        "y": 1
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 32
+                    }
+                },
+                "port-2fe04e2d-68ce-46ba-9319-afdedca14f51": {
+                    "id": "port-2fe04e2d-68ce-46ba-9319-afdedca14f51",
+                    "attachment": 3,
+                    "offset": "0.6666666666666666%",
+                    "normal": {
+                        "x": 0,
+                        "y": 1
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 32
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 20,
+                    "y": 20
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "assets.configuration-1.0.0-alpha",
+                        "secondary": ""
+                    }
+                }
+            }
+        },
+        "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2": {
+            "id": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
+            "objectType": "simple-node",
+            "ports": {
+                "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f": {
+                    "id": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
+                    "attachment": 1,
+                    "offset": "0.3333333333333333%",
+                    "normal": {
+                        "x": 0,
+                        "y": -1
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 0
+                    }
+                },
+                "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224": {
+                    "id": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
+                    "attachment": 1,
+                    "offset": "0.6666666666666666%",
+                    "normal": {
+                        "x": 0,
+                        "y": -1
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 0
+                    }
+                },
+                "port-898eae71-dc84-483f-b8be-2edb3857b7f5": {
+                    "id": "port-898eae71-dc84-483f-b8be-2edb3857b7f5",
+                    "attachment": 3,
+                    "offset": "0.3333333333333333%",
+                    "normal": {
+                        "x": 0,
+                        "y": 1
+                    },
+                    "position": {
+                        "x": 83,
+                        "y": 32
+                    }
+                },
+                "port-ceeb6e0f-dad7-4440-b8e9-1de4a1db526f": {
+                    "id": "port-ceeb6e0f-dad7-4440-b8e9-1de4a1db526f",
+                    "attachment": 3,
+                    "offset": "0.6666666666666666%",
+                    "normal": {
+                        "x": 0,
+                        "y": 1
+                    },
+                    "position": {
+                        "x": 166,
+                        "y": 32
+                    }
+                }
+            },
+            "rect": {
+                "position": {
+                    "x": 64,
+                    "y": 150
+                },
+                "size": {
+                    "width": 320,
+                    "height": 96
+                }
+            },
+            "data": {
+                "nodeItems": {
+                    "0": {
+                        "type": "title",
+                        "primary": "assets.configurationTable-1.0.0-alpha",
+                        "secondary": ""
+                    }
+                }
+            }
+        }
+    },
+    "edges": {
+        "simple-edge-f0c0808f-4183-45ec-a391-8f0d78d834f3": {
+            "id": "simple-edge-f0c0808f-4183-45ec-a391-8f0d78d834f3",
+            "objectType": "simple-edge",
+            "descriptor": {
+                "startNodeId": "simple-node-44c6e49d-e181-4303-8b99-7e4acac95818",
+                "startPortId": "port-d6592776-48a4-4c59-9f7d-326cc5cd187c",
+                "endNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
+                "endPortId": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
+                "edgeType": "simple-edge",
+                "edgeData": {
+                    "type": "ConfigRef"
+                }
+            }
+        },
+        "simple-edge-78b08426-c585-49ee-aebc-a911d0231a93": {
+            "id": "simple-edge-78b08426-c585-49ee-aebc-a911d0231a93",
+            "objectType": "simple-edge",
+            "descriptor": {
+                "startNodeId": "simple-node-44c6e49d-e181-4303-8b99-7e4acac95818",
+                "startPortId": "port-2fe04e2d-68ce-46ba-9319-afdedca14f51",
+                "endNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
+                "endPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
+                "edgeType": "simple-edge",
+                "edgeData": {
+                    "type": "Contains"
+                }
+            }
+        }
+    }
+}
