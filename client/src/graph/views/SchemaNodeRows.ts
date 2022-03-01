@@ -52,11 +52,47 @@ export class SchemaNodeRows {
 
         rowGroup.append("rect").attr("height", (d, i) => d.height);
 
-        rowGroup
+        const nodeHeight = 32;
+        const totalTextHeight = 12 + 8;
+        const margin = (nodeHeight - totalTextHeight) / 2 - 1;
+
+        const primaryTextElement = rowGroup
             .append("text")
             .attr("x", 10)
-            .attr("y", (d, i) => d.height * 0.5)
-            .text((d, i) => d.item.primary);
+            .attr("y", (d) => nodeHeight - margin - 12 / 2)
+            .text((d) => d.item.primary)
+            .classed("primary", true)
+            .node();
+
+        const secondaryTextElement = rowGroup
+            .append("text")
+            .attr("x", 10)
+            .attr("y", margin + 8 / 2)
+            .text((d) => d.item.secondary)
+            .classed("secondary", true)
+            .node();
+
+        const primaryLength = primaryTextElement?.clientWidth ?? 0.0;
+        const secondaryLength = secondaryTextElement?.clientWidth ?? 0.0;
+        console.log(`Primary: ${primaryLength}, Secondary: ${secondaryLength}`);
+        const totalTextWidth = Math.max(primaryLength, secondaryLength) * 1.15;
+
+        rowGroup
+            .append("rect")
+            .attr("height", 16)
+            .attr("rx", 8)
+            .attr("ry", 8)
+            .attr("y", 8)
+            .attr("x", totalTextWidth + 20)
+            .style("width", 34) // 'style' has higher precedence over 'attr'
+            .classed("version-rect", true);
+
+        rowGroup
+            .append("text")
+            .text("2.0.1")
+            .attr("x", totalTextWidth + 27)
+            .attr("y", (d) => d.height / 2)
+            .classed("version-text", true);
 
         return rowGroup;
     }

@@ -9,8 +9,8 @@ export interface NodeItem {
 export class SchemaNodeData {
     private readonly _nodeItems: NodeItem[];
 
-    constructor(title: string) {
-        this._nodeItems = [{ type: "title", primary: title, secondary: "" }];
+    constructor(title: string, subtitle: string) {
+        this._nodeItems = [{ type: "title", primary: title, secondary: subtitle }];
     }
 
     public get nodeItems(): NodeItem[] {
@@ -24,7 +24,8 @@ export class SchemaNode extends GraphNode<SchemaNodeData> {
     }
 
     public static fromData(data: any): SchemaNode {
-        const snd = new SchemaNodeData(data.nodeItems[0].primary);
+        const ni = data.nodeItems[0];
+        const snd = new SchemaNodeData(ni.primary, ni.secondary);
         return new SchemaNode(snd);
     }
 }
