@@ -19,9 +19,10 @@
 }
 
 .simple-node text {
+    fill: black;
     font-size: 11px;
     font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    fill: black;
+    stroke-width: 0px;
     alignment-baseline: middle; /* This works, how to suppress warning? */
 }
 
@@ -31,6 +32,29 @@
 
 .title text {
     fill: white;
+}
+
+.title .primary {
+    font-size: 12px;
+}
+
+.title .secondary {
+    font-size: 8px;
+}
+
+.title .version-rect {
+    width: initial;
+    fill: white;
+    stroke: white;
+    stroke-width: 1px;
+}
+
+.title .version-text {
+    fill: black;
+    font-size: 8px;
+    font-weight: 900;
+    font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    alignment-baseline: middle; /* This works, how to suppress warning? */
 }
 
 .simple-node .sub-title {

@@ -4,12 +4,15 @@
     src: url("../assets/fonts/artifakt-element-black-italic.woff") format("woff");
     font-style: italic;
 }
+*/
 
 @font-face {
     font-family: "Artifakt";
     src: url("../assets/fonts/artifakt-element-black.woff") format("woff");
+    font-weight: 900;
 }
 
+/*
 @font-face {
     font-family: "Artifakt";
     src: url("../assets/fonts/artifakt-element-bold-italic.woff") format("woff");
@@ -27,15 +30,16 @@
     font-family: "Artifakt";
     src: url("../assets/fonts/artifakt-element-extra-bold-italic.woff") format("woff");
     font-style: italic;
-
     font-weight: bolder;
 }
+*/
 
 @font-face {
     font-family: "Artifakt";
     src: url("../assets/fonts/artifakt-element-extra-bold.woff") format("woff");
-    font-weight: bolder;
+    font-weight: 700;
 }
+/*
 
 @font-face {
     font-family: "Artifakt";
@@ -70,12 +74,13 @@
     src: url("../assets/fonts/artifakt-element-medium-italic.woff") format("woff");
     font-style: italic;
 }
+*/
 
 @font-face {
     font-family: "Artifakt";
     src: url("../assets/fonts/artifakt-element-medium.woff") format("woff");
+    font-weight: 500;
 }
-*/
 
 @font-face {
     font-family: "Artifakt";
