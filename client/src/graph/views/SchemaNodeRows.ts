@@ -72,10 +72,11 @@ export class SchemaNodeRows {
             .classed("secondary", true)
             .node();
 
-        const primaryLength = primaryTextElement?.clientWidth ?? 0.0;
-        const secondaryLength = secondaryTextElement?.clientWidth ?? 0.0;
-        console.log(`Primary: ${primaryLength}, Secondary: ${secondaryLength}`);
-        const totalTextWidth = Math.max(primaryLength, secondaryLength) * 1.15;
+        const primaryLength = primaryTextElement?.getComputedTextLength() ?? 0.0;
+        const secondaryLength = secondaryTextElement?.getComputedTextLength() ?? 0.0;
+        let totalTextWidth = Math.max(primaryLength, secondaryLength);
+        totalTextWidth += 5.0 * window.devicePixelRatio;
+        totalTextWidth = ((totalTextWidth | 0) + 1) & ~0x1; // Always an even number.
 
         rowGroup
             .append("rect")
