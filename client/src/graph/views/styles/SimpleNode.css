@@ -73,6 +73,10 @@
     stroke-width: 1.5px;
 }
 
+.simple-edge:hover {
+    stroke-width: 3px;
+}
+
 .simple-edge.contains {
     stroke: tomato;
 }

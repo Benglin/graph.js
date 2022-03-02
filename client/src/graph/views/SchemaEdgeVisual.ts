@@ -42,11 +42,7 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
         const ep = endNode.toGraphCoords(endPort.position as Vector);
 
         if (visctx.element === undefined) {
-            const element = layerGroup
-                .append("path")
-                .attr("id", edge.id)
-                .attr("stroke", "black")
-                .attr("fill", "transparent");
+            const element = layerGroup.append("path").attr("id", edge.id).attr("stroke", "black").attr("fill", "none");
 
             visctx.element = element.node() as Element;
             const classes = SchemaEdgeVisual._getClassNames(edge.descriptor.edgeData);
