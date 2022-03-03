@@ -112,3 +112,11 @@
 .simple-edge.derive {
     stroke: orangered;
 }
+
+.annotation text {
+    fill: white;
+    font-size: 11px;
+    font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    stroke-width: 0px;
+    alignment-baseline: hanging;
+}

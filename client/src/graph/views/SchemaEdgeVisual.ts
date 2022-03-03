@@ -1,4 +1,4 @@
-import { select } from "d3-selection";
+import { select, Selection } from "d3-selection";
 import { SchemaEdgeData, SchemaEdgeType } from "../edges/SchemaEdge";
 
 import {
@@ -12,17 +12,23 @@ import {
     VisualContext,
 } from "graph-js";
 
-interface SchemaEdgeVisualContext {}
+interface SchemaEdgeVisualContext {
+    relationship: string;
+    midPoint?: Vector | undefined;
+    annotation?: Selection<SVGGElement, unknown, HTMLElement, any> | undefined;
+}
 
 type VisualContextType = VisualContext<SchemaEdgeVisualContext>;
 
 export class SchemaEdgeVisual extends GraphObjectVisual {
+    private _layerGroup: GroupSelection | undefined;
+
     constructor() {
         super("schema-edge");
     }
 
     createVisualContext(visctx: VisualContextType): void {
-        visctx.context = {};
+        visctx.context = { relationship: "" };
     }
 
     calculateSize(visctx: VisualContextType): Size {
@@ -30,6 +36,7 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
     }
 
     render(visctx: VisualContextType, layerGroup: GroupSelection): void {
+        this._layerGroup = layerGroup;
         const edge = visctx.graphObject as GraphEdge<SchemaEdgeData>;
 
         const startNode = visctx.getNode(edge.startNodeId) as GraphNode<unknown>;
@@ -42,7 +49,13 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
         const ep = endNode.toGraphCoords(endPort.position as Vector);
 
         if (visctx.element === undefined) {
-            const element = layerGroup.append("path").attr("id", edge.id).attr("stroke", "black").attr("fill", "none");
+            const element = layerGroup
+                .append("path")
+                .attr("id", edge.id)
+                .attr("stroke", "black")
+                .attr("fill", "none")
+                .on("mouseover", () => this._handleMouseEnter(visctx))
+                .on("mouseleave", () => this._handleMouseLeave(visctx));
 
             visctx.element = element.node() as Element;
             const classes = SchemaEdgeVisual._getClassNames(edge.descriptor.edgeData);
@@ -60,6 +73,40 @@ export class SchemaEdgeVisual extends GraphObjectVisual {
 
         const p = `M ${sp.x} ${sp.y} C ${x0} ${y0}, ${x1} ${y1}, ${ep.x} ${ep.y}`;
         select(visctx.element).attr("d", p);
+
+        visctx.context!.relationship = edge.descriptor.edgeData.type;
+        visctx.context!.midPoint = new Vector((x1 + x0) / 2, (y1 + y0) / 2);
+    }
+
+    private _handleMouseEnter(visctx: VisualContextType): void {
+        const context = visctx.context as SchemaEdgeVisualContext;
+        if (this._layerGroup && !context.annotation) {
+            const annotationGroup = this._layerGroup.append("g").classed("annotation", true);
+            const rect = annotationGroup.append("rect").attr("height", 16).attr("rx", 4).attr("ry", 4);
+
+            const n = annotationGroup
+                .append("text")
+                .attr("x", 10)
+                .attr("y", 2.5)
+                .text(visctx.context!.relationship)
+                .node() as SVGTextElement;
+
+            rect.attr("width", n.clientWidth + 20);
+
+            const x = context.midPoint!.x - n.clientWidth / 2;
+            const y = context.midPoint!.y - n.clientHeight / 2;
+
+            annotationGroup.attr("transform", `translate(${x}, ${y})`);
+            context.annotation = annotationGroup;
+        }
+    }
+
+    private _handleMouseLeave(visctx: VisualContextType): void {
+        const context = visctx.context as SchemaEdgeVisualContext;
+        if (context.annotation) {
+            context.annotation.remove();
+            context.annotation = undefined;
+        }
     }
 
     private static _getClassNames(edgeData: SchemaEdgeData): string[] {
