@@ -1,6 +1,6 @@
 import { EdgeDescriptor, GraphObject, IGraphObjectFactory, NodeDescriptor, ObjectDescriptor } from "graph-js";
-import { SchemaNode, SimpleNodeData } from "../nodes/SchemaNode";
-import { SchemaEdge, SimpleEdgeData } from "../edges/SchemaEdge";
+import { SchemaNode, SimpleNodeData } from "./SchemaNode";
+import { SchemaEdge, SimpleEdgeData } from "./SchemaEdge";
 
 export class GraphObjectFactory implements IGraphObjectFactory {
     createGraphObject(desc: ObjectDescriptor<unknown>): GraphObject<unknown> {
