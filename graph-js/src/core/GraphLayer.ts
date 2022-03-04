@@ -13,6 +13,7 @@ import { DragSet } from "../utils/DragSet";
 import { DragEventName } from "../utils/DragHandler";
 
 export class GraphLayer {
+    private readonly _id: string;
     private readonly _graph: Graph;
     private readonly _graphNodes: GraphObjects = {};
     private readonly _graphEdges: GraphObjects = {};
@@ -28,6 +29,11 @@ export class GraphLayer {
 
     constructor(graph: Graph) {
         this._graph = graph;
+        this._id = `layer-${uuidv4()}`;
+    }
+
+    public get id(): string {
+        return this._id;
     }
 
     public handleContainerResized(width: number, height: number): void {
@@ -100,7 +106,7 @@ export class GraphLayer {
 
             this._layerSvg = select(`#${container.id}`)
                 .append("svg")
-                .attr("id", `layer-${uuidv4()}`)
+                .attr("id", this._id)
                 .attr("width", width)
                 .attr("height", height);
 

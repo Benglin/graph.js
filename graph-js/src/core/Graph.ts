@@ -34,12 +34,13 @@ export class Graph {
 
     public serializeAsJson(): string {
         const serializer = new GraphSerializer(this);
-        return serializer.toJson();
+        const serializable = serializer.toSerializable();
+        return JSON.stringify(serializable, undefined, 4);
     }
 
     public deserializeFromJson(graphSpecs: GraphSpecs): void {
         const serializer = new GraphSerializer(this);
-        serializer.fromJson(graphSpecs);
+        serializer.fromSerializable(graphSpecs);
     }
 
     public addNodes<NDT>(nodes: GraphNode<NDT>[]): void {
@@ -80,7 +81,7 @@ export class Graph {
         return this._objectVisualMap[objectType];
     }
 
-    public getVisualContext(graphObject: GraphObject): IVisualContext {
+    public getVisualContext(graphObject: GraphObject<unknown>): IVisualContext {
         const objectId = graphObject.id;
         if (!this._visualContexts[objectId]) {
             this._visualContexts[objectId] = new VisualContext(this, graphObject);
@@ -108,7 +109,7 @@ export class Graph {
         return layer;
     }
 
-    private createObjectVisual(graphObject: GraphObject): void {
+    private createObjectVisual(graphObject: GraphObject<unknown>): void {
         const objectType = graphObject.objectType;
         if (!this._objectVisualMap[objectType]) {
             const visual = this._factory.createObjectVisual(objectType);

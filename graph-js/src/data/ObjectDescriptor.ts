@@ -40,7 +40,7 @@ export class ObjectDescriptor<CustomDataType> {
         this._customData = value;
     }
 
-    public toSerializable(): Object {
+    public toSerializable(): Record<string, any> {
         const serializable = {
             id: this._id,
             objectType: this._objectType,
@@ -92,7 +92,7 @@ export class NodeDescriptor<CustomDataType> extends ObjectDescriptor<CustomDataT
         this._ports[port.id] = { ...port };
     }
 
-    public toSerializable(): Object {
+    public toSerializable(): Record<string, any> {
         const serializable = super.toSerializable();
 
         const ports: NodePorts = {};
@@ -109,7 +109,7 @@ export class NodeDescriptor<CustomDataType> extends ObjectDescriptor<CustomDataT
         return serializable;
     }
 
-    public fromSerializable(serializable: { [key: string]: any }): NodeDescriptor<unknown> {
+    public static fromSerializable(serializable: Record<string, any>): NodeDescriptor<unknown> {
         const id = serializable["id"];
         const objectSubType = serializable["objectSubType"];
 
@@ -169,7 +169,7 @@ export class EdgeDescriptor<CustomDataType> extends ObjectDescriptor<CustomDataT
         this._endPortId = value;
     }
 
-    public toSerializable(): Object {
+    public toSerializable(): Record<string, any> {
         const serializable = super.toSerializable();
 
         Object.assign(serializable, {
@@ -182,7 +182,7 @@ export class EdgeDescriptor<CustomDataType> extends ObjectDescriptor<CustomDataT
         return serializable;
     }
 
-    public fromSerializable(serializable: { [key: string]: any }): EdgeDescriptor<unknown> {
+    public static fromSerializable(serializable: Record<string, any>): EdgeDescriptor<unknown> {
         const id = serializable["id"];
         const objectSubType = serializable["objectSubType"];
 

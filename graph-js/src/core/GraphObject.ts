@@ -23,6 +23,10 @@ export class GraphObject<CustomDataType> {
         return this._descriptor.customData;
     }
 
+    public toSerializable(): Record<string, any> {
+        return this._descriptor.toSerializable();
+    }
+
     protected get descriptor(): ObjectDescriptor<CustomDataType> {
         return this._descriptor;
     }
