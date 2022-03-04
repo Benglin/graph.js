@@ -1,29 +1,16 @@
-import { GraphObject, IGraphObjectFactory, IGraphObjectVisual } from "graph-js";
-import { SchemaNodeVisual } from "./SchemaNodeVisual";
-import { SchemaEdgeVisual } from "./SchemaEdgeVisual";
-import { SchemaNode } from "../nodes/SchemaNode";
-import { SchemaEdge } from "../edges/SchemaEdge";
+import { EdgeDescriptor, GraphObject, IGraphObjectFactory, NodeDescriptor, ObjectDescriptor } from "graph-js";
+import { SchemaNode, SimpleNodeData } from "../nodes/SchemaNode";
+import { SchemaEdge, SimpleEdgeData } from "../edges/SchemaEdge";
 
 export class GraphObjectFactory implements IGraphObjectFactory {
-    createGraphObject(objectType: string, data: any): GraphObject {
-        switch (objectType) {
+    createGraphObject(desc: ObjectDescriptor<unknown>): GraphObject<unknown> {
+        switch (desc.objectSubType) {
             case "simple-node":
-                return SchemaNode.fromData(data);
+                return SchemaNode.fromDescriptor(desc as NodeDescriptor<SimpleNodeData>);
             case "simple-edge":
-                return SchemaEdge.fromData(data);
+                return SchemaEdge.fromDescriptor(desc as EdgeDescriptor<SimpleEdgeData>);
         }
 
-        throw new Error(`Unhandled object type: ${objectType}`);
-    }
-
-    createObjectVisual(objectType: string): IGraphObjectVisual {
-        switch (objectType) {
-            case "simple-node":
-                return new SchemaNodeVisual();
-            case "simple-edge":
-                return new SchemaEdgeVisual();
-        }
-
-        throw new Error(`Unknown object type: ${objectType}`);
+        throw new Error(`Unhandled object type: ${desc.objectSubType}`);
     }
 }
