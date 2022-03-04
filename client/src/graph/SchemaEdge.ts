@@ -83,24 +83,25 @@ export class SchemaEdge extends GraphEdge<SimpleEdgeData> {
     private _handleMouseEnter(): void {
         if (!this._annoGroup) {
             const layer = this.graphLayer as GraphLayer;
-            this._annoGroup = layer.annotationGroup;
 
-            const annotationGroup = this._annoGroup.append("g").classed("annotation", true);
-            const rect = annotationGroup.append("rect").attr("height", 16).attr("rx", 4).attr("ry", 4);
+            this._annoGroup = layer.annotationGroup.append("g").classed("annotation", true);
+            const rect = this._annoGroup.append("rect").attr("height", 16).attr("rx", 4).attr("ry", 4);
 
-            const n = annotationGroup
+            const n = this._annoGroup
                 .append("text")
                 .attr("x", 10)
                 .attr("y", 2.5)
                 .text(this.data!.type)
                 .node() as SVGTextElement;
 
-            rect.attr("width", n.clientWidth + 20);
+            const width = n.clientWidth * window.devicePixelRatio;
+            const height = n.clientHeight * window.devicePixelRatio;
+            rect.attr("width", width + 20);
 
-            const x = this._midPoint!.x - n.clientWidth / 2;
-            const y = this._midPoint!.y - n.clientHeight / 2;
+            const x = this._midPoint!.x - width / 2;
+            const y = this._midPoint!.y - height / 2;
 
-            annotationGroup.attr("transform", `translate(${x}, ${y})`);
+            this._annoGroup.attr("transform", `translate(${x}, ${y})`);
         }
     }
 
