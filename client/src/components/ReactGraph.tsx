@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { createGraph, Graph } from "graph-js";
-import { GraphObjectFactory } from "../graph/views/GraphObjectFactory";
+import { GraphObjectFactory } from "../graph/GraphObjectFactory";
 import graphJson from "./pim-graph.json";
+
+import "./SimpleNode.css";
 
 export interface ReactGraphProps {}
 

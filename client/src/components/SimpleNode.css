@@ -1,0 +1,119 @@
+.graph-node {
+    width: 200px;
+    fill: #3c3c3c;
+    stroke: rgba(128, 128, 128, 0.2);
+    stroke-width: 1px;
+}
+
+.graph-node g {
+    width: inherit;
+}
+
+.graph-node rect {
+    width: inherit;
+}
+
+.graph-node > circle {
+    fill: white;
+    stroke: rgba(128, 128, 128, 0.5);
+    stroke-width: 1px;
+}
+
+.graph-node text {
+    fill: black;
+    font-size: 11px;
+    font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    stroke-width: 0px;
+    alignment-baseline: middle; /* This works, how to suppress warning? */
+}
+
+.graph-node text {
+    fill: white;
+}
+
+.graph-node .primary {
+    font-size: 12px;
+}
+
+.graph-node .secondary {
+    font-size: 8px;
+}
+
+.graph-node .version-rect {
+    width: initial;
+    fill: white;
+    stroke: white;
+    stroke-width: 1px;
+}
+
+.graph-node .version-text {
+    fill: black;
+    font-size: 8px;
+    font-weight: 900;
+    font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    alignment-baseline: middle; /* This works, how to suppress warning? */
+}
+
+.graph-node .sub-title {
+    fill: #eeeeee;
+}
+
+.simple-node .category-heading {
+    fill: #cccccc;
+}
+
+.simple-node .typed-item {
+    fill: #ffffff;
+}
+
+.simple-edge {
+    stroke-width: 1.5px;
+}
+
+.simple-edge:hover {
+    stroke-width: 3px;
+}
+
+.simple-edge.contains {
+    stroke: tomato;
+}
+
+.simple-edge.config-ref {
+    stroke: blueviolet;
+}
+
+.simple-edge.row-ref {
+    stroke: chocolate;
+}
+
+.simple-edge.table-ref {
+    stroke: crimson;
+}
+
+.simple-edge.member-ref {
+    stroke: darkgreen;
+}
+
+.simple-edge.assembly-ref {
+    stroke: darkseagreen;
+}
+
+.simple-edge.use {
+    stroke: dodgerblue;
+}
+
+.simple-edge.describe {
+    stroke: fuchsia;
+}
+
+.simple-edge.derive {
+    stroke: orangered;
+}
+
+.annotation text {
+    fill: white;
+    font-size: 11px;
+    font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    stroke-width: 0px;
+    alignment-baseline: hanging;
+}
