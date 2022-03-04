@@ -1,9 +1,10 @@
+import { v4 as uuidv4 } from "uuid";
 import { select } from "d3-selection";
 
 import { Graph } from "./Graph";
 import { GraphEdge } from "./GraphEdge";
 import { GraphNode } from "./GraphNode";
-import { GraphObject, GraphObjectIdMap } from "./GraphObject";
+import { GraphObjects } from "./GraphObject";
 import { positionNodePorts } from "./NodePort";
 import { SvgSelection, GroupSelection } from "./TypeDefinitions";
 import { VisualContext } from "./VisualContext";
@@ -11,10 +12,10 @@ import { DragEvent, DragHandler } from "../utils/DragHandler";
 import { DragSet } from "../utils/DragSet";
 import { DragEventName } from "../utils/DragHandler";
 
-export class GraphLayer extends GraphObject {
+export class GraphLayer {
     private readonly _graph: Graph;
-    private readonly _graphNodes: GraphObjectIdMap = {};
-    private readonly _graphEdges: GraphObjectIdMap = {};
+    private readonly _graphNodes: GraphObjects = {};
+    private readonly _graphEdges: GraphObjects = {};
 
     // D3.js related data members
     private _layerSvg: SvgSelection | undefined;
@@ -26,7 +27,6 @@ export class GraphLayer extends GraphObject {
     private _dragSet: DragSet | undefined;
 
     constructor(graph: Graph) {
-        super("layer");
         this._graph = graph;
     }
 
@@ -100,7 +100,7 @@ export class GraphLayer extends GraphObject {
 
             this._layerSvg = select(`#${container.id}`)
                 .append("svg")
-                .attr("id", `${this.id}`)
+                .attr("id", `layer-${uuidv4()}`)
                 .attr("width", width)
                 .attr("height", height);
 
@@ -174,4 +174,8 @@ export class GraphLayer extends GraphObject {
             }
         });
     }
+}
+
+export interface GraphLayers {
+    [layerId: string]: GraphLayer;
 }

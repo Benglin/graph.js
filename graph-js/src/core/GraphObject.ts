@@ -1,23 +1,33 @@
-import { v4 as uuidv4 } from "uuid";
+import { ObjectDescriptor, ObjectType } from "../data/ObjectDescriptor";
 
-export class GraphObject {
-    private readonly _id: string;
-    private readonly _objectType: string;
+export class GraphObject<CustomDataType> {
+    private readonly _descriptor: ObjectDescriptor<CustomDataType>;
 
-    constructor(objectType: string) {
-        this._id = `${objectType}-${uuidv4()}`;
-        this._objectType = objectType;
+    constructor(descriptor: ObjectDescriptor<CustomDataType>) {
+        this._descriptor = descriptor;
     }
 
     public get id(): string {
-        return this._id;
+        return this._descriptor.id;
     }
 
-    public get objectType(): string {
-        return this._objectType;
+    public get objectType(): ObjectType {
+        return this._descriptor.objectType;
+    }
+
+    public get objectSubType(): string {
+        return this._descriptor.objectSubType;
+    }
+
+    public get data(): CustomDataType | undefined {
+        return this._descriptor.customData;
+    }
+
+    protected get descriptor(): ObjectDescriptor<CustomDataType> {
+        return this._descriptor;
     }
 }
 
-export interface GraphObjectIdMap {
-    [objectId: string]: GraphObject;
+export interface GraphObjects {
+    [objectId: string]: GraphObject<unknown>;
 }

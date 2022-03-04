@@ -1,7 +1,7 @@
-import { GraphObject, GraphObjectIdMap } from "./GraphObject";
+import { GraphObject, GraphObjects } from "./GraphObject";
 import { GraphNode } from "./GraphNode";
 import { GraphEdge } from "./GraphEdge";
-import { GraphLayer } from "./GraphLayer";
+import { GraphLayer, GraphLayers } from "./GraphLayer";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
 import { IGraphObjectVisual, ObjectVisualMap } from "./GraphObjectVisual";
 import { IVisualContext, VisualContextMap, VisualContext } from "./VisualContext";
@@ -11,9 +11,9 @@ export class Graph {
     private readonly _container: HTMLElement;
     private readonly _factory: IGraphObjectFactory;
 
-    private readonly _nodes: GraphObjectIdMap = {};
-    private readonly _edges: GraphObjectIdMap = {};
-    private readonly _layers: GraphObjectIdMap = {};
+    private readonly _nodes: GraphObjects = {};
+    private readonly _edges: GraphObjects = {};
+    private readonly _layers: GraphLayers = {};
     private readonly _objectVisualMap: ObjectVisualMap = {};
     private readonly _visualContexts: VisualContextMap = {};
 
