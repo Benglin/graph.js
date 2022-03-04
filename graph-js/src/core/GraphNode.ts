@@ -5,7 +5,6 @@ import { Size } from "../data/Size";
 import { Vector } from "../data/Vector";
 import { DragHandler } from "../utils/DragHandler";
 import { GraphObject } from "./GraphObject";
-import { GraphLayer } from "./GraphLayer";
 import { NodePort, positionNodePorts } from "./NodePort";
 import { GroupSelection } from "./TypeDefinitions";
 

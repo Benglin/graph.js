@@ -79,7 +79,10 @@ export class GraphLayer {
     }
 
     public addEdges(graphEdges: GraphEdge<unknown>[]): void {
-        graphEdges.forEach((ge) => (this._graphEdges[ge.id] = ge));
+        graphEdges.forEach((ge) => {
+            ge.graphLayer = this;
+            this._graphEdges[ge.id] = ge;
+        });
     }
 
     public getEdges(): GraphEdge<unknown>[] {
@@ -87,7 +90,13 @@ export class GraphLayer {
     }
 
     public removeEdges(edgeIds: string[]): void {
-        edgeIds.forEach((id) => delete this._graphEdges[id]);
+        edgeIds.forEach((id) => {
+            const edge = this._graphEdges[id];
+            if (edge) {
+                edge.graphLayer = undefined;
+                delete this._graphEdges[id];
+            }
+        });
     }
 
     public handleDragEvent(dragEvent: DragEvent): void {
