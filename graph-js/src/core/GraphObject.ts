@@ -1,8 +1,10 @@
 import { ObjectDescriptor, ObjectType } from "../data/ObjectDescriptor";
+import { GraphLayer } from "./GraphLayer";
 import { GroupSelection } from "./TypeDefinitions";
 
 export abstract class GraphObject<CustomDataType> {
     private readonly _descriptor: ObjectDescriptor<CustomDataType>;
+    private _graphLayer: GraphLayer | undefined;
 
     constructor(descriptor: ObjectDescriptor<CustomDataType>) {
         this._descriptor = descriptor;
@@ -22,6 +24,14 @@ export abstract class GraphObject<CustomDataType> {
 
     public get data(): CustomDataType | undefined {
         return this._descriptor.customData;
+    }
+
+    public get graphLayer(): GraphLayer | undefined {
+        return this._graphLayer;
+    }
+
+    public set graphLayer(value: GraphLayer | undefined) {
+        this._graphLayer = value;
     }
 
     public toSerializable(): Record<string, any> {

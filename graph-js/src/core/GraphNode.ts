@@ -10,7 +10,6 @@ import { NodePort, positionNodePorts } from "./NodePort";
 import { GroupSelection } from "./TypeDefinitions";
 
 export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataType> {
-    private _graphLayer: GraphLayer | undefined;
     private _nodeGroup: GroupSelection | undefined;
 
     constructor(descriptor: NodeDescriptor<CustomDataType>) {
@@ -27,14 +26,6 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
 
     public get ports(): NodePort[] {
         return Object.values(this._getDescriptor().ports);
-    }
-
-    public get graphLayer(): GraphLayer | undefined {
-        return this._graphLayer;
-    }
-
-    public set graphLayer(value: GraphLayer | undefined) {
-        this._graphLayer = value;
     }
 
     public getPort(portId: string): NodePort | undefined {
