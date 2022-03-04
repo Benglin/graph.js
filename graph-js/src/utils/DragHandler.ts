@@ -27,7 +27,7 @@ export class DragHandler<T extends Element> {
         this._nodeId = nodeId;
     }
 
-    public createDragHandler(selection: Selection<T, unknown, null, undefined>): void {
+    public createDragHandler(selection: Selection<T, unknown, HTMLElement, any>): void {
         const thisObject = this;
 
         const dragHandler = drag<T, unknown>()

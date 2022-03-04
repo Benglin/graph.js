@@ -1,46 +1,100 @@
+import { Selection, EnterElement } from "d3-selection";
+
 import { NodeDescriptor } from "../data/ObjectDescriptor";
 import { Size } from "../data/Size";
 import { Vector } from "../data/Vector";
+import { DragHandler } from "../utils/DragHandler";
 import { GraphObject } from "./GraphObject";
-import { NodePort } from "./NodePort";
+import { GraphLayer } from "./GraphLayer";
+import { NodePort, positionNodePorts } from "./NodePort";
+import { GroupSelection } from "./TypeDefinitions";
 
 export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataType> {
+    private _graphLayer: GraphLayer | undefined;
+    private _nodeGroup: GroupSelection | undefined;
+
     constructor(descriptor: NodeDescriptor<CustomDataType>) {
         super(descriptor);
     }
 
     public get position(): Vector {
-        return this.getDescriptor().position;
+        return this._getDescriptor().position;
     }
 
     public get dimension(): Size {
-        return this.getDescriptor().dimension;
+        return this._getDescriptor().dimension;
     }
 
     public get ports(): NodePort[] {
-        return Object.values(this.getDescriptor().ports);
+        return Object.values(this._getDescriptor().ports);
+    }
+
+    public get graphLayer(): GraphLayer | undefined {
+        return this._graphLayer;
+    }
+
+    public set graphLayer(value: GraphLayer | undefined) {
+        this._graphLayer = value;
     }
 
     public getPort(portId: string): NodePort | undefined {
-        return this.getDescriptor().ports[portId];
+        return this._getDescriptor().ports[portId];
     }
 
     public setPosition(x: number, y: number): void {
-        this.getDescriptor().setPosition(x, y);
+        this._getDescriptor().setPosition(x, y);
     }
 
     public setDimension(width: number, height: number): void {
-        this.getDescriptor().setDimension(width, height);
+        this._getDescriptor().setDimension(width, height);
     }
 
     public toGraphCoords(position: Vector): Vector {
-        const pos = this.getDescriptor().position;
+        const pos = this._getDescriptor().position;
         const x = position.x + pos.x;
         const y = position.y + pos.y;
         return new Vector(x, y);
     }
 
-    private getDescriptor(): NodeDescriptor<CustomDataType> {
+    public render(nodesGroup: GroupSelection): void {
+        if (!this._nodeGroup) {
+            const pos = this.position;
+            this._nodeGroup = nodesGroup
+                .append("g")
+                .attr("id", `${this.id}`)
+                .attr("transform", `translate(${pos.x}, ${pos.y})`)
+                .classed("graph-node", true);
+
+            if (this.graphLayer) {
+                const dragHandler = new DragHandler<SVGGElement>(this.graphLayer, this.id);
+                dragHandler.createDragHandler(this._nodeGroup);
+            }
+        }
+
+        // Calculate port positions before drawing them.
+        positionNodePorts(this.ports, this.dimension);
+
+        this._nodeGroup
+            .selectChildren<SVGCircleElement, NodePort>("circle")
+            .data<NodePort>(this.ports, (d) => d.id)
+            .join(GraphNode._createPorts);
+
+        this.renderCore(this._nodeGroup);
+    }
+
+    private _getDescriptor(): NodeDescriptor<CustomDataType> {
         return this.descriptor as NodeDescriptor<CustomDataType>;
     }
+
+    private static _createPorts(
+        elem: Selection<EnterElement, NodePort, SVGGElement, unknown>
+    ): Selection<SVGCircleElement, NodePort, SVGGElement, unknown> {
+        return elem
+            .append("circle")
+            .attr("r", "3.5")
+            .attr("cx", (d) => d.position?.x || "0.0")
+            .attr("cy", (d) => d.position?.y || "0.0");
+    }
+
+    protected abstract renderCore(nodeGroup: GroupSelection): void;
 }

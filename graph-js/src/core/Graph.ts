@@ -1,10 +1,8 @@
-import { GraphObject, GraphObjects } from "./GraphObject";
+import { GraphObjects } from "./GraphObject";
 import { GraphNode } from "./GraphNode";
 import { GraphEdge } from "./GraphEdge";
 import { GraphLayer, GraphLayers } from "./GraphLayer";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
-import { IGraphObjectVisual, ObjectVisualMap } from "./GraphObjectVisual";
-import { IVisualContext, VisualContextMap, VisualContext } from "./VisualContext";
 import { GraphSerializer, GraphSpecs } from "../data/GraphSerializer";
 
 export class Graph {
@@ -14,8 +12,6 @@ export class Graph {
     private readonly _nodes: GraphObjects = {};
     private readonly _edges: GraphObjects = {};
     private readonly _layers: GraphLayers = {};
-    private readonly _objectVisualMap: ObjectVisualMap = {};
-    private readonly _visualContexts: VisualContextMap = {};
 
     private readonly _defaultLayerId: string;
 
@@ -45,7 +41,6 @@ export class Graph {
 
     public addNodes<NDT>(nodes: GraphNode<NDT>[]): void {
         nodes.forEach((n) => (this._nodes[n.id] = n));
-        nodes.forEach((n) => this.createObjectVisual(n));
 
         const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
         nodes.forEach((n) => defaultLayer.addNodes([n]));
@@ -53,7 +48,6 @@ export class Graph {
 
     public addEdges<EDT>(newEdges: GraphEdge<EDT>[]): string[] {
         newEdges.forEach((e) => (this._edges[e.id] = e));
-        newEdges.forEach((e) => this.createObjectVisual(e));
 
         const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
         newEdges.forEach((e) => defaultLayer.addEdges([e]));
@@ -77,19 +71,6 @@ export class Graph {
         return Object.values(this._edges) as GraphEdge<unknown>[];
     }
 
-    public getObjectVisual(objectType: string): IGraphObjectVisual | undefined {
-        return this._objectVisualMap[objectType];
-    }
-
-    public getVisualContext(graphObject: GraphObject<unknown>): IVisualContext {
-        const objectId = graphObject.id;
-        if (!this._visualContexts[objectId]) {
-            this._visualContexts[objectId] = new VisualContext(this, graphObject);
-        }
-
-        return this._visualContexts[objectId];
-    }
-
     public invalidate(): void {
         const layers = Object.values(this._layers) as GraphLayer[];
         layers.forEach((l) => l.invalidate());
@@ -107,14 +88,6 @@ export class Graph {
         const layer = new GraphLayer(this);
         this._layers[layer.id] = layer;
         return layer;
-    }
-
-    private createObjectVisual(graphObject: GraphObject<unknown>): void {
-        const objectType = graphObject.objectType;
-        if (!this._objectVisualMap[objectType]) {
-            const visual = this._factory.createObjectVisual(objectType);
-            this._objectVisualMap[objectType] = visual;
-        }
     }
 
     private handleContainerResized(width: number, height: number): void {

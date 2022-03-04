@@ -1,6 +1,7 @@
 import { ObjectDescriptor, ObjectType } from "../data/ObjectDescriptor";
+import { GroupSelection } from "./TypeDefinitions";
 
-export class GraphObject<CustomDataType> {
+export abstract class GraphObject<CustomDataType> {
     private readonly _descriptor: ObjectDescriptor<CustomDataType>;
 
     constructor(descriptor: ObjectDescriptor<CustomDataType>) {
@@ -26,6 +27,8 @@ export class GraphObject<CustomDataType> {
     public toSerializable(): Record<string, any> {
         return this._descriptor.toSerializable();
     }
+
+    public abstract render(svgGroup: GroupSelection): void;
 
     protected get descriptor(): ObjectDescriptor<CustomDataType> {
         return this._descriptor;
