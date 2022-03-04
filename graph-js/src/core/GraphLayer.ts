@@ -21,6 +21,7 @@ export class GraphLayer {
     private _layerGroup: GroupSelection | undefined;
     private _nodesGroup: GroupSelection | undefined;
     private _edgeGroup: GroupSelection | undefined;
+    private _annoGroup: GroupSelection | undefined;
 
     // Runtime data members
     private _dragSet: DragSet | undefined;
@@ -32,6 +33,11 @@ export class GraphLayer {
 
     public get id(): string {
         return this._id;
+    }
+
+    public get annotationGroup(): GroupSelection {
+        this._ensureAnnoGroupCreated();
+        return this._annoGroup as GroupSelection;
     }
 
     public handleContainerResized(width: number, height: number): void {
@@ -135,6 +141,14 @@ export class GraphLayer {
         if (this._layerGroup && !this._edgeGroup) {
             // Lower the 'edge' group in z-order so nodes always shown above edges.
             this._edgeGroup = this._layerGroup.append("g").attr("name", "edges").lower();
+        }
+    }
+
+    private _ensureAnnoGroupCreated(): void {
+        this._ensureSvgCreated();
+        if (this._layerGroup && !this._annoGroup) {
+            // Annotation goes above all the other elements in the graph.
+            this._annoGroup = this._layerGroup.append("g").attr("name", "annotation").raise();
         }
     }
 
