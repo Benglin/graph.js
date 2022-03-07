@@ -63,7 +63,7 @@ export class SchemaEdge extends GraphEdge<SimpleEdgeData> {
         const dx = Math.abs(sp.x - ep.x);
         const dy = Math.abs(sp.y - ep.y);
         let delta = Math.sqrt(dx * dx + dy * dy) * 0.3;
-        delta = Math.max(10.0, delta);
+        delta = Math.max(64.0, delta);
         const x0 = sp.x + startPort.normal!.x * delta;
         const y0 = sp.y + startPort.normal!.y * delta;
         const x1 = ep.x + endPort.normal!.x * delta;
