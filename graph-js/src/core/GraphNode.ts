@@ -33,6 +33,9 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
 
     public setPosition(x: number, y: number): void {
         this._getDescriptor().setPosition(x, y);
+        if (this._nodeGroup) {
+            this._nodeGroup.attr("transform", `translate(${x}, ${y})`);
+        }
     }
 
     public setDimension(width: number, height: number): void {
