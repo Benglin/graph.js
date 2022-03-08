@@ -9,6 +9,9 @@ import { SvgSelection, GroupSelection } from "./TypeDefinitions";
 import { DragEvent } from "../utils/DragHandler";
 import { DragSet } from "../utils/DragSet";
 import { DragEventName } from "../utils/DragHandler";
+import { OpacityEasing } from "../utils/OpacityEasing";
+import { ForceDirectedStrategy } from "../layout/ForceDirectedStrategy";
+import { LayoutStrategy } from "../layout/LayoutStrategy";
 
 export class GraphLayer {
     private readonly _id: string;
@@ -25,6 +28,7 @@ export class GraphLayer {
 
     // Runtime data members
     private _dragSet: DragSet | undefined;
+    private _layout: LayoutStrategy | undefined;
 
     constructor(graph: Graph) {
         this._graph = graph;
@@ -120,6 +124,19 @@ export class GraphLayer {
         node.setPosition(dragEvent.x, dragEvent.y);
     }
 
+    public async beginLayout(): Promise<void> {
+        if (this._layout) {
+            return; // Still updating layout.
+        }
+
+        this._layout = new ForceDirectedStrategy(this._graph);
+
+        await this._fadeEdgeGroup(false);
+        await this._performLayout(this._layout);
+        await this._fadeEdgeGroup(true);
+        this._layout = undefined;
+    }
+
     private _ensureSvgCreated(): void {
         if (!this._layerGroup) {
             const container = this._graph.container;
@@ -175,6 +192,41 @@ export class GraphLayer {
             const edgeGroup = this._edgeGroup as GroupSelection;
             edges.forEach((edge) => edge.render(edgeGroup));
         }
+    }
+
+    private async _fadeEdgeGroup(fadeIn: boolean): Promise<void> {
+        const edgeGroup = this._edgeGroup as GroupSelection;
+
+        return new Promise<void>((resolve) => {
+            const element = edgeGroup.node() as Element;
+            const easingFunction = new OpacityEasing([element]);
+
+            if (fadeIn) {
+                easingFunction.fadeIn(300, () => {
+                    resolve();
+                });
+            } else {
+                easingFunction.fadeOut(300, resolve);
+            }
+        });
+    }
+
+    private async _performLayout(layout: LayoutStrategy): Promise<void> {
+        return new Promise<void>((resolve) => {
+            layout.beginLayout((type, nodePos) => {
+                if (type === "tick") {
+                    nodePos.forEach((pos) => {
+                        const node = this._graphNodes[pos.id] as GraphNode<unknown>;
+                        node.setPosition(pos.x, pos.y);
+                    });
+                } else if (type === "end") {
+                    this._layout = undefined;
+                    const edges = Object.values(this._graphEdges);
+                    this._invalidateEdges(edges as GraphEdge<unknown>[]);
+                    resolve();
+                }
+            });
+        });
     }
 }
 

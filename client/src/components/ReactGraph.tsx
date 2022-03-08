@@ -15,6 +15,12 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
             graphRef.current = createGraph("graph-container", new GraphObjectFactory());
             graphRef.current.deserializeFromJson(graphJson);
             graphRef.current.invalidate();
+
+            setTimeout(() => {
+                if (graphRef.current) {
+                    graphRef.current.beginLayout(() => {});
+                }
+            }, 1000);
         }
     }, []);
 

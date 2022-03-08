@@ -76,6 +76,11 @@ export class Graph {
         layers.forEach((l) => l.invalidate());
     }
 
+    public beginLayout(done: Function): void {
+        const layer = this._layers[this._defaultLayerId] as GraphLayer;
+        layer.beginLayout().then(() => done());
+    }
+
     public get container(): HTMLElement {
         return this._container;
     }
