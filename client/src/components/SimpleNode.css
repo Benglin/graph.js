@@ -1,7 +1,7 @@
 .graph-node {
     width: 200px;
-    fill: #3c3c3c;
-    stroke: rgba(128, 128, 128, 0.2);
+    fill: #ffffff;
+    stroke: #80808033;
     stroke-width: 1px;
 }
 
@@ -20,15 +20,11 @@
 }
 
 .graph-node text {
-    fill: black;
+    fill: #3c3c3c;
     font-size: 11px;
     font-family: Artifakt, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     stroke-width: 0px;
     alignment-baseline: middle; /* This works, how to suppress warning? */
-}
-
-.graph-node text {
-    fill: white;
 }
 
 .graph-node .primary {
@@ -36,13 +32,14 @@
 }
 
 .graph-node .secondary {
+    fill: #3c3c3cb2;
     font-size: 8px;
 }
 
 .graph-node .version-rect {
     width: initial;
-    fill: white;
-    stroke: white;
+    fill: #eeeeee;
+    stroke: #eeeeee;
     stroke-width: 1px;
 }
 
