@@ -9,7 +9,7 @@ import { SvgSelection, GroupSelection } from "./TypeDefinitions";
 import { DragEvent } from "../utils/DragHandler";
 import { DragSet } from "../utils/DragSet";
 import { DragEventName } from "../utils/DragHandler";
-import { OpacityEasing } from "../utils/OpacityEasing";
+import { EasingRange, OpacityEasing } from "../utils/OpacityEasing";
 import { ForceDirectedStrategy } from "../layout/ForceDirectedStrategy";
 import { LayoutStrategy } from "../layout/LayoutStrategy";
 
@@ -166,7 +166,7 @@ export class GraphLayer {
 
         if (this._layerGroup && !this._edgeGroup) {
             // Lower the 'edge' group in z-order so nodes always shown above edges.
-            this._edgeGroup = this._layerGroup.append("g").attr("name", "edges").lower();
+            this._edgeGroup = this._layerGroup.append("g").attr("name", "edges").attr("opacity", "0.3").lower();
         }
     }
 
@@ -200,13 +200,12 @@ export class GraphLayer {
         return new Promise<void>((resolve) => {
             const element = edgeGroup.node() as Element;
             const easingFunction = new OpacityEasing([element]);
+            const range: EasingRange = { msecDuration: 300, min: 0.0, max: 0.3 };
 
             if (fadeIn) {
-                easingFunction.fadeIn(300, () => {
-                    resolve();
-                });
+                easingFunction.fadeIn(range, resolve);
             } else {
-                easingFunction.fadeOut(300, resolve);
+                easingFunction.fadeOut(range, resolve);
             }
         });
     }
