@@ -1,4 +1,4 @@
-import { Simulation, forceSimulation, forceLink, forceManyBody, forceCenter } from "d3-force";
+import { Simulation, forceSimulation, forceLink, forceManyBody, forceX, forceY } from "d3-force";
 import { Graph } from "../core/Graph";
 import { LayoutStrategy } from "./LayoutStrategy";
 
@@ -79,8 +79,9 @@ export class ForceDirectedStrategy extends LayoutStrategy {
         this._simulation.nodes(Object.values(this._nodes));
         this._simulation
             .force("link", linkForce)
-            .force("charge", forceManyBody().strength(-120))
-            .force("center", forceCenter(width / 2, height / 2));
+            .force("charge", forceManyBody().strength(-1000))
+            .force("forceX", forceX(width / 2).strength(0.05))
+            .force("forceY", forceY(height / 2).strength(0.05));
 
         const thisObject = this;
         this._simulation
