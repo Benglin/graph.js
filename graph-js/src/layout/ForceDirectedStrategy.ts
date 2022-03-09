@@ -73,8 +73,10 @@ export class ForceDirectedStrategy extends LayoutStrategy {
             .id((link) => link.id)
             .strength((link) => link.strength);
 
+        const minAlpha = 0.001;
+        const decay = 1.0 - Math.pow(minAlpha, 1 / 200);
         this._simulation = forceSimulation<ForceNode, ForceLink>();
-        this._simulation.stop();
+        this._simulation.alphaMin(minAlpha).alphaDecay(decay).stop();
 
         this._simulation.nodes(Object.values(this._nodes));
         this._simulation
