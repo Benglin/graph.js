@@ -111,17 +111,19 @@
     src: url("../assets/fonts/artifakt-element-thin.woff") format("woff");
 }
 */
-.overlay-back {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
+
+.outer-container {
+    display: flex;
+    width: calc(100% - 16px);
+    height: 100%;
+    flex-direction: row;
+}
+
+.content-host {
+    flex-grow: 1;
     height: 100%;
 }
 
-.overlay-front {
-    position: absolute;
-    z-index: 20;
-    width: 100%;
-    height: 100%;
-    display: none;
+.button-host {
+    padding: 8px;
 }
