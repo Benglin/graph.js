@@ -91,11 +91,13 @@ export class Graph {
         // Then remove the nodes.
         const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
         defaultLayer.removeNodes(nodeIds);
+        nodeIds.forEach((nodeId) => delete this._nodes[nodeId]);
     }
 
     public removeEdges(edgeIds: string[]): void {
         const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
         defaultLayer.removeEdges(edgeIds);
+        edgeIds.forEach((edgeId) => delete this._edges[edgeId]);
     }
 
     public invalidate(): void {
