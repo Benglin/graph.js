@@ -71,6 +71,33 @@ export class Graph {
         return Object.values(this._edges) as GraphEdge<unknown>[];
     }
 
+    public removeNodes(nodeIds: string[]): void {
+        const edgeIds: string[] = [];
+
+        Object.entries(this._edges).forEach(([edgeId, edge]) => {
+            const e = edge as GraphEdge<unknown>;
+
+            // Gather a list of edges that connect to out-going nodes.
+            if (nodeIds.indexOf(e.startNodeId) >= 0) {
+                edgeIds.push(edgeId);
+            } else if (nodeIds.indexOf(e.endNodeId) >= 0) {
+                edgeIds.push(edgeId);
+            }
+        });
+
+        // First removal the edges.
+        this.removeEdges(edgeIds);
+
+        // Then remove the nodes.
+        const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
+        defaultLayer.removeNodes(nodeIds);
+    }
+
+    public removeEdges(edgeIds: string[]): void {
+        const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
+        defaultLayer.removeEdges(edgeIds);
+    }
+
     public invalidate(): void {
         const layers = Object.values(this._layers) as GraphLayer[];
         layers.forEach((l) => l.invalidate());

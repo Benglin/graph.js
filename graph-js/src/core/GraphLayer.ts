@@ -73,9 +73,12 @@ export class GraphLayer {
     }
 
     public removeNodes(nodeIds: string[]): void {
+        const nodeGroup = this._nodesGroup as GroupSelection;
+
         nodeIds.forEach((id) => {
             const node = this._graphNodes[id] as GraphNode<unknown>;
             if (node) {
+                node.destroy(nodeGroup);
                 node.graphLayer = undefined;
                 delete this._graphNodes[id];
             }
@@ -94,9 +97,12 @@ export class GraphLayer {
     }
 
     public removeEdges(edgeIds: string[]): void {
+        const edgeGroup = this._edgeGroup as GroupSelection;
+
         edgeIds.forEach((id) => {
-            const edge = this._graphEdges[id];
+            const edge = this._graphEdges[id] as GraphEdge<unknown>;
             if (edge) {
+                edge.destroy(edgeGroup);
                 edge.graphLayer = undefined;
                 delete this._graphEdges[id];
             }
