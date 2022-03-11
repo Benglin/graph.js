@@ -5,7 +5,9 @@ import graphJson from "./pim-graph.json";
 
 import "./SimpleNode.css";
 
-export interface ReactGraphProps {}
+export interface ReactGraphProps {
+    onGraphCreated(graph: Graph): void;
+}
 
 export function ReactGraph(props: ReactGraphProps): JSX.Element {
     const graphRef = useRef<Graph>();
@@ -15,14 +17,9 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
             graphRef.current = createGraph("graph-container", new GraphObjectFactory());
             graphRef.current.deserializeFromJson(graphJson);
             graphRef.current.invalidate();
-
-            setTimeout(() => {
-                if (graphRef.current) {
-                    graphRef.current.beginLayout(() => {});
-                }
-            }, 1000);
+            props.onGraphCreated(graphRef.current);
         }
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return <div style={{ width: "100%", height: "100%" }} id="graph-container"></div>;
 }
