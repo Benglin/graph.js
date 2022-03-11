@@ -3,7 +3,7 @@ import { Selection, EnterElement } from "d3-selection";
 import { NodeDescriptor } from "../data/ObjectDescriptor";
 import { Size } from "../data/Size";
 import { Vector } from "../data/Vector";
-import { DragHandler } from "../utils/DragHandler";
+import { DragHandler, translate } from "../utils/DragHandler";
 import { GraphObject } from "./GraphObject";
 import { NodePort, positionNodePorts } from "./NodePort";
 import { GroupSelection } from "./TypeDefinitions";
@@ -34,7 +34,7 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
     public setPosition(x: number, y: number): void {
         this._getDescriptor().setPosition(x, y);
         if (this._nodeGroup) {
-            this._nodeGroup.attr("transform", `translate(${x}, ${y})`);
+            this._nodeGroup.attr("transform", translate(x, y));
         }
     }
 
@@ -55,7 +55,7 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
             this._nodeGroup = nodesGroup
                 .append("g")
                 .attr("id", `${this.id}`)
-                .attr("transform", `translate(${pos.x}, ${pos.y})`)
+                .attr("transform", translate(pos.x, pos.y))
                 .classed("graph-node", true);
 
             if (this.graphLayer) {

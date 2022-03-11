@@ -15,6 +15,10 @@ export interface DragEvent {
     y: number;
 }
 
+export function translate(x: number, y: number): string {
+    return `translate(${(x | 0) + 0.5}, ${(y | 0) + 0.5})`;
+}
+
 export class DragHandler<T extends Element> {
     private readonly _graphLayer: GraphLayer;
     private readonly _nodeId: string;
@@ -41,13 +45,13 @@ export class DragHandler<T extends Element> {
             .on(DragEventName.Drag, function (this: Element, event: any) {
                 const x = event.x + thisObject._deltaX;
                 const y = event.y + thisObject._deltaY;
-                select(this).attr("transform", `translate(${x}, ${y})`);
+                select(this).attr("transform", translate(x, y));
                 thisObject.raiseDragEvent(DragEventName.Drag, x, y);
             })
             .on(DragEventName.End, function (this: Element, event: any) {
                 const x = event.x + thisObject._deltaX;
                 const y = event.y + thisObject._deltaY;
-                select(this).attr("transform", `translate(${x}, ${y})`);
+                select(this).attr("transform", translate(x, y));
                 thisObject.raiseDragEvent(DragEventName.End, x, y);
             });
 

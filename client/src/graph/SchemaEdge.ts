@@ -1,5 +1,15 @@
 import { Selection } from "d3-selection";
-import { EdgeDescriptor, GraphEdge, GraphLayer, GraphNode, GroupSelection, NodePort, Vector } from "graph-js";
+
+import {
+    EdgeDescriptor,
+    GraphEdge,
+    GraphLayer,
+    GraphNode,
+    GroupSelection,
+    NodePort,
+    translate,
+    Vector,
+} from "graph-js";
 
 export enum SimpleEdgeType {
     Contains = "Contains",
@@ -101,7 +111,7 @@ export class SchemaEdge extends GraphEdge<SimpleEdgeData> {
             const x = this._midPoint!.x - width / 2;
             const y = this._midPoint!.y - height / 2;
 
-            this._annoGroup.attr("transform", `translate(${x}, ${y})`);
+            this._annoGroup.attr("transform", translate(x, y));
         }
     }
 
