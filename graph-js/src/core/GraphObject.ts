@@ -38,6 +38,7 @@ export abstract class GraphObject<CustomDataType> {
         return this._descriptor.toSerializable();
     }
 
+    public abstract destroy(svgGroup: GroupSelection): void;
     public abstract render(svgGroup: GroupSelection): void;
 
     protected get descriptor(): ObjectDescriptor<CustomDataType> {

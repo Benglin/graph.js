@@ -23,6 +23,10 @@ export abstract class GraphEdge<CustomDataType> extends GraphObject<CustomDataTy
         return this._getDescriptor().endPortId;
     }
 
+    public destroy(edgesGroup: GroupSelection): void {
+        this.destroyCore(edgesGroup);
+    }
+
     public render(edgesGroup: GroupSelection): void {
         this.renderCore(edgesGroup);
     }
@@ -31,5 +35,6 @@ export abstract class GraphEdge<CustomDataType> extends GraphObject<CustomDataTy
         return this.descriptor as EdgeDescriptor<CustomDataType>;
     }
 
+    protected abstract destroyCore(edgesGroup: GroupSelection): void;
     protected abstract renderCore(edgesGroup: GroupSelection): void;
 }

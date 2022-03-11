@@ -11,6 +11,10 @@ type SvgRectSelection = Selection<SVGRectElement, unknown, HTMLElement, any>;
 export class SchemaNode extends GraphNode<SimpleNodeData> {
     private _nodeRect: SvgRectSelection | undefined;
 
+    protected destroyCore(nodeGroup: GroupSelection): void {
+        this._nodeRect = undefined; // Will be removed in base class.
+    }
+
     protected renderCore(nodeGroup: GroupSelection): void {
         if (!this._nodeRect) {
             const nodeHeight = 32;

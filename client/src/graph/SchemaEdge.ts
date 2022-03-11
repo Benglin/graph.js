@@ -46,6 +46,18 @@ export class SchemaEdge extends GraphEdge<SimpleEdgeData> {
     private _path: SvgPathSelection | undefined;
     private _annoGroup: SvgGroupSelection | undefined;
 
+    protected destroyCore(edgesGroup: GroupSelection): void {
+        if (this._annoGroup) {
+            this._annoGroup.remove();
+            this._annoGroup = undefined;
+        }
+
+        if (this._path) {
+            this._path.remove();
+            this._path = undefined;
+        }
+    }
+
     protected renderCore(edgesGroup: GroupSelection): void {
         const layer = this.graphLayer as GraphLayer;
 

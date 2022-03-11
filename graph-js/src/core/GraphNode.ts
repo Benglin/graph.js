@@ -49,6 +49,15 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
         return new Vector(x, y);
     }
 
+    public destroy(nodesGroup: GroupSelection): void {
+        if (this._nodeGroup) {
+            this.destroyCore(this._nodeGroup);
+
+            this._nodeGroup.remove();
+            this._nodeGroup = undefined;
+        }
+    }
+
     public render(nodesGroup: GroupSelection): void {
         if (!this._nodeGroup) {
             const pos = this.position;
@@ -89,5 +98,6 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
             .attr("cy", (d) => d.position?.y || "0.0");
     }
 
+    protected abstract destroyCore(nodesGroup: GroupSelection): void;
     protected abstract renderCore(nodeGroup: GroupSelection): void;
 }
