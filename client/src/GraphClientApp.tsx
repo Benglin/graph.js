@@ -1,17 +1,38 @@
 import React, { useRef, useState } from "react";
 import Button from "@mui/material/Button";
 
-import { Graph } from "graph-js";
+import { Graph, GraphSerializer } from "graph-js";
 import { ReactGraph } from "./components/ReactGraph";
+import { SchemaEdge } from "./graph/SchemaEdge";
+import { SchemaNode } from "./graph/SchemaNode";
+import { GraphNodesManager } from "./graph/GraphNodesManager";
 
+import graphJson from "./components/pim-graph.json";
 import "./GraphClientApp.css";
 
 function GraphClientApp() {
     const graphRef = useRef<Graph>();
+    const nodesManagerRef = useRef<GraphNodesManager>();
     const [layoutInProgress, setLayoutInProgress] = useState<boolean>(false);
 
     function handleGraphCreated(graph: Graph): void {
         graphRef.current = graph;
+
+        const factory = graphRef.current.graphObjectFactory;
+        const results = GraphSerializer.fromSerializable(factory, graphJson);
+
+        nodesManagerRef.current = new GraphNodesManager(results.nodes as SchemaNode[], results.edges as SchemaEdge[]);
+
+        const ids = [
+            "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544", // Product
+            "simple-node-a2042e41-53f8-415c-be70-a1371328f84c", // Design
+            "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80", // Model
+        ];
+
+        graphRef.current.addNodes(results.nodes.filter((n) => ids.includes(n.id)));
+        graphRef.current.addEdges(results.edges);
+        graphRef.current.centerNodesOnView();
+        graphRef.current.invalidate();
     }
 
     function handleLayoutClick(): void {
@@ -21,12 +42,16 @@ function GraphClientApp() {
         }
     }
 
-    function handleRemoveClick(): void {
-        if (graphRef.current) {
-            graphRef.current.removeNodes([
-                "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
-                "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589",
-            ]);
+    function handleExpandDesign(): void {
+        if (graphRef.current && nodesManagerRef.current) {
+            const mgr = nodesManagerRef.current;
+            const nodes = mgr.getImmediateNodes("simple-node-a2042e41-53f8-415c-be70-a1371328f84c");
+            graphRef.current.addNodes(nodes);
+            graphRef.current.addEdges(mgr.getAllEdges());
+
+            graphRef.current.invalidate();
+            setLayoutInProgress(true);
+            graphRef.current.beginLayout(() => setLayoutInProgress(false));
         }
     }
 
@@ -44,12 +69,12 @@ function GraphClientApp() {
                 </Button>
                 <Button
                     sx={{ mb: 1 }}
-                    onClick={handleRemoveClick}
+                    onClick={handleExpandDesign}
                     disabled={layoutInProgress}
                     variant="contained"
                     fullWidth
                 >
-                    Remove
+                    Expand 'Design'
                 </Button>
             </div>
             <div className="content-host">
