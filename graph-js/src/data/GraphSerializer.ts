@@ -49,5 +49,6 @@ export class GraphSerializer {
 
         this._graph.addNodes(graphNodes);
         this._graph.addEdges(graphEdges);
+        this._graph.centerNodesOnView();
     }
 }
