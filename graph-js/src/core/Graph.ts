@@ -43,6 +43,8 @@ export class Graph {
     }
 
     public addNodes<NDT>(nodes: GraphNode<NDT>[]): void {
+        // Remove nodes that are already in the graph.
+        nodes = nodes.filter((n) => !this._nodes[n.id]);
         nodes.forEach((n) => (this._nodes[n.id] = n));
 
         const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
@@ -50,6 +52,8 @@ export class Graph {
     }
 
     public addEdges<EDT>(newEdges: GraphEdge<EDT>[]): string[] {
+        // Remove edges that are already in the graph.
+        newEdges = newEdges.filter((e) => !this._edges[e.id]);
         newEdges = this.filterInvalidEdges<EDT>(newEdges);
         newEdges.forEach((e) => (this._edges[e.id] = e));
 
