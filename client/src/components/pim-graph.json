@@ -539,96 +539,6 @@
                 "primary": "row",
                 "secondary": "asset."
             }
-        },
-        "simple-node-a2c16d88-4d9e-4a28-a282-291964e26baf": {
-            "id": "simple-node-a2c16d88-4d9e-4a28-a282-291964e26baf",
-            "objectType": "node",
-            "objectSubType": "simple-node",
-            "ports": {
-                "port-c2fea150-0cbd-475c-ad9f-f9ddf4a3d9df": {
-                    "id": "port-c2fea150-0cbd-475c-ad9f-f9ddf4a3d9df",
-                    "attachment": 2,
-                    "offset": "0.5%",
-                    "normal": {
-                        "x": 1,
-                        "y": 0
-                    },
-                    "position": {
-                        "x": 83,
-                        "y": 0
-                    }
-                },
-                "port-101c5712-f83a-4d10-a43b-33b4bae03d95": {
-                    "id": "port-101c5712-f83a-4d10-a43b-33b4bae03d95",
-                    "attachment": 4,
-                    "offset": "0.5%",
-                    "normal": {
-                        "x": -1,
-                        "y": 0
-                    },
-                    "position": {
-                        "x": 166,
-                        "y": 0
-                    }
-                }
-            },
-            "position": {
-                "x": 340,
-                "y": 540
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "base",
-                "secondary": "asset."
-            }
-        },
-        "simple-node-2ca99593-8f75-4da9-b4fb-61f0187c5c2b": {
-            "id": "simple-node-2ca99593-8f75-4da9-b4fb-61f0187c5c2b",
-            "objectType": "node",
-            "objectSubType": "simple-node",
-            "ports": {
-                "port-fea8cfd3-da23-45e4-8809-d6a8f4bd7f5a": {
-                    "id": "port-fea8cfd3-da23-45e4-8809-d6a8f4bd7f5a",
-                    "attachment": 2,
-                    "offset": "0.5%",
-                    "normal": {
-                        "x": 1,
-                        "y": 0
-                    },
-                    "position": {
-                        "x": 83,
-                        "y": 0
-                    }
-                },
-                "port-a35b858d-70e8-4ec0-8c39-e86a8d4ea207": {
-                    "id": "port-a35b858d-70e8-4ec0-8c39-e86a8d4ea207",
-                    "attachment": 4,
-                    "offset": "0.5%",
-                    "normal": {
-                        "x": -1,
-                        "y": 0
-                    },
-                    "position": {
-                        "x": 83,
-                        "y": 0
-                    }
-                }
-            },
-            "position": {
-                "x": 600,
-                "y": 540
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "geometry",
-                "secondary": "asset."
-            }
         }
     },
     "edges": {
@@ -653,19 +563,7 @@
             "endNodeId": "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad",
             "endPortId": "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1",
             "customData": {
-                "type": "ConfigRef"
-            }
-        },
-        "simple-edge-fa22c8f3-d06e-4178-b288-c1707a29ac06": {
-            "id": "simple-edge-fa22c8f3-d06e-4178-b288-c1707a29ac06",
-            "objectType": "edge",
-            "objectSubType": "simple-edge",
-            "startNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
-            "startPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
-            "endNodeId": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
-            "endPortId": "port-f038038c-e459-4663-95ca-52ad8cb1bca6",
-            "customData": {
-                "type": "RowRef"
+                "type": "Contains"
             }
         },
         "simple-edge-87e09fc9-cdce-4976-8931-6b4c21e7642a": {
@@ -677,19 +575,7 @@
             "endNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
             "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
             "customData": {
-                "type": "TableRef"
-            }
-        },
-        "simple-edge-eaa817c3-dfdc-4b2d-9910-ff7c88cb14e4": {
-            "id": "simple-edge-eaa817c3-dfdc-4b2d-9910-ff7c88cb14e4",
-            "objectType": "edge",
-            "objectSubType": "simple-edge",
-            "startNodeId": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
-            "startPortId": "port-ae75f409-578e-4015-a47f-5d6ee56af507",
-            "endNodeId": "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad",
-            "endPortId": "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1",
-            "customData": {
-                "type": "MemberRef"
+                "type": "Contains"
             }
         },
         "simple-edge-83d2c281-02bf-45d7-90c7-6efda6a3a487": {
@@ -700,18 +586,6 @@
             "startPortId": "port-f038038c-e459-4663-95ca-52ad8cb1bca6",
             "endNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
             "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
-            "customData": {
-                "type": "AssemblyRef"
-            }
-        },
-        "simple-edge-60009e59-0411-4376-a33c-74c482ac8952": {
-            "id": "simple-edge-60009e59-0411-4376-a33c-74c482ac8952",
-            "objectType": "edge",
-            "objectSubType": "simple-edge",
-            "startNodeId": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
-            "startPortId": "port-ae75f409-578e-4015-a47f-5d6ee56af507",
-            "endNodeId": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
-            "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
             "customData": {
                 "type": "Use"
             }
@@ -725,19 +599,7 @@
             "endNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
             "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
             "customData": {
-                "type": "Describe"
-            }
-        },
-        "simple-edge-3176e43e-ae68-48ec-a16e-5ea61cfbc516": {
-            "id": "simple-edge-3176e43e-ae68-48ec-a16e-5ea61cfbc516",
-            "objectType": "edge",
-            "objectSubType": "simple-edge",
-            "startNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
-            "startPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
-            "endNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
-            "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
-            "customData": {
-                "type": "Derive"
+                "type": "Contains"
             }
         },
         "simple-edge-1f7faa10-f5e3-43e5-bf66-3c48e4080021": {
@@ -761,7 +623,7 @@
             "endNodeId": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
             "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
             "customData": {
-                "type": "ConfigRef"
+                "type": "Contains"
             }
         },
         "simple-edge-8461af31-4476-4db5-8a3c-a7782cf37ada": {
@@ -769,11 +631,11 @@
             "objectType": "edge",
             "objectSubType": "simple-edge",
             "startNodeId": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
-            "startPortId": "port-62f3abd6-2ab3-400c-a99f-e7f3b227f807",
+            "startPortId": "port-d83bf9b5-dc14-484e-a487-693a5b949cdf",
             "endNodeId": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
-            "endPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
+            "endPortId": "port-97746000-d23d-4beb-a899-8a7df3dc063e",
             "customData": {
-                "type": "RowRef"
+                "type": "Contains"
             }
         },
         "simple-edge-5260e59c-7f7b-4a0e-a19d-76dac59a09ea": {
@@ -785,19 +647,7 @@
             "endNodeId": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
             "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
             "customData": {
-                "type": "TableRef"
-            }
-        },
-        "simple-edge-2b21e7a6-a1c4-434e-a28f-c6729f3c848d": {
-            "id": "simple-edge-2b21e7a6-a1c4-434e-a28f-c6729f3c848d",
-            "objectType": "edge",
-            "objectSubType": "simple-edge",
-            "startNodeId": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
-            "startPortId": "port-d83bf9b5-dc14-484e-a487-693a5b949cdf",
-            "endNodeId": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
-            "endPortId": "port-46ce2307-40ad-4258-8f36-6ca5de4cc944",
-            "customData": {
-                "type": "MemberRef"
+                "type": "FactoryRef"
             }
         },
         "simple-edge-2dcc2a82-688d-41ff-871d-dc31228dd8d0": {
@@ -809,31 +659,7 @@
             "endNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
             "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
             "customData": {
-                "type": "AssemblyRef"
-            }
-        },
-        "simple-edge-ed2d275a-5bd2-4f37-bfff-9410784488d7": {
-            "id": "simple-edge-ed2d275a-5bd2-4f37-bfff-9410784488d7",
-            "objectType": "edge",
-            "objectSubType": "simple-edge",
-            "startNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
-            "startPortId": "port-fb8b70e5-b952-4049-ac02-e88dd0711e45",
-            "endNodeId": "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589",
-            "endPortId": "port-6ccccf76-3b43-4d36-8043-2e559807c5f7",
-            "customData": {
-                "type": "Use"
-            }
-        },
-        "simple-edge-a864e623-79eb-4959-94d3-3e111ca167d0": {
-            "id": "simple-edge-a864e623-79eb-4959-94d3-3e111ca167d0",
-            "objectType": "edge",
-            "objectSubType": "simple-edge",
-            "startNodeId": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
-            "startPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
-            "endNodeId": "simple-node-a2c16d88-4d9e-4a28-a282-291964e26baf",
-            "endPortId": "port-101c5712-f83a-4d10-a43b-33b4bae03d95",
-            "customData": {
-                "type": "Describe"
+                "type": "Contains"
             }
         },
         "simple-edge-d1e1964d-1aeb-4d8e-874e-81028bc1ee52": {
@@ -845,7 +671,7 @@
             "endNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
             "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
             "customData": {
-                "type": "Derive"
+                "type": "RowRef"
             }
         },
         "simple-edge-01b72279-3664-47d1-8b31-6718be5cd389": {
@@ -857,7 +683,91 @@
             "endNodeId": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
             "endPortId": "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545",
             "customData": {
+                "type": "Describes"
+            }
+        },
+        "simple-edge-1c3fcf2e-2458-45c5-91aa-ff0eff239e05": {
+            "id": "simple-edge-1c3fcf2e-2458-45c5-91aa-ff0eff239e05",
+            "objectType": "edge",
+            "objectSubType": "simple-edge",
+            "startNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
+            "startPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
+            "endNodeId": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
+            "endPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
+            "customData": {
+                "type": "ConfigurationRef"
+            }
+        },
+        "simple-edge-1fbc2f6e-f86e-4c6a-b0ed-cd7e22b53253": {
+            "id": "simple-edge-1fbc2f6e-f86e-4c6a-b0ed-cd7e22b53253",
+            "objectType": "edge",
+            "objectSubType": "simple-edge",
+            "startNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
+            "startPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
+            "endNodeId": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
+            "endPortId": "port-6cf70144-0054-451e-8b18-d475d3f4bc5d",
+            "customData": {
                 "type": "Contains"
+            }
+        },
+        "simple-edge-d5c42ef8-d75a-462c-93e5-0cb753db26fc": {
+            "id": "simple-edge-d5c42ef8-d75a-462c-93e5-0cb753db26fc",
+            "objectType": "edge",
+            "objectSubType": "simple-edge",
+            "startNodeId": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
+            "startPortId": "port-46ce2307-40ad-4258-8f36-6ca5de4cc944",
+            "endNodeId": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
+            "endPortId": "port-d83bf9b5-dc14-484e-a487-693a5b949cdf",
+            "customData": {
+                "type": "MemberRef"
+            }
+        },
+        "simple-edge-5bfa3cfa-55fa-4beb-8936-f47675239105": {
+            "id": "simple-edge-5bfa3cfa-55fa-4beb-8936-f47675239105",
+            "objectType": "edge",
+            "objectSubType": "simple-edge",
+            "startNodeId": "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589",
+            "startPortId": "port-6ccccf76-3b43-4d36-8043-2e559807c5f7",
+            "endNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
+            "endPortId": "port-fb8b70e5-b952-4049-ac02-e88dd0711e45",
+            "customData": {
+                "type": "TableView"
+            }
+        },
+        "simple-edge-9d1ad86b-0f2a-4e29-bae3-7c60aac23cbe": {
+            "id": "simple-edge-9d1ad86b-0f2a-4e29-bae3-7c60aac23cbe",
+            "objectType": "edge",
+            "objectSubType": "simple-edge",
+            "startNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
+            "startPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
+            "endNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
+            "endPortId": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
+            "customData": {
+                "type": "Use"
+            }
+        },
+        "simple-edge-546eb7d9-1811-42d7-9538-4956921a6b73": {
+            "id": "simple-edge-546eb7d9-1811-42d7-9538-4956921a6b73",
+            "objectType": "edge",
+            "objectSubType": "simple-edge",
+            "startNodeId": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
+            "startPortId": "port-f038038c-e459-4663-95ca-52ad8cb1bca6",
+            "endNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
+            "endPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
+            "customData": {
+                "type": "Use"
+            }
+        },
+        "simple-edge-12e9074a-b621-4bdf-88b3-29356bdc9ced": {
+            "id": "simple-edge-12e9074a-b621-4bdf-88b3-29356bdc9ced",
+            "objectType": "edge",
+            "objectSubType": "simple-edge",
+            "startNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
+            "startPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
+            "endNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
+            "endPortId": "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870",
+            "customData": {
+                "type": "Use"
             }
         }
     }
