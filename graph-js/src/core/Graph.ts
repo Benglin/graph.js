@@ -100,6 +100,29 @@ export class Graph {
         edgeIds.forEach((edgeId) => delete this._edges[edgeId]);
     }
 
+    public centerNodesOnView(): void {
+        // this._container
+        const nodes = Object.values(this._nodes) as GraphNode<unknown>[];
+        const xs = nodes.map((n) => n.position.x);
+        const ys = nodes.map((n) => n.position.y);
+
+        const minx = Math.min(...xs);
+        const maxx = Math.max(...xs);
+        const miny = Math.min(...ys);
+        const maxy = Math.max(...ys);
+
+        const midx = (minx + maxx) / 2;
+        const midy = (miny + maxy) / 2;
+
+        const svgx = this._container.clientWidth / 2;
+        const svgy = this._container.clientHeight / 2;
+
+        nodes.forEach((n) => {
+            n.position.x = n.position.x - midx + svgx;
+            n.position.y = n.position.y - midy + svgy;
+        });
+    }
+
     public invalidate(): void {
         const layers = Object.values(this._layers) as GraphLayer[];
         layers.forEach((l) => l.invalidate());
