@@ -72,39 +72,47 @@
 }
 
 .simple-edge.contains {
-    stroke: tomato;
+    stroke: #a60311;
 }
 
 .simple-edge.config-ref {
-    stroke: blueviolet;
+    stroke: #7d3c98;
 }
 
 .simple-edge.row-ref {
-    stroke: chocolate;
+    stroke: #e74c3c;
 }
 
 .simple-edge.table-ref {
-    stroke: crimson;
+    stroke: #17a589;
+}
+
+.simple-edge.table-view {
+    stroke: #000000;
 }
 
 .simple-edge.member-ref {
-    stroke: darkgreen;
+    stroke: #d4ac0d;
 }
 
 .simple-edge.assembly-ref {
-    stroke: darkseagreen;
+    stroke: #3498db;
 }
 
 .simple-edge.use {
-    stroke: dodgerblue;
+    stroke: #004080;
 }
 
 .simple-edge.describe {
-    stroke: fuchsia;
+    stroke: #008000;
 }
 
 .simple-edge.derive {
-    stroke: orangered;
+    stroke: #d31dca;
+}
+
+.simple-edge.factory-ref {
+    stroke: #ba4a00;
 }
 
 .annotation text {
