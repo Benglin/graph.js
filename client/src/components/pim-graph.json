@@ -42,7 +42,8 @@
             },
             "customData": {
                 "primary": "documentation",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 3
             }
         },
         "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2": {
@@ -87,7 +88,8 @@
             },
             "customData": {
                 "primary": "drawing",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 3
             }
         },
         "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad": {
@@ -132,7 +134,8 @@
             },
             "customData": {
                 "primary": "sheets",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 3
             }
         },
         "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619": {
@@ -177,7 +180,8 @@
             },
             "customData": {
                 "primary": "release",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 2
             }
         },
         "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113": {
@@ -222,7 +226,8 @@
             },
             "customData": {
                 "primary": "lifecycle",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 2
             }
         },
         "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544": {
@@ -267,7 +272,8 @@
             },
             "customData": {
                 "primary": "product",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 1
             }
         },
         "simple-node-a2042e41-53f8-415c-be70-a1371328f84c": {
@@ -312,7 +318,8 @@
             },
             "customData": {
                 "primary": "design",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 1
             }
         },
         "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80": {
@@ -357,7 +364,8 @@
             },
             "customData": {
                 "primary": "model",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 1
             }
         },
         "simple-node-2be4703c-7d03-4595-a455-01d9f662f672": {
@@ -402,7 +410,8 @@
             },
             "customData": {
                 "primary": "configuration",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 2
             }
         },
         "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121": {
@@ -447,7 +456,8 @@
             },
             "customData": {
                 "primary": "configurationTable",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 2
             }
         },
         "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589": {
@@ -492,7 +502,8 @@
             },
             "customData": {
                 "primary": "tableView",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 2
             }
         },
         "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7": {
@@ -537,7 +548,8 @@
             },
             "customData": {
                 "primary": "row",
-                "secondary": "asset."
+                "secondary": "asset.",
+                "level": 3
             }
         }
     },

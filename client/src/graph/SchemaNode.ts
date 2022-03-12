@@ -4,6 +4,7 @@ import { GraphNode, GroupSelection, NodeDescriptor } from "graph-js";
 export interface SimpleNodeData {
     primary: string;
     secondary: string;
+    level: number;
 }
 
 type SvgRectSelection = Selection<SVGRectElement, unknown, HTMLElement, any>;
