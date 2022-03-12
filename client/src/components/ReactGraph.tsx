@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { createGraph, Graph } from "graph-js";
+import { createGraph, Graph, GraphSerializer } from "graph-js";
 import { GraphObjectFactory } from "../graph/GraphObjectFactory";
 import graphJson from "./pim-graph.json";
 
@@ -15,7 +15,14 @@ export function ReactGraph(props: ReactGraphProps): JSX.Element {
     useEffect(() => {
         if (!graphRef.current) {
             graphRef.current = createGraph("graph-container", new GraphObjectFactory());
-            graphRef.current.deserializeFromJson(graphJson);
+
+            const factory = graphRef.current.graphObjectFactory;
+            const results = GraphSerializer.fromSerializable(factory, graphJson);
+
+            graphRef.current.addNodes(results.nodes);
+            graphRef.current.addEdges(results.edges);
+            graphRef.current.centerNodesOnView();
+
             graphRef.current.invalidate();
             props.onGraphCreated(graphRef.current);
         }
