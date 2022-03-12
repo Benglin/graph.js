@@ -19,13 +19,13 @@ export class GraphNodesManager {
             return [];
         }
 
-        const currLevel = this._nodes[nodeId].data.level;
+        const currLevel = this._nodes[nodeId].data!.level;
         const nextLevel = currLevel + 1;
 
         const thisObject = this;
         function filter(nodeId: string): boolean {
             const node = thisObject._nodes[nodeId];
-            return node.data.level === nextLevel;
+            return node.data!.level === nextLevel;
         }
 
         const collected: string[] = [];
@@ -38,8 +38,16 @@ export class GraphNodesManager {
             return [];
         }
 
+        const currLevel = this._nodes[nodeId].data!.level;
+
+        const thisObject = this;
+        function filter(nodeId: string): boolean {
+            const node = thisObject._nodes[nodeId];
+            return node.data!.level > currLevel;
+        }
+
         const collected: string[] = [];
-        this.traverseFrom(nodeId, collected, () => true);
+        this.traverseFrom(nodeId, collected, filter);
         return collected.map((nid) => this._nodes[nid]);
     }
 
@@ -50,23 +58,24 @@ export class GraphNodesManager {
     private traverseFrom(nodeId: string, collected: string[], filter: FilterFunc): void {
         const adjacentNodes = this.getAdjacentNodes(nodeId);
         const accepted = adjacentNodes.filter((nodeId) => filter(nodeId));
-
         const unique = accepted.filter((nid) => collected.indexOf(nid) === -1);
+
+        collected.push(...unique);
         unique.forEach((nodeId) => this.traverseFrom(nodeId, collected, filter));
     }
 
     private getAdjacentNodes(nodeId: string): string[] {
-        const adjacentNodes: string[] = [];
+        const adjacentNodes: { [nodeId: string]: boolean } = {};
 
         const edges = this.getAllEdges();
         edges.forEach((edge) => {
             if (edge.startNodeId === nodeId) {
-                adjacentNodes.push(edge.endNodeId);
+                adjacentNodes[edge.endNodeId] = true;
             } else if (edge.endNodeId === nodeId) {
-                adjacentNodes.push(edge.startNodeId);
+                adjacentNodes[edge.startNodeId] = true;
             }
         });
 
-        return adjacentNodes;
+        return Object.keys(adjacentNodes);
     }
 }
