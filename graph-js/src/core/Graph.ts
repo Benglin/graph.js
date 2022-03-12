@@ -47,6 +47,7 @@ export class Graph {
     }
 
     public addEdges<EDT>(newEdges: GraphEdge<EDT>[]): string[] {
+        newEdges = this.filterInvalidEdges<EDT>(newEdges);
         newEdges.forEach((e) => (this._edges[e.id] = e));
 
         const defaultLayer = this._layers[this._defaultLayerId] as GraphLayer;
@@ -139,6 +140,20 @@ export class Graph {
 
     public get graphObjectFactory(): IGraphObjectFactory {
         return this._factory;
+    }
+
+    private filterInvalidEdges<EDT>(newEdges: GraphEdge<EDT>[]): GraphEdge<EDT>[] {
+        const validEdges: GraphEdge<EDT>[] = [];
+
+        newEdges.forEach((edge) => {
+            const startNodeId = edge.startNodeId;
+            const endNodeId = edge.endNodeId;
+            if (this._nodes[startNodeId] && this._nodes[endNodeId]) {
+                validEdges.push(edge);
+            }
+        });
+
+        return validEdges;
     }
 
     private createLayer(): GraphLayer {
