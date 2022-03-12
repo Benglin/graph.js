@@ -29,14 +29,17 @@ export class Graph {
     }
 
     public serializeAsJson(): string {
-        const serializer = new GraphSerializer(this);
-        const serializable = serializer.toSerializable();
+        const serializable = GraphSerializer.toSerializable(this);
         return JSON.stringify(serializable, undefined, 4);
     }
 
     public deserializeFromJson(graphSpecs: GraphSpecs): void {
-        const serializer = new GraphSerializer(this);
-        serializer.fromSerializable(graphSpecs);
+        const factory = this.graphObjectFactory;
+        const results = GraphSerializer.fromSerializable(factory, graphSpecs);
+
+        this.addNodes(results.nodes);
+        this.addEdges(results.edges);
+        this.centerNodesOnView();
     }
 
     public addNodes<NDT>(nodes: GraphNode<NDT>[]): void {

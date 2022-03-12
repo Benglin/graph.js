@@ -2,6 +2,7 @@ import { Graph } from "./../core/Graph";
 import { GraphEdge } from "./../core/GraphEdge";
 import { GraphNode } from "./../core/GraphNode";
 import { EdgeDescriptor, NodeDescriptor } from "..";
+import { IGraphObjectFactory } from "../core/GraphObjectFactory";
 
 export interface GraphSpecs {
     nodes: Record<string, any>;
@@ -9,30 +10,28 @@ export interface GraphSpecs {
 }
 
 export class GraphSerializer {
-    private readonly _graph: Graph;
-
-    constructor(graph: Graph) {
-        this._graph = graph;
-    }
-
-    public toSerializable(): Record<string, any> {
+    public static toSerializable(graph: Graph): Record<string, any> {
         const graphSpecs: GraphSpecs = {
             nodes: {},
             edges: {},
         };
 
-        const nodes = this._graph.getNodes();
+        const nodes = graph.getNodes();
         nodes.forEach((node) => (graphSpecs.nodes[node.id] = node.toSerializable()));
 
-        const edges = this._graph.getEdges();
+        const edges = graph.getEdges();
         edges.forEach((edge) => (graphSpecs.edges[edge.id] = edge.toSerializable()));
 
         return graphSpecs;
     }
 
-    public fromSerializable(graphSpecs: GraphSpecs): void {
-        const factory = this._graph.graphObjectFactory;
-
+    public static fromSerializable(
+        factory: IGraphObjectFactory,
+        graphSpecs: GraphSpecs
+    ): {
+        nodes: GraphNode<unknown>[];
+        edges: GraphEdge<unknown>[];
+    } {
         const nodeSpecs = Object.values(graphSpecs.nodes);
         const graphNodes = nodeSpecs.map((ns) => {
             const descriptor = NodeDescriptor.fromSerializable(ns);
@@ -47,8 +46,6 @@ export class GraphSerializer {
             return graphObject as GraphEdge<unknown>;
         });
 
-        this._graph.addNodes(graphNodes);
-        this._graph.addEdges(graphEdges);
-        this._graph.centerNodesOnView();
+        return { nodes: graphNodes, edges: graphEdges };
     }
 }
