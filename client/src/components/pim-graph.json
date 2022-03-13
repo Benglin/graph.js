@@ -4,6 +4,19 @@
             "id": "simple-node-44c6e49d-e181-4303-8b99-7e4acac95818",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "documentation",
+                "secondary": "asset.",
+                "level": 3
+            },
+            "position": {
+                "x": 305,
+                "y": 351
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-d6592776-48a4-4c59-9f7d-326cc5cd187c": {
                     "id": "port-d6592776-48a4-4c59-9f7d-326cc5cd187c",
@@ -14,8 +27,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 32
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-2fe04e2d-68ce-46ba-9319-afdedca14f51": {
@@ -27,29 +40,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 32
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 80,
-                "y": 20
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "documentation",
-                "secondary": "asset.",
-                "level": 3
             }
         },
         "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2": {
             "id": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "drawing",
+                "secondary": "asset.",
+                "level": 3
+            },
+            "position": {
+                "x": 656.1787559186552,
+                "y": 239.22251327139398
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f": {
                     "id": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
@@ -60,8 +73,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224": {
@@ -73,29 +86,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 340,
-                "y": 20
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "drawing",
-                "secondary": "asset.",
-                "level": 3
             }
         },
         "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad": {
             "id": "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "sheets",
+                "secondary": "asset.",
+                "level": 3
+            },
+            "position": {
+                "x": 1008,
+                "y": 312
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-bb19127a-e58e-469f-9f43-80406828f2af": {
                     "id": "port-bb19127a-e58e-469f-9f43-80406828f2af",
@@ -106,8 +119,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1": {
@@ -119,29 +132,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 600,
-                "y": 20
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "sheets",
-                "secondary": "asset.",
-                "level": 3
             }
         },
         "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619": {
             "id": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "release",
+                "secondary": "asset.",
+                "level": 2
+            },
+            "position": {
+                "x": 652.4288457398033,
+                "y": 486.3636298207016
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-ae75f409-578e-4015-a47f-5d6ee56af507": {
                     "id": "port-ae75f409-578e-4015-a47f-5d6ee56af507",
@@ -152,8 +165,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-f038038c-e459-4663-95ca-52ad8cb1bca6": {
@@ -165,29 +178,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 340,
-                "y": 150
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "release",
-                "secondary": "asset.",
-                "level": 2
             }
         },
         "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113": {
             "id": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "lifecycle",
+                "secondary": "asset.",
+                "level": 2
+            },
+            "position": {
+                "x": 1043.004950578479,
+                "y": 553.9930105243906
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-e900a8c6-0540-4557-b332-8ddaaf737685": {
                     "id": "port-e900a8c6-0540-4557-b332-8ddaaf737685",
@@ -198,8 +211,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-729116b5-2961-4849-b05b-9ab1680fab7d": {
@@ -211,29 +224,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 600,
-                "y": 150
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "lifecycle",
-                "secondary": "asset.",
-                "level": 2
             }
         },
         "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544": {
             "id": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "product",
+                "secondary": "asset.",
+                "level": 1
+            },
+            "position": {
+                "x": 311.1407301759631,
+                "y": 623.4593769779082
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-62f3abd6-2ab3-400c-a99f-e7f3b227f807": {
                     "id": "port-62f3abd6-2ab3-400c-a99f-e7f3b227f807",
@@ -244,8 +257,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 32
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-d83bf9b5-dc14-484e-a487-693a5b949cdf": {
@@ -257,29 +270,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 32
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 80,
-                "y": 280
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "product",
-                "secondary": "asset.",
-                "level": 1
             }
         },
         "simple-node-a2042e41-53f8-415c-be70-a1371328f84c": {
             "id": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "design",
+                "secondary": "asset.",
+                "level": 1
+            },
+            "position": {
+                "x": 665.4573742354406,
+                "y": 712.2140544059648
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870": {
                     "id": "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870",
@@ -290,8 +303,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-242cf134-03ed-47cd-8f12-05157cfccb8e": {
@@ -303,29 +316,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 340,
-                "y": 280
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "design",
-                "secondary": "asset.",
-                "level": 1
             }
         },
         "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80": {
             "id": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "model",
+                "secondary": "asset.",
+                "level": 1
+            },
+            "position": {
+                "x": 1029.205763552717,
+                "y": 762.3803234039499
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545": {
                     "id": "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545",
@@ -336,8 +349,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-92643f69-2a04-40a9-8c98-5641e73c7aa1": {
@@ -349,29 +362,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 600,
-                "y": 280
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "model",
-                "secondary": "asset.",
-                "level": 1
             }
         },
         "simple-node-2be4703c-7d03-4595-a455-01d9f662f672": {
             "id": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "configuration",
+                "secondary": "asset.",
+                "level": 2
+            },
+            "position": {
+                "x": 355.704485926037,
+                "y": 849.6567866023355
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-7c9c5403-fa81-4011-b674-b465f3f95e96": {
                     "id": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
@@ -382,8 +395,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 32
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-97746000-d23d-4beb-a899-8a7df3dc063e": {
@@ -395,29 +408,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 32
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 80,
-                "y": 410
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "configuration",
-                "secondary": "asset.",
-                "level": 2
             }
         },
         "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121": {
             "id": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "configurationTable",
+                "secondary": "asset.",
+                "level": 2
+            },
+            "position": {
+                "x": 733.1801058950058,
+                "y": 1016.966084856924
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-fb8b70e5-b952-4049-ac02-e88dd0711e45": {
                     "id": "port-fb8b70e5-b952-4049-ac02-e88dd0711e45",
@@ -428,8 +441,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385": {
@@ -441,29 +454,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 340,
-                "y": 410
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "configurationTable",
-                "secondary": "asset.",
-                "level": 2
             }
         },
         "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589": {
             "id": "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "tableView",
+                "secondary": "asset.",
+                "level": 2
+            },
+            "position": {
+                "x": 1062,
+                "y": 931
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-46bf3a1d-5cf2-42fc-8370-f8a00e385683": {
                     "id": "port-46bf3a1d-5cf2-42fc-8370-f8a00e385683",
@@ -474,8 +487,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-6ccccf76-3b43-4d36-8043-2e559807c5f7": {
@@ -487,29 +500,29 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 0
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 600,
-                "y": 410
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "tableView",
-                "secondary": "asset.",
-                "level": 2
             }
         },
         "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7": {
             "id": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
             "objectType": "node",
             "objectSubType": "simple-node",
+            "customData": {
+                "primary": "row",
+                "secondary": "asset.",
+                "level": 3
+            },
+            "position": {
+                "x": 428,
+                "y": 1062
+            },
+            "dimension": {
+                "width": 200,
+                "height": 32
+            },
             "ports": {
                 "port-6cf70144-0054-451e-8b18-d475d3f4bc5d": {
                     "id": "port-6cf70144-0054-451e-8b18-d475d3f4bc5d",
@@ -520,8 +533,8 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 83,
-                        "y": 32
+                        "_x": 200,
+                        "_y": 16
                     }
                 },
                 "port-46ce2307-40ad-4258-8f36-6ca5de4cc944": {
@@ -533,23 +546,10 @@
                         "y": 0
                     },
                     "position": {
-                        "x": 166,
-                        "y": 32
+                        "_x": 0,
+                        "_y": 16
                     }
                 }
-            },
-            "position": {
-                "x": 80,
-                "y": 540
-            },
-            "dimension": {
-                "width": 200,
-                "height": 32
-            },
-            "customData": {
-                "primary": "row",
-                "secondary": "asset.",
-                "level": 3
             }
         }
     },
@@ -558,229 +558,229 @@
             "id": "simple-edge-f0c0808f-4183-45ec-a391-8f0d78d834f3",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-44c6e49d-e181-4303-8b99-7e4acac95818",
             "startPortId": "port-d6592776-48a4-4c59-9f7d-326cc5cd187c",
             "endNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
-            "endPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224"
         },
         "simple-edge-c83dcd45-1a7b-4b08-81db-0f010fc0a6ba": {
             "id": "simple-edge-c83dcd45-1a7b-4b08-81db-0f010fc0a6ba",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
             "startPortId": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
             "endNodeId": "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad",
-            "endPortId": "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-df353cd9-27a8-4b21-9bd2-e868cf1984a1"
         },
         "simple-edge-87e09fc9-cdce-4976-8931-6b4c21e7642a": {
             "id": "simple-edge-87e09fc9-cdce-4976-8931-6b4c21e7642a",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
             "startPortId": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
             "endNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
-            "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d"
         },
         "simple-edge-83d2c281-02bf-45d7-90c7-6efda6a3a487": {
             "id": "simple-edge-83d2c281-02bf-45d7-90c7-6efda6a3a487",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Use"
+            },
             "startNodeId": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
             "startPortId": "port-f038038c-e459-4663-95ca-52ad8cb1bca6",
             "endNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
-            "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
-            "customData": {
-                "type": "Use"
-            }
+            "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e"
         },
         "simple-edge-563b4ca2-4ed4-4bb2-97df-ea9265d809d1": {
             "id": "simple-edge-563b4ca2-4ed4-4bb2-97df-ea9265d809d1",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
             "startPortId": "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870",
             "endNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
-            "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d"
         },
         "simple-edge-1f7faa10-f5e3-43e5-bf66-3c48e4080021": {
             "id": "simple-edge-1f7faa10-f5e3-43e5-bf66-3c48e4080021",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
             "startPortId": "port-62f3abd6-2ab3-400c-a99f-e7f3b227f807",
             "endNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
-            "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-242cf134-03ed-47cd-8f12-05157cfccb8e"
         },
         "simple-edge-1f6409ea-cf03-495d-bd2a-d2f49af202d0": {
             "id": "simple-edge-1f6409ea-cf03-495d-bd2a-d2f49af202d0",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
             "startPortId": "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870",
             "endNodeId": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
-            "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1"
         },
         "simple-edge-8461af31-4476-4db5-8a3c-a7782cf37ada": {
             "id": "simple-edge-8461af31-4476-4db5-8a3c-a7782cf37ada",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
             "startPortId": "port-d83bf9b5-dc14-484e-a487-693a5b949cdf",
             "endNodeId": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
-            "endPortId": "port-97746000-d23d-4beb-a899-8a7df3dc063e",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-97746000-d23d-4beb-a899-8a7df3dc063e"
         },
         "simple-edge-5260e59c-7f7b-4a0e-a19d-76dac59a09ea": {
             "id": "simple-edge-5260e59c-7f7b-4a0e-a19d-76dac59a09ea",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "FactoryRef"
+            },
             "startNodeId": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
             "startPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
             "endNodeId": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
-            "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1",
-            "customData": {
-                "type": "FactoryRef"
-            }
+            "endPortId": "port-92643f69-2a04-40a9-8c98-5641e73c7aa1"
         },
         "simple-edge-2dcc2a82-688d-41ff-871d-dc31228dd8d0": {
             "id": "simple-edge-2dcc2a82-688d-41ff-871d-dc31228dd8d0",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
             "startPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
             "endNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
-            "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385"
         },
         "simple-edge-d1e1964d-1aeb-4d8e-874e-81028bc1ee52": {
             "id": "simple-edge-d1e1964d-1aeb-4d8e-874e-81028bc1ee52",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "RowRef"
+            },
             "startNodeId": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
             "startPortId": "port-6cf70144-0054-451e-8b18-d475d3f4bc5d",
             "endNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
-            "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
-            "customData": {
-                "type": "RowRef"
-            }
+            "endPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385"
         },
         "simple-edge-01b72279-3664-47d1-8b31-6718be5cd389": {
             "id": "simple-edge-01b72279-3664-47d1-8b31-6718be5cd389",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Describes"
+            },
             "startNodeId": "simple-node-390886aa-a28d-4253-b850-7ef69f66b5ad",
             "startPortId": "port-bb19127a-e58e-469f-9f43-80406828f2af",
             "endNodeId": "simple-node-074ee35b-b547-43e8-8bcb-fedca74c7b80",
-            "endPortId": "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545",
-            "customData": {
-                "type": "Describes"
-            }
+            "endPortId": "port-bbf0d0d3-61be-4b0e-a4ff-19c6cf235545"
         },
         "simple-edge-1c3fcf2e-2458-45c5-91aa-ff0eff239e05": {
             "id": "simple-edge-1c3fcf2e-2458-45c5-91aa-ff0eff239e05",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "ConfigurationRef"
+            },
             "startNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
             "startPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
             "endNodeId": "simple-node-2be4703c-7d03-4595-a455-01d9f662f672",
-            "endPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96",
-            "customData": {
-                "type": "ConfigurationRef"
-            }
+            "endPortId": "port-7c9c5403-fa81-4011-b674-b465f3f95e96"
         },
         "simple-edge-1fbc2f6e-f86e-4c6a-b0ed-cd7e22b53253": {
             "id": "simple-edge-1fbc2f6e-f86e-4c6a-b0ed-cd7e22b53253",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Contains"
+            },
             "startNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
             "startPortId": "port-7a4ba126-80b9-42a3-98e7-55c2d1c34385",
             "endNodeId": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
-            "endPortId": "port-6cf70144-0054-451e-8b18-d475d3f4bc5d",
-            "customData": {
-                "type": "Contains"
-            }
+            "endPortId": "port-6cf70144-0054-451e-8b18-d475d3f4bc5d"
         },
         "simple-edge-d5c42ef8-d75a-462c-93e5-0cb753db26fc": {
             "id": "simple-edge-d5c42ef8-d75a-462c-93e5-0cb753db26fc",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "MemberRef"
+            },
             "startNodeId": "simple-node-9ef8f326-d1e8-49f7-8ff0-5708f8fc4de7",
             "startPortId": "port-46ce2307-40ad-4258-8f36-6ca5de4cc944",
             "endNodeId": "simple-node-1084ccc7-a76c-4c26-994f-08f0125cc544",
-            "endPortId": "port-d83bf9b5-dc14-484e-a487-693a5b949cdf",
-            "customData": {
-                "type": "MemberRef"
-            }
+            "endPortId": "port-d83bf9b5-dc14-484e-a487-693a5b949cdf"
         },
         "simple-edge-5bfa3cfa-55fa-4beb-8936-f47675239105": {
             "id": "simple-edge-5bfa3cfa-55fa-4beb-8936-f47675239105",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "TableView"
+            },
             "startNodeId": "simple-node-7ea797d7-90ad-4fbb-8b94-a74f61e29589",
             "startPortId": "port-6ccccf76-3b43-4d36-8043-2e559807c5f7",
             "endNodeId": "simple-node-525a3e34-fa78-4e6a-90f4-1fdbe1fe4121",
-            "endPortId": "port-fb8b70e5-b952-4049-ac02-e88dd0711e45",
-            "customData": {
-                "type": "TableView"
-            }
+            "endPortId": "port-fb8b70e5-b952-4049-ac02-e88dd0711e45"
         },
         "simple-edge-9d1ad86b-0f2a-4e29-bae3-7c60aac23cbe": {
             "id": "simple-edge-9d1ad86b-0f2a-4e29-bae3-7c60aac23cbe",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Use"
+            },
             "startNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
             "startPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
             "endNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
-            "endPortId": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f",
-            "customData": {
-                "type": "Use"
-            }
+            "endPortId": "port-b41f81b2-f24a-48f5-9d2c-7d98a99cb68f"
         },
         "simple-edge-546eb7d9-1811-42d7-9538-4956921a6b73": {
             "id": "simple-edge-546eb7d9-1811-42d7-9538-4956921a6b73",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Use"
+            },
             "startNodeId": "simple-node-d9881c04-2fd6-4f6c-9d30-be3b434d3619",
             "startPortId": "port-f038038c-e459-4663-95ca-52ad8cb1bca6",
             "endNodeId": "simple-node-d0bf68f2-1dcf-4ee0-96ff-5db8cb8e4ce2",
-            "endPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224",
-            "customData": {
-                "type": "Use"
-            }
+            "endPortId": "port-ab9bf32b-6b5d-47b3-a07a-9a1fd80ac224"
         },
         "simple-edge-12e9074a-b621-4bdf-88b3-29356bdc9ced": {
             "id": "simple-edge-12e9074a-b621-4bdf-88b3-29356bdc9ced",
             "objectType": "edge",
             "objectSubType": "simple-edge",
+            "customData": {
+                "type": "Use"
+            },
             "startNodeId": "simple-node-544a3f4c-2411-4a1f-b010-3c65c4acd113",
             "startPortId": "port-729116b5-2961-4849-b05b-9ab1680fab7d",
             "endNodeId": "simple-node-a2042e41-53f8-415c-be70-a1371328f84c",
-            "endPortId": "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870",
-            "customData": {
-                "type": "Use"
-            }
+            "endPortId": "port-f1c1a1ef-270d-4ba5-a8be-a61d176d1870"
         }
     }
 }
