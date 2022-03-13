@@ -84,6 +84,14 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
         this.renderCore(this._nodeGroup);
     }
 
+    protected raiseEvent(eventName: string, data: any): void {
+        this.graphLayer?.graph.dispatchEvent(
+            new CustomEvent(eventName, {
+                detail: data,
+            })
+        );
+    }
+
     private _getDescriptor(): NodeDescriptor<CustomDataType> {
         return this.descriptor as NodeDescriptor<CustomDataType>;
     }
