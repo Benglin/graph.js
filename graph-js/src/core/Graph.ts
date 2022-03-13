@@ -5,13 +5,18 @@ import { GraphLayer, GraphLayers } from "./GraphLayer";
 import { IGraphObjectFactory } from "./GraphObjectFactory";
 import { GraphSerializer, GraphSpecs } from "../data/GraphSerializer";
 
-export class Graph {
+type Listener = EventListenerOrEventListenerObject | null;
+type Listeners = { [type: string]: Listener[] };
+
+export class Graph implements EventTarget {
     private readonly _container: HTMLElement;
     private readonly _factory: IGraphObjectFactory;
 
     private readonly _nodes: GraphObjects = {};
     private readonly _edges: GraphObjects = {};
     private readonly _layers: GraphLayers = {};
+
+    private readonly _listeners: Listeners = {};
 
     private readonly _defaultLayerId: string;
 
@@ -139,6 +144,47 @@ export class Graph {
     public beginLayout(done: Function): void {
         const layer = this._layers[this._defaultLayerId] as GraphLayer;
         layer.beginLayout().then(() => done());
+    }
+
+    public addEventListener(type: string, callback: Listener, options?: boolean | AddEventListenerOptions): void {
+        if (this._listeners[type]) {
+            if (!this._listeners[type].includes(callback)) {
+                this._listeners[type].push(callback);
+            }
+        } else {
+            this._listeners[type] = [];
+            this._listeners[type].push(callback);
+        }
+    }
+
+    public dispatchEvent(event: Event): boolean {
+        let dispatched = false;
+
+        const listeners = this._listeners[event.type];
+        if (listeners && listeners.length > 0) {
+            listeners.forEach((listener) => {
+                if (listener) {
+                    dispatched = true;
+                    if ("handleEvent" in listener) {
+                        listener.handleEvent(event);
+                    } else {
+                        listener(event);
+                    }
+                }
+            });
+        }
+
+        return dispatched;
+    }
+
+    public removeEventListener(type: string, callback: Listener, options?: boolean | EventListenerOptions): void {
+        const listeners = this._listeners[type];
+        if (listeners) {
+            const index = listeners.indexOf(callback);
+            if (index >= 0) {
+                listeners.splice(index, 1);
+            }
+        }
     }
 
     public get container(): HTMLElement {
