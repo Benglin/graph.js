@@ -63,6 +63,10 @@ function GraphClientApp() {
                 graph.addNodes(nodes);
                 graph.addEdges(manager.getAllEdges());
                 graph.invalidate();
+            } else {
+                const nodes = manager.getDownstreamNodes(nodeId);
+                nodes.forEach((node) => (node.expanded = false));
+                graph.removeNodes(nodes.map((node) => node.id));
             }
 
             setLayoutInProgress(true);
