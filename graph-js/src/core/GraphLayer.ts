@@ -39,6 +39,10 @@ export class GraphLayer {
         return this._id;
     }
 
+    public get graph(): Graph {
+        return this._graph;
+    }
+
     public get annotationGroup(): GroupSelection {
         this._ensureAnnoGroupCreated();
         return this._annoGroup as GroupSelection;
