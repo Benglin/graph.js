@@ -82,8 +82,8 @@ export class ForceDirectedStrategy extends LayoutStrategy {
         this._simulation
             .force("link", linkForce)
             .force("charge", forceManyBody().strength(-1250))
-            .force("forceX", forceX(width / 2).strength(0.05))
-            .force("forceY", forceY(height / 2).strength(0.05));
+            .force("forceX", forceX(width / 2).strength(0.025))
+            .force("forceY", forceY(height / 2).strength(0.025));
 
         const thisObject = this;
         this._simulation
