@@ -10,6 +10,7 @@ export interface SimpleNodeData {
 type SvgRectSelection = Selection<SVGRectElement, unknown, HTMLElement, any>;
 
 export class SchemaNode extends GraphNode<SimpleNodeData> {
+    private _expanded: boolean = false;
     private _nodeRect: SvgRectSelection | undefined;
 
     protected destroyCore(nodeGroup: GroupSelection): void {
@@ -18,6 +19,7 @@ export class SchemaNode extends GraphNode<SimpleNodeData> {
 
     protected renderCore(nodeGroup: GroupSelection): void {
         if (!this._nodeRect) {
+            const nodeWidth = 207;
             const nodeHeight = 32;
             this._nodeRect = nodeGroup.append("rect").attr("height", nodeHeight);
 
@@ -62,10 +64,23 @@ export class SchemaNode extends GraphNode<SimpleNodeData> {
                 .attr("x", totalTextWidth + 27)
                 .attr("y", nodeHeight / 2)
                 .classed("version-text", true);
+
+            nodeGroup
+                .append("circle")
+                .attr("cx", nodeWidth - 25)
+                .attr("cy", nodeHeight / 2)
+                .attr("r", "8")
+                .attr("fill", "transparent")
+                .on("click", () => this._handleClick());
         }
     }
 
     public static fromDescriptor(desc: NodeDescriptor<SimpleNodeData>): SchemaNode {
         return new SchemaNode(desc);
+    }
+
+    private _handleClick(): void {
+        this.raiseEvent("toggle-expansion", { expand: !this._expanded, nodeId: this.id });
+        this._expanded = !this._expanded;
     }
 }
