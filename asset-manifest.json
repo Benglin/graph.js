@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/graph.js/static/css/main.943a879d.css",
+    "main.js": "/graph.js/static/js/main.569188c2.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/graph.js/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/artifakt-element-black.woff": "/graph.js/static/media/artifakt-element-black.f7b63986127288fac8ba.woff",
+    "static/media/artifakt-element-extra-bold.woff": "/graph.js/static/media/artifakt-element-extra-bold.4b3073e57e30dd84ba0a.woff",
+    "static/media/artifakt-element-regular.woff": "/graph.js/static/media/artifakt-element-regular.7eb3f7c4932fec595250.woff",
+    "static/media/artifakt-element-medium.woff": "/graph.js/static/media/artifakt-element-medium.98464c126668f0818a49.woff",
+    "index.html": "/graph.js/index.html",
+    "main.943a879d.css.map": "/graph.js/static/css/main.943a879d.css.map",
+    "main.569188c2.js.map": "/graph.js/static/js/main.569188c2.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/graph.js/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.943a879d.css",
+    "static/js/main.569188c2.js"
+  ]
+}
