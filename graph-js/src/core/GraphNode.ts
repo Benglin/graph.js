@@ -77,7 +77,7 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
         positionNodePorts(this.ports, this.dimension);
 
         this._nodeGroup
-            .selectChildren<SVGCircleElement, NodePort>("circle")
+            .selectChildren<SVGCircleElement, NodePort>("circle[name=node-port]")
             .data<NodePort>(this.ports, (d) => d.id)
             .join(GraphNode._createPorts);
 
@@ -101,6 +101,7 @@ export abstract class GraphNode<CustomDataType> extends GraphObject<CustomDataTy
     ): Selection<SVGCircleElement, NodePort, SVGGElement, unknown> {
         return elem
             .append("circle")
+            .attr("name", "node-port")
             .attr("r", "3.5")
             .attr("cx", (d) => d.position?.x || "0.0")
             .attr("cy", (d) => d.position?.y || "0.0");
