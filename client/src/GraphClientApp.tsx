@@ -17,6 +17,7 @@ function GraphClientApp() {
 
     function handleGraphCreated(graph: Graph): void {
         graphRef.current = graph;
+        graphRef.current.addEventListener("toggle-expansion", handleExpansion);
 
         const factory = graphRef.current.graphObjectFactory;
         const results = GraphSerializer.fromSerializable(factory, graphJson);
@@ -52,6 +53,13 @@ function GraphClientApp() {
             graphRef.current.invalidate();
             setLayoutInProgress(true);
             graphRef.current.beginLayout(() => setLayoutInProgress(false));
+        }
+    }
+
+    function handleExpansion(event: Event): void {
+        if (event.type === "toggle-expansion") {
+            const { nodeId, expand } = (event as CustomEvent).detail;
+            console.log(`${nodeId}: Expand = ${expand}`);
         }
     }
 
