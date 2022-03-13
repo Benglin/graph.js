@@ -43,16 +43,10 @@ function GraphClientApp() {
         }
     }
 
-    function handleExpandDesign(): void {
-        if (graphRef.current && nodesManagerRef.current) {
-            const mgr = nodesManagerRef.current;
-            const nodes = mgr.getImmediateNodes("simple-node-a2042e41-53f8-415c-be70-a1371328f84c");
-            graphRef.current.addNodes(nodes);
-            graphRef.current.addEdges(mgr.getAllEdges());
-
-            graphRef.current.invalidate();
-            setLayoutInProgress(true);
-            graphRef.current.beginLayout(() => setLayoutInProgress(false));
+    function handleCopyGraphJson(): void {
+        if (graphRef.current) {
+            const json = graphRef.current.serializeAsJson();
+            navigator.clipboard.writeText(json);
         }
     }
 
@@ -63,7 +57,6 @@ function GraphClientApp() {
 
         if (event.type === "toggle-expansion") {
             const { nodeId, expand } = (event as CustomEvent).detail;
-            console.log(nodeId);
 
             if (expand) {
                 const nodes = manager.getImmediateNodes(nodeId);
@@ -91,12 +84,12 @@ function GraphClientApp() {
                 </Button>
                 <Button
                     sx={{ mb: 1 }}
-                    onClick={handleExpandDesign}
+                    onClick={handleCopyGraphJson}
                     disabled={layoutInProgress}
                     variant="contained"
                     fullWidth
                 >
-                    Expand 'Design'
+                    Copy Graph JSON
                 </Button>
             </div>
             <div className="content-host">
