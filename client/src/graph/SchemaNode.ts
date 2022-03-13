@@ -13,6 +13,10 @@ export class SchemaNode extends GraphNode<SimpleNodeData> {
     private _expanded: boolean = false;
     private _nodeRect: SvgRectSelection | undefined;
 
+    public set expanded(value: boolean) {
+        this._expanded = value;
+    }
+
     protected destroyCore(nodeGroup: GroupSelection): void {
         this._nodeRect = undefined; // Will be removed in base class.
     }
