@@ -57,9 +57,23 @@ function GraphClientApp() {
     }
 
     function handleExpansion(event: Event): void {
+        // When it gets here, these two are definitely valid.
+        const graph = graphRef.current as Graph;
+        const manager = nodesManagerRef.current as GraphNodesManager;
+
         if (event.type === "toggle-expansion") {
             const { nodeId, expand } = (event as CustomEvent).detail;
-            console.log(`${nodeId}: Expand = ${expand}`);
+            console.log(nodeId);
+
+            if (expand) {
+                const nodes = manager.getImmediateNodes(nodeId);
+                graph.addNodes(nodes);
+                graph.addEdges(manager.getAllEdges());
+                graph.invalidate();
+            }
+
+            setLayoutInProgress(true);
+            graph.beginLayout(() => setLayoutInProgress(false));
         }
     }
 
