@@ -1,5 +1,7 @@
+import ReactGraph from "./components/ReactGraph/ReactGraph";
+
 function GraphApp() {
-    return <div>Graph.js here</div>;
+    return <ReactGraph />;
 }
 
 export default GraphApp;
