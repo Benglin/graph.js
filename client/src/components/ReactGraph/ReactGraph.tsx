@@ -7,6 +7,8 @@ import ReactFlow, {
     applyEdgeChanges,
     NodeChange,
     EdgeChange,
+    addEdge,
+    Connection,
 } from "reactflow";
 
 import "reactflow/dist/style.css";
@@ -33,7 +35,7 @@ const initialNodes: NodeData[] = [
     {
         id: "1",
         data: { label: "Hello" },
-        position: { x: 0, y: 0 },
+        position: { x: 20, y: 20 },
         type: "input",
     },
     {
@@ -44,13 +46,13 @@ const initialNodes: NodeData[] = [
 ];
 
 const initialEdges: EdgeData[] = [
-    {
-        id: "1-2",
-        source: "1",
-        target: "2",
-        label: "to the",
-        type: "step",
-    },
+    // {
+    //     id: "1-2",
+    //     source: "1",
+    //     target: "2",
+    //     label: "to the",
+    //     type: "step",
+    // },
 ];
 
 export default function ReactGraph(props: ReactGraphProps): JSX.Element {
@@ -61,9 +63,15 @@ export default function ReactGraph(props: ReactGraphProps): JSX.Element {
         (changes: NodeChange[]) => setNodes((nds) => applyNodeChanges(changes, nds)),
         []
     );
+
     const onEdgesChange = useCallback(
         (changes: EdgeChange[]) =>
             setEdges((eds: EdgeData[]) => applyEdgeChanges<EdgeData>(changes, eds) as EdgeData[]),
+        []
+    );
+
+    const onConnect = useCallback(
+        (params: Connection) => setEdges((eds) => addEdge(params, eds) as EdgeData[]),
         []
     );
 
@@ -71,9 +79,10 @@ export default function ReactGraph(props: ReactGraphProps): JSX.Element {
         <div className="react-graph-container">
             <ReactFlow
                 nodes={nodes}
-                onNodesChange={onNodesChange}
                 edges={edges}
+                onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
+                onConnect={onConnect}
             >
                 <Background />
                 <Controls />
