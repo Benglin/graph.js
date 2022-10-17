@@ -1,6 +1,8 @@
 import { useState, useCallback } from "react";
 
 import ReactFlow, {
+    Node,
+    Edge,
     Controls,
     Background,
     applyNodeChanges,
@@ -14,14 +16,10 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import "./style.css";
 
-export interface ReactGraphProps {}
+import SchemaGraphNode, { NodeData } from "./SchemaGraphNode";
+const nodeTypes = { "schemaGraphNode": SchemaGraphNode };
 
-interface NodeData {
-    id: string;
-    data: { label: string };
-    position: { x: number; y: number };
-    type?: string;
-}
+export interface ReactGraphProps {}
 
 interface EdgeData {
     id: string;
@@ -31,17 +29,53 @@ interface EdgeData {
     type: string;
 }
 
-const initialNodes: NodeData[] = [
+const initialNodes: Node<NodeData>[] = [
     {
-        id: "1",
-        data: { label: "Hello" },
-        position: { x: 20, y: 20 },
-        type: "input",
-    },
-    {
-        id: "2",
-        data: { label: "World" },
-        position: { x: 100, y: 100 },
+        id: "schema-node-0",
+        type: "schemaGraphNode",
+        data: [
+            {
+                label: "model",
+                type: "primary",
+            },
+            {
+                label: "wipLineageUrn",
+                type: "regular",
+            },
+            {
+                label: "dmLineageId",
+                type: "regular",
+            },
+            {
+                label: "f3dComponentId",
+                type: "regular",
+            },
+            {
+                label: "tableViewData",
+                type: "secondary",
+            },
+            {
+                label: "default",
+                type: "regular",
+            },
+            {
+                label: "targetComponent",
+                type: "regular",
+            },
+            {
+                label: "modelInfo",
+                type: "secondary",
+            },
+            {
+                label: "role",
+                type: "regular",
+            },
+            {
+                label: "mimeType",
+                type: "regular",
+            },
+        ],
+        position: { x: 100, y: 200 },
     },
 ];
 
@@ -56,8 +90,8 @@ const initialEdges: EdgeData[] = [
 ];
 
 export default function ReactGraph(props: ReactGraphProps): JSX.Element {
-    const [nodes, setNodes] = useState<NodeData[]>(initialNodes);
-    const [edges, setEdges] = useState<EdgeData[]>(initialEdges);
+    const [nodes, setNodes] = useState<Node<NodeData>[]>(initialNodes);
+    const [edges, setEdges] = useState<Edge<EdgeData>[]>(initialEdges);
 
     const onNodesChange = useCallback(
         (changes: NodeChange[]) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -65,13 +99,12 @@ export default function ReactGraph(props: ReactGraphProps): JSX.Element {
     );
 
     const onEdgesChange = useCallback(
-        (changes: EdgeChange[]) =>
-            setEdges((eds: EdgeData[]) => applyEdgeChanges<EdgeData>(changes, eds) as EdgeData[]),
+        (changes: EdgeChange[]) => setEdges((eds) => applyEdgeChanges(changes, eds)),
         []
     );
 
     const onConnect = useCallback(
-        (params: Connection) => setEdges((eds) => addEdge(params, eds) as EdgeData[]),
+        (params: Connection) => setEdges((eds) => addEdge(params, eds)),
         []
     );
 
@@ -80,6 +113,7 @@ export default function ReactGraph(props: ReactGraphProps): JSX.Element {
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
+                nodeTypes={nodeTypes}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}

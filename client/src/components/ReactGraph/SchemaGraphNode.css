@@ -1,0 +1,33 @@
+.schema-node-container {
+    width: 200px;
+    color: #000;
+    background: #fff;
+
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.schema-node-container .item-row {
+    padding: 8px 12px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    margin-top: -1px;
+}
+
+.schema-node-container .primary-header {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: #fff;
+    background: #3c3c3c;
+}
+
+.schema-node-container .secondary-header {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: #3c3c3c;
+    background: #cccccc;
+}
