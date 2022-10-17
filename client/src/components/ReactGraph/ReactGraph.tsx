@@ -29,59 +29,83 @@ interface EdgeData {
     type: string;
 }
 
+const nodeData: NodeData = [
+    {
+        label: "model",
+        type: "primary",
+        version: "2.0.1",
+        items: [
+            {
+                label: "wipLineageUrn",
+                type: "regular",
+                dataType: "String",
+            },
+            {
+                label: "dmLineageId",
+                type: "regular",
+                dataType: "String",
+            },
+            {
+                label: "f3dComponentId",
+                type: "regular",
+                dataType: "String",
+            },
+        ],
+    },
+    {
+        label: "tableViewData",
+        type: "secondary",
+        version: "2.0.0",
+        items: [
+            {
+                label: "default",
+                type: "regular",
+                dataType: "Bool",
+            },
+            {
+                label: "targetComponent",
+                type: "regular",
+                dataType: "String",
+            },
+        ],
+    },
+    {
+        label: "modelInfo",
+        type: "secondary",
+        version: "1.0.0",
+        items: [
+            {
+                label: "role",
+                type: "regular",
+                dataType: "Enum",
+            },
+            {
+                label: "mimeType",
+                type: "regular",
+                dataType: "String",
+            },
+        ],
+    },
+];
+
 const initialNodes: Node<NodeData>[] = [
     {
         id: "schema-node-0",
         type: "schemaGraphNode",
-        data: [
-            {
-                label: "model",
-                type: "primary",
-                items: [
-                    {
-                        label: "wipLineageUrn",
-                        type: "regular",
-                    },
-                    {
-                        label: "dmLineageId",
-                        type: "regular",
-                    },
-                    {
-                        label: "f3dComponentId",
-                        type: "regular",
-                    },
-                ],
-            },
-            {
-                label: "tableViewData",
-                type: "secondary",
-                items: [
-                    {
-                        label: "default",
-                        type: "regular",
-                    },
-                    {
-                        label: "targetComponent",
-                        type: "regular",
-                    },
-                ],
-            },
-            {
-                label: "modelInfo",
-                type: "secondary",
-                items: [
-                    {
-                        label: "role",
-                        type: "regular",
-                    },
-                    {
-                        label: "mimeType",
-                        type: "regular",
-                    },
-                ],
-            },
-        ],
-        position: { x: 100, y: 200 },
+        data: nodeData,
+        position: { x: 100, y: 100 },
+    },
+    {
+        id: "schema-node-1",
+        type: "schemaGraphNode",
+        data: nodeData,
+        position: { x: 320, y: 100 },
+    },
+    {
+        id: "schema-node-2",
+        type: "schemaGraphNode",
+        data: nodeData,
+        position: { x: 320, y: 320 },
     },
 ];
 

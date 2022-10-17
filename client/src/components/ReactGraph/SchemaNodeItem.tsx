@@ -5,6 +5,8 @@ export type NodeItemType = "primary" | "secondary" | "regular";
 export interface NodeItem {
     label: string;
     type: NodeItemType;
+    version?: string;
+    dataType?: string;
     items?: NodeItem[];
 }
 
@@ -35,6 +37,8 @@ export default function SchemaNodeItem(props: NodeItem): JSX.Element {
                     onClick={() => setCollapsed((c) => !c)}
                 >
                     <span>{item.label}</span>
+                    {item.version && <span className="item-badge">{item.version}</span>}
+                    <span className="full-width" />
                     {collapsed ? (
                         <i className="fa-solid fa-caret-up" />
                     ) : (
@@ -49,7 +53,9 @@ export default function SchemaNodeItem(props: NodeItem): JSX.Element {
     function renderRegularItem(item: NodeItem): JSX.Element {
         return (
             <div key={item.label} className="item-row">
-                {item.label}
+                <span className="full-width">{item.label}</span>
+                {item.dataType && <span className="full-width" />}
+                {item.dataType && <span className="item-data-type">{item.dataType}</span>}
             </div>
         );
     }

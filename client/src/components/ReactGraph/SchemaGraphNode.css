@@ -11,13 +11,32 @@
 .schema-node-container .item-row {
     display: flex;
     align-items: center;
+    column-gap: 6px;
     padding: 8px 12px;
     border: 1px solid rgba(128, 128, 128, 0.2);
     margin-top: -1px;
 }
 
-.schema-node-container .item-row span {
+.schema-node-container .full-width {
     flex-grow: 1;
+}
+
+.schema-node-container .item-badge {
+    color: #3c3c3c;
+    background: #dcdcdc;
+    border-radius: 100px;
+    padding: 4px 8px;
+
+    font-weight: 700;
+    font-size: 8px;
+    line-height: 8px;
+}
+
+.schema-node-container .item-data-type {
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 12px;
+    color: rgba(60, 60, 60, 0.7);
 }
 
 .schema-node-container .primary-header {
