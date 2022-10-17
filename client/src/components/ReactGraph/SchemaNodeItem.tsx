@@ -1,3 +1,5 @@
+import React from "react";
+
 export type NodeItemType = "primary" | "secondary" | "regular";
 
 export interface NodeItem {
@@ -7,11 +9,16 @@ export interface NodeItem {
 }
 
 export default function SchemaNodeItem(props: NodeItem): JSX.Element {
+    const [collapsed, setCollapsed] = React.useState<boolean>(false);
+
     function renderHeaderItem(item: NodeItem): JSX.Element {
         const children: JSX.Element[] = [];
-        item.items?.forEach((item) => {
-            children.push(renderRegularItem(item));
-        });
+
+        if (!collapsed) {
+            item.items?.forEach((item) => {
+                children.push(renderRegularItem(item));
+            });
+        }
 
         let extraClasses = "";
         if (item.type === "primary") {
@@ -22,8 +29,17 @@ export default function SchemaNodeItem(props: NodeItem): JSX.Element {
 
         return (
             <>
-                <div key={item.label} className={`item-row ${extraClasses}`}>
-                    {item.label}
+                <div
+                    key={item.label}
+                    className={`item-row ${extraClasses}`}
+                    onClick={() => setCollapsed((c) => !c)}
+                >
+                    <span>{item.label}</span>
+                    {collapsed ? (
+                        <i className="fa-solid fa-caret-up" />
+                    ) : (
+                        <i className="fa-solid fa-caret-down" />
+                    )}
                 </div>
                 {children}
             </>

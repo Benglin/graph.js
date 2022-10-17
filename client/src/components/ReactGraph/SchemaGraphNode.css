@@ -9,9 +9,15 @@
 }
 
 .schema-node-container .item-row {
+    display: flex;
+    align-items: center;
     padding: 8px 12px;
     border: 1px solid rgba(128, 128, 128, 0.2);
     margin-top: -1px;
+}
+
+.schema-node-container .item-row span {
+    flex-grow: 1;
 }
 
 .schema-node-container .primary-header {
