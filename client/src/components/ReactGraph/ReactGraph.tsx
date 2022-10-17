@@ -37,42 +37,48 @@ const initialNodes: Node<NodeData>[] = [
             {
                 label: "model",
                 type: "primary",
-            },
-            {
-                label: "wipLineageUrn",
-                type: "regular",
-            },
-            {
-                label: "dmLineageId",
-                type: "regular",
-            },
-            {
-                label: "f3dComponentId",
-                type: "regular",
+                items: [
+                    {
+                        label: "wipLineageUrn",
+                        type: "regular",
+                    },
+                    {
+                        label: "dmLineageId",
+                        type: "regular",
+                    },
+                    {
+                        label: "f3dComponentId",
+                        type: "regular",
+                    },
+                ],
             },
             {
                 label: "tableViewData",
                 type: "secondary",
-            },
-            {
-                label: "default",
-                type: "regular",
-            },
-            {
-                label: "targetComponent",
-                type: "regular",
+                items: [
+                    {
+                        label: "default",
+                        type: "regular",
+                    },
+                    {
+                        label: "targetComponent",
+                        type: "regular",
+                    },
+                ],
             },
             {
                 label: "modelInfo",
                 type: "secondary",
-            },
-            {
-                label: "role",
-                type: "regular",
-            },
-            {
-                label: "mimeType",
-                type: "regular",
+                items: [
+                    {
+                        label: "role",
+                        type: "regular",
+                    },
+                    {
+                        label: "mimeType",
+                        type: "regular",
+                    },
+                ],
             },
         ],
         position: { x: 100, y: 200 },
