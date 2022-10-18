@@ -16,6 +16,9 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import "./style.css";
 
+import assetsModelData from "../../data/assets.model-2.1.0.json";
+import assetsTableViewData from "../../data/assets.tableView-1.0.0.json";
+
 import SchemaGraphNode, { NodeData } from "./SchemaGraphNode";
 const nodeTypes = { "schemaGraphNode": SchemaGraphNode };
 
@@ -29,83 +32,18 @@ interface EdgeData {
     type: string;
 }
 
-const nodeData: NodeData = [
-    {
-        label: "model",
-        type: "primary",
-        version: "2.0.1",
-        items: [
-            {
-                label: "wipLineageUrn",
-                type: "regular",
-                dataType: "String",
-            },
-            {
-                label: "dmLineageId",
-                type: "regular",
-                dataType: "String",
-            },
-            {
-                label: "f3dComponentId",
-                type: "regular",
-                dataType: "String",
-            },
-        ],
-    },
-    {
-        label: "tableViewData",
-        type: "secondary",
-        version: "2.0.0",
-        items: [
-            {
-                label: "default",
-                type: "regular",
-                dataType: "Bool",
-            },
-            {
-                label: "targetComponent",
-                type: "regular",
-                dataType: "String",
-            },
-        ],
-    },
-    {
-        label: "modelInfo",
-        type: "secondary",
-        version: "1.0.0",
-        items: [
-            {
-                label: "role",
-                type: "regular",
-                dataType: "Enum",
-            },
-            {
-                label: "mimeType",
-                type: "regular",
-                dataType: "String",
-            },
-        ],
-    },
-];
-
 const initialNodes: Node<NodeData>[] = [
     {
         id: "schema-node-0",
         type: "schemaGraphNode",
-        data: nodeData,
+        data: assetsModelData as NodeData,
         position: { x: 100, y: 100 },
     },
     {
         id: "schema-node-1",
         type: "schemaGraphNode",
-        data: nodeData,
-        position: { x: 320, y: 100 },
-    },
-    {
-        id: "schema-node-2",
-        type: "schemaGraphNode",
-        data: nodeData,
-        position: { x: 320, y: 320 },
+        data: assetsTableViewData as NodeData,
+        position: { x: 450, y: 100 },
     },
 ];
 
