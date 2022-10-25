@@ -16,10 +16,10 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import "./style.css";
 
-import assetsModelData from "../../data/assets.model-2.1.0.json";
+import assetsModelData from "../../data/assets.model-2.1.1.json";
 import assetsTableViewData from "../../data/assets.tableView-1.0.0.json";
 
-import SchemaGraphNode, { NodeData } from "./SchemaGraphNode";
+import SchemaGraphNode, { NodeDataSpec } from "./SchemaGraphNode";
 const nodeTypes = { "schemaGraphNode": SchemaGraphNode };
 
 export interface ReactGraphProps {}
@@ -32,17 +32,17 @@ interface EdgeData {
     type: string;
 }
 
-const initialNodes: Node<NodeData>[] = [
+const initialNodes: Node<NodeDataSpec>[] = [
     {
         id: "schema-node-0",
         type: "schemaGraphNode",
-        data: assetsModelData as NodeData,
+        data: assetsModelData as NodeDataSpec,
         position: { x: 100, y: 100 },
     },
     {
         id: "schema-node-1",
         type: "schemaGraphNode",
-        data: assetsTableViewData as NodeData,
+        data: assetsTableViewData as NodeDataSpec,
         position: { x: 450, y: 100 },
     },
 ];
@@ -58,7 +58,7 @@ const initialEdges: EdgeData[] = [
 ];
 
 export default function ReactGraph(props: ReactGraphProps): JSX.Element {
-    const [nodes, setNodes] = useState<Node<NodeData>[]>(initialNodes);
+    const [nodes, setNodes] = useState<Node<NodeDataSpec>[]>(initialNodes);
     const [edges, setEdges] = useState<Edge<EdgeData>[]>(initialEdges);
 
     const onNodesChange = useCallback(

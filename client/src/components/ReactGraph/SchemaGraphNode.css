@@ -56,3 +56,11 @@
     color: #3c3c3c;
     background: #cccccc;
 }
+
+.schema-node-container .fancy-green-port {
+    background: greenyellow;
+    border: 2px solid brown;
+    width: 11px;
+    height: 11px;
+    right: -7px;
+}

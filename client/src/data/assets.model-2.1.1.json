@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "label": "model",
+      "itemType": "primary",
+      "version": "2.1.1",
+      "items": [
+        {
+          "label": "wipLineageUrn",
+          "itemType": "regular",
+          "dataType": "String"
+        },
+        {
+          "label": "dmLineageId",
+          "itemType": "regular",
+          "dataType": "String"
+        },
+        {
+          "label": "f3dComponentId",
+          "itemType": "regular",
+          "dataType": "String"
+        }
+      ]
+    },
+    {
+      "label": "tableViewData",
+      "itemType": "secondary",
+      "version": "2.0.0",
+      "items": [
+        {
+          "label": "default",
+          "itemType": "regular",
+          "dataType": "Bool"
+        },
+        {
+          "label": "targetComponent",
+          "itemType": "regular",
+          "dataType": "String"
+        }
+      ]
+    },
+    {
+      "label": "modelInfo",
+      "itemType": "secondary",
+      "version": "1.0.0",
+      "items": [
+        {
+          "label": "role",
+          "itemType": "regular",
+          "dataType": "Enum"
+        },
+        {
+          "label": "mimeType",
+          "itemType": "regular",
+          "dataType": "String"
+        }
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "id": "assets.model-output-0",
+      "hostId": "f3dComponentId",
+      "type": "target",
+      "position": "right",
+      "className": "fancy-green-port"
+    },
+    {
+      "id": "assets.model-output-1",
+      "hostId": "targetComponent",
+      "type": "target",
+      "position": "right",
+      "className": "fancy-green-port"
+    }
+  ]
+}

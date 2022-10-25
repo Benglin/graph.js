@@ -1,19 +1,22 @@
-[
-  {
-    "label": "tableViewData",
-    "type": "primary",
-    "version": "1.0.0",
-    "items": [
-      {
-        "label": "columnOrder",
-        "type": "regular",
-        "dataType": "String"
-      },
-      {
-        "label": "rowOrder",
-        "type": "regular",
-        "dataType": "String"
-      }
-    ]
-  }
-]
+{
+  "items": [
+    {
+      "label": "tableViewData",
+      "itemType": "primary",
+      "version": "1.0.0",
+      "items": [
+        {
+          "label": "columnOrder",
+          "itemType": "regular",
+          "dataType": "String"
+        },
+        {
+          "label": "rowOrder",
+          "itemType": "regular",
+          "dataType": "String"
+        }
+      ]
+    }
+  ],
+  "ports": []
+}

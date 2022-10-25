@@ -4,7 +4,7 @@ export type NodeItemType = "primary" | "secondary" | "regular";
 
 export interface NodeItem {
     label: string;
-    type: NodeItemType;
+    itemType: NodeItemType;
     version?: string;
     dataType?: string;
     items?: NodeItem[];
@@ -23,15 +23,16 @@ export default function SchemaNodeItem(props: NodeItem): JSX.Element {
         }
 
         let extraClasses = "";
-        if (item.type === "primary") {
+        if (item.itemType === "primary") {
             extraClasses = "primary-header";
-        } else if (item.type === "secondary") {
+        } else if (item.itemType === "secondary") {
             extraClasses = "secondary-header";
         }
 
         return (
             <>
                 <div
+                    id={item.label}
                     key={item.label}
                     className={`item-row ${extraClasses}`}
                     onClick={() => setCollapsed((c) => !c)}
@@ -52,7 +53,7 @@ export default function SchemaNodeItem(props: NodeItem): JSX.Element {
 
     function renderRegularItem(item: NodeItem): JSX.Element {
         return (
-            <div key={item.label} className="item-row">
+            <div id={item.label} key={item.label} className="item-row">
                 <span className="full-width">{item.label}</span>
                 {item.dataType && <span className="full-width" />}
                 {item.dataType && <span className="item-data-type">{item.dataType}</span>}
