@@ -18,5 +18,60 @@
       ]
     }
   ],
-  "ports": []
+  "ports": [
+    {
+      "id": "tableViewData-output-0",
+      "hostId": "",
+      "type": "source",
+      "position": "right",
+      "style": {
+        "top": "calc(100% - 20px)"
+      }
+    },
+    {
+      "id": "tableViewData-output-1",
+      "hostId": "",
+      "type": "source",
+      "position": "right",
+      "style": {
+        "top": "calc(100% - 30px)"
+      }
+    },
+    {
+      "id": "tableViewData-output-2",
+      "hostId": "",
+      "type": "source",
+      "position": "right",
+      "style": {
+        "top": "calc(100% - 40px)"
+      }
+    },
+    {
+      "id": "tableViewData-input-0",
+      "hostId": "",
+      "type": "target",
+      "position": "bottom",
+      "style": {
+        "left": "calc(100% - 20px)"
+      }
+    },
+    {
+      "id": "tableViewData-input-1",
+      "hostId": "",
+      "type": "target",
+      "position": "bottom",
+      "style": {
+        "left": "calc(100% - 30px)"
+      }
+    },
+    {
+      "id": "tableViewData-input-2",
+      "hostId": "",
+      "type": "target",
+      "position": "bottom",
+      "style": {
+        "left": "calc(100% - 40px)"
+      }
+    }
+  ]
 }

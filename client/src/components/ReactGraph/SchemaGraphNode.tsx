@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { Handle, HandleType, NodeProps, Position } from "reactflow";
 import SchemaNodeItem, { NodeItem } from "./SchemaNodeItem";
 import "./SchemaGraphNode.css";
@@ -9,6 +9,7 @@ export interface NodePort {
     type: HandleType;
     position: Position;
     className?: string;
+    style?: CSSProperties;
 }
 
 export interface NodeDataSpec {
@@ -25,10 +26,12 @@ export default function SchemaGraphNode(props: NodeProps<NodeDataSpec>): JSX.Ele
         return ports.map((port) => {
             return (
                 <Handle
+                    key={port.id}
                     id={port.id}
                     type={port.type}
                     position={port.position}
                     className={port.className}
+                    style={port.style}
                 />
             );
         });
